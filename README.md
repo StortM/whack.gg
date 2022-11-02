@@ -1,4 +1,4 @@
-# template-backend-nestjs
+# db-mandatory-2
 
 This is a Node.js application using NestJS.
 
@@ -54,4 +54,3 @@ docker-compose exec backend /bin/sh
 ```
 
 From here you can run `npm` commands like `npm install -D typescript@latest` and `npm run test`.
-# db-mandatory-2
