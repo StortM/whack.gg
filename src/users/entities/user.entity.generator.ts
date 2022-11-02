@@ -12,8 +12,7 @@ export const generateRegularUser = (seed: number, password?: string): User => {
     fullName: faker.name.findName(),
     isAdmin: false,
     email: getFakeLowerCaseTrimmedEmail(),
-    passwordHash: password ?? bcrypt.hashSync(faker.internet.password(), salt),
-    submissions: []
+    passwordHash: password ?? bcrypt.hashSync(faker.internet.password(), salt)
   } as User
 }
 
@@ -26,7 +25,6 @@ export const generateAdminUser = (seed: number, password?: string): User => {
     fullName: faker.name.findName(),
     isAdmin: true,
     email: getFakeLowerCaseTrimmedEmail(),
-    passwordHash: password ?? bcrypt.hashSync(faker.internet.password(), salt),
-    submissions: []
+    passwordHash: password ?? bcrypt.hashSync(faker.internet.password(), salt)
   } as User
 }

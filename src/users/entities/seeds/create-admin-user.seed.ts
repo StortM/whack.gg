@@ -1,7 +1,7 @@
 import { Factory, Seeder } from 'typeorm-seeding'
 import { Connection } from 'typeorm'
 import { User } from '../user.entity'
-import { CryptService } from '../../../crypt/crypt.service'
+import { CryptService } from 'src/crypt/crypt.service'
 
 export default class CreateUsers implements Seeder {
   public async run(_: Factory, connection: Connection): Promise<void> {
@@ -9,7 +9,7 @@ export default class CreateUsers implements Seeder {
     const user: Partial<User> = {
       fullName: 'Admin',
       isAdmin: true,
-      email: 'admin@kvalifik.dk',
+      email: 'admin@admin.dk',
       passwordHash: await cryptService.hash('banankage')
     }
     await connection

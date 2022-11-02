@@ -1,5 +1,4 @@
-import { Submission } from 'src/submissions/entities/submission.entity'
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 export type UserOmittingPasswordHash = Omit<User, 'passwordHash'>
 
@@ -19,7 +18,4 @@ export class User {
 
   @Column()
   passwordHash!: string
-
-  @OneToMany(() => Submission, (submission) => submission.user)
-  submissions!: Submission[]
 }

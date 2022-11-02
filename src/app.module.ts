@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import * as Joi from 'joi'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
+import { UsersModule } from './users/users.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -15,7 +16,8 @@ const validation = {
     POSTGRES_PORT: Joi.required(),
     POSTGRES_USER: Joi.string().required(),
     POSTGRES_PASSWORD: Joi.string().required(),
-    POSTGRES_DB: Joi.string().required()
+    POSTGRES_DB: Joi.string().required(),
+    TOKEN_SECRET: Joi.string().required()
   })
 }
 
@@ -34,11 +36,12 @@ const validation = {
             username: configService.get('POSTGRES_USER'),
             password: configService.get('POSTGRES_PASSWORD'),
             database: configService.get('POSTGRES_DB'),
-            entities: []
+            autoLoadEntities: true
           }
         ),
       inject: [ConfigService]
-    })
+    }),
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService]

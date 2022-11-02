@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { ILike, Repository } from 'typeorm'
 import { CreateUserDTO } from './dto/create-user.dto'
 import { User, UserOmittingPasswordHash } from './entities/user.entity'
-import { CryptService } from 'src/crypt/crypt.service'
 import { UpdateUserDto } from './dto/update-user.dto'
+import { CryptService } from 'src/crypt/crypt.service'
 
 @Injectable()
 export class UsersService {
@@ -73,9 +73,7 @@ export class UsersService {
 
   async findOne(id: string): Promise<UserOmittingPasswordHash | undefined> {
     const res = await this.userRepository.findOne({ id: id })
-    if (!res) {
-      return undefined
-    }
+    if (!res) return undefined
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...userWithoutPassword } = res
@@ -98,16 +96,13 @@ export class UsersService {
       isAdmin: updateUserDto.isAdmin,
       email: updateUserDto.email.toLowerCase().trim()
     }
-    if (updateUserDto.password) {
+    if (updateUserDto.password)
       user.passwordHash = await this.cryptService.hash(updateUserDto.password)
-    }
 
     await this.userRepository.update(id, user)
 
     const res = await this.userRepository.findOne(id)
-    if (!res) {
-      return undefined
-    }
+    if (!res) return undefined
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...userWithoutPassword } = res

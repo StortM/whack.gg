@@ -1,7 +1,7 @@
 module.exports = {
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['dist/migrations/*{.ts,.js}'],
-  synchronize: false,
+  synchronize: true,
   type: 'postgres',
   host: process.env['POSTGRES_HOST'],
   port: +process.env['POSTGRES_PORT'],
