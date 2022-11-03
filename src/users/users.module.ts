@@ -6,9 +6,14 @@ import { User } from './entities/user.entity'
 import { AuthService } from 'src/auth/auth.service'
 import { AuthModule } from 'src/auth/auth.module'
 import { CryptService } from 'src/crypt/crypt.service'
+import { SummonerModule } from 'src/summoner/summoner.module'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), forwardRef(() => AuthModule)],
+  imports: [
+    TypeOrmModule.forFeature([User]),
+    forwardRef(() => AuthModule),
+    SummonerModule
+  ],
   controllers: [UsersController],
   providers: [UsersService, CryptService, AuthService],
   exports: [UsersService]

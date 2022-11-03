@@ -1,32 +1,26 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  Query,
-  ValidationPipe,
-  UseGuards,
-  UseFilters,
-  UseInterceptors,
+  Get,
+  Headers,
   HttpException,
   HttpStatus,
-  Headers
+  Param,
+  Patch,
+  Post,
+  Query,
+  UseGuards,
+  ValidationPipe
 } from '@nestjs/common'
-import { UsersService } from './users.service'
-import { CreateUserDTO } from './dto/create-user.dto'
-import { UserOmittingPasswordHash } from './entities/user.entity'
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
 import { AdminGuard } from 'src/auth/admin.guard'
-import { UpdateUserDto } from './dto/update-user.dto'
-import { CatchAllExceptionsFilter } from 'src/utils/exception.filter'
-import { ResultInterceptor } from 'src/utils/result.interceptor'
 import { AuthService } from 'src/auth/auth.service'
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
+import { CreateUserDTO } from './dto/create-user.dto'
+import { UpdateUserDto } from './dto/update-user.dto'
+import { UserOmittingPasswordHash } from './entities/user.entity'
+import { UsersService } from './users.service'
 
-@UseFilters(new CatchAllExceptionsFilter())
-@UseInterceptors(new ResultInterceptor())
 @Controller('users')
 export class UsersController {
   constructor(
@@ -55,6 +49,14 @@ export class UsersController {
       }
     }
 
+    return this.usersService.create(createUserDto)
+  }
+
+  @UseGuards(AdminGuard)
+  @Post('/admin')
+  async createAdmin(
+    @Body(new ValidationPipe()) createUserDto: CreateUserDTO
+  ): Promise<UserOmittingPasswordHash | undefined> {
     return this.usersService.create(createUserDto)
   }
 

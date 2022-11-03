@@ -6,6 +6,7 @@ import * as Joi from 'joi'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
 import { UsersModule } from './users/users.module'
+import { SummonerModule } from './summoner/summoner.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -41,7 +42,8 @@ const validation = {
         ),
       inject: [ConfigService]
     }),
-    UsersModule
+    UsersModule,
+    SummonerModule
   ],
   controllers: [AppController],
   providers: [AppService]

@@ -50,11 +50,8 @@ export class AuthService {
   }
 
   async validateEmail(email: string): Promise<boolean> {
-    const user = await this.usersService.findOneWithPasswordHash(email)
+    const user = await !!this.usersService.findOneWithPasswordHash(email)
 
-    if (!user) {
-      return false
-    }
-    return true
+    return !!user
   }
 }

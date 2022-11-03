@@ -5,12 +5,15 @@ import { CreateUserDTO } from './dto/create-user.dto'
 import { User, UserOmittingPasswordHash } from './entities/user.entity'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { CryptService } from 'src/crypt/crypt.service'
+import { SummonerService } from 'src/summoner/summoner.service'
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>,
-    private cryptService: CryptService
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+    private cryptService: CryptService,
+    private summonerService: SummonerService
   ) {}
 
   async create(
@@ -30,6 +33,7 @@ export class UsersService {
     if (!savedUser) {
       return undefined
     }
+    this.summonerService.findAll()
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...userNoPassword } = savedUser
@@ -58,7 +62,7 @@ export class UsersService {
     }
 
     // get results from db
-    const results: User[] = await this.userRepository.find(findOptions)
+    const results: User[] = await this.userRepository.find()
 
     // strip passwordHash from all found results
     const resultsNoPassword = results.map((user) => {

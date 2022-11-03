@@ -1,27 +1,15 @@
-import {
-  Controller,
-  Post,
-  UseGuards,
-  Request,
-  UseFilters,
-  UseInterceptors,
-  Body
-} from '@nestjs/common'
+import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common'
+import { UserOmittingPasswordHash } from 'src/users/entities/user.entity'
 import { LocalAuthGuard } from './auth-local.guard'
 import { AuthService } from './auth.service'
-import { AuthenticatedRequest } from './local.strategy'
-import { UserOmittingPasswordHash } from 'src/users/entities/user.entity'
-import { CatchAllExceptionsFilter } from 'src/utils/exception.filter'
-import { ResultInterceptor } from 'src/utils/result.interceptor'
 import { CheckEmailDto } from './dto/check-email.dto'
+import { AuthenticatedRequest } from './local.strategy'
 
 export interface LoginResponse {
   accessToken: string
   user: UserOmittingPasswordHash
 }
 
-@UseFilters(new CatchAllExceptionsFilter())
-@UseInterceptors(new ResultInterceptor())
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
