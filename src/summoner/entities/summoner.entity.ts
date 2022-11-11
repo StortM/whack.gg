@@ -1,7 +1,7 @@
 import { Rank } from 'src/ranks/entities/rank.entity'
 import { Region } from 'src/region/entities/region.entity'
-import { Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
-
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+@Entity()
 export class Summoner {
   @PrimaryGeneratedColumn()
   id!: number

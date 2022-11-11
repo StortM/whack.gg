@@ -1,28 +1,6 @@
 import { Factory, Seeder } from 'typeorm-seeding'
 import { Connection } from 'typeorm'
 import { Gamemode } from '../gamemodes.entity'
-
-/* 
-('CLASSIC'),
-    ('ODIN'),
-    ('ARAM'),
-    ('TUTORIAL'),
-    ('URF'),
-    ('DOOMBOTSTEEMO'),
-    ('ONEFORALL'),
-    ('ASCENSION'),
-    ('FIRSTBLOOD'),
-    ('KINGPORO'),
-    ('SIEGE'),
-    ('ASSASSINATE'),
-    ('ARSR'),
-    ('DARKSTAR'),
-    ('STARGUARDIAN'),
-    ('PROJECT'),
-    ('GAMEMODEX'),
-    ('ODYSSEY'),
-    ('NEXUSBLITZ'),
-    ('ULTBOOK'); */
 export default class CreateGameModes implements Seeder {
   public async run(_: Factory, connection: Connection): Promise<void> {
     const gamemodes: Partial<Gamemode>[] = [
@@ -48,12 +26,6 @@ export default class CreateGameModes implements Seeder {
       { id: 20, name: 'ULTBOOK' }
     ]
 
-    /*     const queryRunner = await connection.dropDatabase() */
-
-    const something = await (
-      await connection.getRepository(Gamemode).find()
-    ).length
-    if (something) return
     await connection.transaction(async (transactionalEntityManager) => {
       transactionalEntityManager
         .createQueryBuilder()
