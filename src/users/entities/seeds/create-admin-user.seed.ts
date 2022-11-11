@@ -10,7 +10,7 @@ export default class CreateUsers implements Seeder {
       fullName: 'Admin',
       isAdmin: true,
       email: 'admin@admin.dk',
-      passwordHash: await cryptService.hash('banankage')
+      passwordHash: 'test'
     }
 
     try {

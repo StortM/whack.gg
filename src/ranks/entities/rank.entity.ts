@@ -1,0 +1,21 @@
+import { Max, Min } from 'class-validator'
+import { Division } from 'src/division/entities/division.entity'
+import { Team } from 'src/teams/entities/team.entity'
+import { Tier } from 'src/tier/entities/tier.entity'
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+
+@Entity()
+export class Rank {
+  @PrimaryGeneratedColumn()
+  id!: number
+
+  @ManyToOne(() => Division)
+  division!: number
+
+  @ManyToOne(() => Tier)
+  tier!: number
+
+  @Column()
+  @Min(0)
+  lp!: number
+}

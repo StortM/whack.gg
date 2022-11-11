@@ -7,10 +7,10 @@ export default class CreateTier implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
     const queryRunner = await connection.createQueryRunner()
     const test: Partial<Tier>[] = [
-      { value: 'I' },
-      { value: 'II' },
-      { value: 'VI' },
-      { value: 'V' }
+      { id: 1, value: 'I' },
+      { id: 2, value: 'II' },
+      { id: 3, value: 'VI' },
+      { id: 4, value: 'V' }
     ]
 
     await connection
