@@ -1,5 +1,5 @@
 import { Rank } from 'src/ranks/entities/rank.entity'
-import { Region } from 'src/region/entities/region.entity'
+import { Region } from 'src/regions/entities/region.entity'
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 @Entity()
 export class Summoner {

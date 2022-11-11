@@ -1,5 +1,5 @@
 import { Champion } from 'src/champions/entities/champion.entity'
-import { Position } from 'src/position/entities/position.entity'
+import { Position } from 'src/positions/entities/position.entity'
 import { Summoner } from 'src/summoner/entities/summoner.entity'
 import { Team } from 'src/teams/entities/team.entity'
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
