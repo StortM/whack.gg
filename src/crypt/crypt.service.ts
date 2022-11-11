@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { hash, compare } from 'bcrypt'
-import { saltRounds } from 'src/auth/constants'
+import { saltRounds } from '../auth/constants'
 
 export interface ICryptService {
   hash(input: string): Promise<string>

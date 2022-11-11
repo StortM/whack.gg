@@ -1,7 +1,7 @@
 import { Factory, Seeder } from 'typeorm-seeding'
 import { Connection } from 'typeorm'
 import { User } from '../user.entity'
-import { CryptService } from 'src/crypt/crypt.service'
+import { CryptService } from '../../../crypt/crypt.service'
 
 export default class CreateUsers implements Seeder {
   public async run(_: Factory, connection: Connection): Promise<void> {
@@ -12,11 +12,21 @@ export default class CreateUsers implements Seeder {
       email: 'admin@admin.dk',
       passwordHash: await cryptService.hash('banankage')
     }
-    await connection
-      .createQueryBuilder()
-      .insert()
-      .into(User)
-      .values([user])
-      .execute()
+
+    try {
+      await connection
+        .createQueryBuilder()
+        .insert()
+        .into(User)
+        .values([
+          {
+            fullName: user.fullName,
+            isAdmin: user.isAdmin,
+            email: user.email,
+            passwordHash: user.passwordHash
+          }
+        ])
+        .execute()
+    } catch (error) {}
   }
 }
