@@ -1,6 +1,5 @@
-import { Max, Min } from 'class-validator'
+import { Min } from 'class-validator'
 import { Division } from 'src/divisions/entities/division.entity'
-import { Team } from 'src/teams/entities/team.entity'
 import { Tier } from 'src/tiers/entities/tier.entity'
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 
