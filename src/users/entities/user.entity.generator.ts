@@ -1,7 +1,7 @@
 import * as faker from 'faker'
 import * as bcrypt from 'bcrypt'
 import { User } from './user.entity'
-import { getFakeLowerCaseTrimmedEmail } from 'src/utils/test'
+import { getFakeLowerCaseTrimmedEmail } from './../../utils/test'
 
 export const generateRegularUser = (seed: number, password?: string): User => {
   faker.seed(seed)
