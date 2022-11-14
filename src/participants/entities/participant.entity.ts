@@ -1,6 +1,6 @@
 import { Champion } from 'src/champions/entities/champion.entity'
 import { Position } from 'src/positions/entities/position.entity'
-import { Summoner } from 'src/summoner/entities/summoner.entity'
+import { Summoner } from 'src/summoners/entities/summoner.entity'
 import { Team } from 'src/teams/entities/team.entity'
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 
@@ -48,15 +48,27 @@ export class Participant {
   @Column()
   pentaKills!: number
 
-  @ManyToOne(() => Team)
+  @Column()
   teamId!: number
 
-  @ManyToOne(() => Position)
+  @ManyToOne(() => Team, (team) => team.participants)
+  team!: Team
+
+  @Column()
   positionId!: number
 
-  @ManyToOne(() => Summoner)
+  @ManyToOne(() => Position, (position) => position.participants)
+  position!: Position
+
+  @Column()
   summonerId!: number
 
-  @ManyToOne(() => Champion)
+  @ManyToOne(() => Summoner, (summoner) => summoner.participants)
+  summoner!: Summoner
+
+  @Column()
   championId!: number
+
+  @ManyToOne(() => Champion, (champion) => champion.participants)
+  champion!: Champion
 }

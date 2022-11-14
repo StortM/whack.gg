@@ -29,20 +29,20 @@ export class RegionsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Region | undefined> {
+  findOne(@Param('id') id: number): Promise<Region | undefined> {
     return this.regionsService.findOne(id)
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateRegionDto: UpdateRegionDto
   ): Promise<Region | undefined> {
     return this.regionsService.update(id, updateRegionDto)
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
+  remove(@Param('id') id: number): Promise<void> {
     return this.regionsService.remove(+id)
   }
 }

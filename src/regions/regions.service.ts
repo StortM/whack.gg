@@ -26,12 +26,12 @@ export class RegionsService {
     return await this.regionRepository.find()
   }
 
-  async findOne(id: string): Promise<Region | undefined> {
-    return await this.regionRepository.findOne({ id: id })
+  async findOne(id: number): Promise<Region | undefined> {
+    return await this.regionRepository.findOne(id)
   }
 
   async update(
-    id: string,
+    id: number,
     updateRegionDto: UpdateRegionDto
   ): Promise<Region | undefined> {
     await this.regionRepository.update(id, updateRegionDto)

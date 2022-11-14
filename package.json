@@ -25,7 +25,9 @@
     "schema:show": "typeorm schema:show",
     "schema:sync": "typeorm schema:sync",
     "schema:log": "typeorm schema:log",
-    "schema:drop": "typeorm schema:drop"
+    "schema:drop": "typeorm schema:drop",
+    "docker:exec": "docker exec -i $(docker-compose ps -q backend)",
+    "docker:seed:run": "npm run docker:exec -- npm run seed:run"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",

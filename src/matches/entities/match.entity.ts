@@ -1,5 +1,12 @@
 import { Gamemode } from 'src/gamemodes/entities/gamemodes.entity'
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Team } from 'src/teams/entities/team.entity'
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from 'typeorm'
 
 @Entity()
 export class Match {
@@ -14,4 +21,7 @@ export class Match {
 
   @ManyToOne(() => Gamemode)
   gameMode!: number
+
+  @OneToMany(() => Team, (team) => team.match)
+  teams!: Team[]
 }

@@ -6,7 +6,7 @@ import { User } from './entities/user.entity'
 import { AuthService } from 'src/auth/auth.service'
 import { AuthModule } from 'src/auth/auth.module'
 import { CryptService } from 'src/crypt/crypt.service'
-import { SummonerModule } from 'src/summoner/summoner.module'
+import { SummonerModule } from 'src/summoners/summoner.module'
 
 @Module({
   imports: [

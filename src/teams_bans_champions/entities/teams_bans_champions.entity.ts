@@ -1,4 +1,4 @@
-import { Match } from 'src/matches/entities/match.entity'
+import { Champion } from 'src/champions/entities/champion.entity'
 import { Team } from 'src/teams/entities/team.entity'
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 
@@ -7,12 +7,15 @@ export class TeamsBansChampions {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @ManyToOne(() => Team)
-  team!: number
+  @Column()
+  teamId!: number
+
+  @ManyToOne(() => Team, (team) => team.teamsBansChampions)
+  team!: Team
 
   @Column()
-  champion!: number
+  championId!: number
 
-  @ManyToOne(() => Match)
-  match!: number
+  @ManyToOne(() => Champion, (champion) => champion.teamsBansChampions)
+  champion!: Champion
 }

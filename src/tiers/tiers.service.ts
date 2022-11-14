@@ -26,12 +26,12 @@ export class TiersService {
     return await this.tierRepository.find()
   }
 
-  async findOne(id: string): Promise<Tier | undefined> {
-    return await this.tierRepository.findOne({ id: id })
+  async findOne(id: number): Promise<Tier | undefined> {
+    return await this.tierRepository.findOne(id)
   }
 
   async update(
-    id: string,
+    id: number,
     updateTierDto: UpdateTierDto
   ): Promise<Tier | undefined> {
     await this.tierRepository.update(id, updateTierDto)

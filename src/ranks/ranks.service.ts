@@ -26,12 +26,12 @@ export class RanksService {
     return await this.rankRepository.find()
   }
 
-  async findOne(id: string): Promise<Rank | undefined> {
-    return await this.rankRepository.findOne({ id: id })
+  async findOne(id: number): Promise<Rank | undefined> {
+    return await this.rankRepository.findOne(id)
   }
 
   async update(
-    id: string,
+    id: number,
     updateRankDto: UpdateRankDto
   ): Promise<Rank | undefined> {
     await this.rankRepository.update(id, updateRankDto)

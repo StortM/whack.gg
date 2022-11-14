@@ -5,7 +5,7 @@ import { CreateUserDTO } from './dto/create-user.dto'
 import { User, UserOmittingPasswordHash } from './entities/user.entity'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { CryptService } from 'src/crypt/crypt.service'
-import { SummonerService } from 'src/summoner/summoner.service'
+import { SummonerService } from 'src/summoners/summoner.service'
 
 @Injectable()
 export class UsersService {

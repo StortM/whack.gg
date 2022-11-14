@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Summoner } from 'src/summoners/entities/summoner.entity'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
 export class Region {
@@ -7,4 +8,7 @@ export class Region {
 
   @Column()
   name!: string
+
+  @OneToMany(() => Summoner, (summoner) => summoner.region)
+  summoners!: Summoner[]
 }

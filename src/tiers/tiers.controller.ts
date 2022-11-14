@@ -27,20 +27,20 @@ export class TiersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Tier | undefined> {
+  findOne(@Param('id') id: number): Promise<Tier | undefined> {
     return this.tiersService.findOne(id)
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateTierDto: UpdateTierDto
   ): Promise<Tier | undefined> {
     return this.tiersService.update(id, updateTierDto)
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
+  remove(@Param('id') id: number): Promise<void> {
     return this.tiersService.remove(+id)
   }
 }

@@ -1,8 +1,6 @@
-import { Factory, Seeder } from 'typeorm-seeding'
 import { Connection } from 'typeorm'
+import { Factory, Seeder } from 'typeorm-seeding'
 import { Champion } from '../champion.entity'
-import { CryptService } from 'src/crypt/crypt.service'
-import { runMain } from 'module'
 
 export default class CreateChampions implements Seeder {
   public async run(_: Factory, connection: Connection): Promise<void> {

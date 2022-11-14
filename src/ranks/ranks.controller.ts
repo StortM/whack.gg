@@ -27,20 +27,20 @@ export class RanksController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Rank | undefined> {
+  findOne(@Param('id') id: number): Promise<Rank | undefined> {
     return this.ranksService.findOne(id)
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateRankDto: UpdateRankDto
   ): Promise<Rank | undefined> {
     return this.ranksService.update(id, updateRankDto)
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
+  remove(@Param('id') id: number): Promise<void> {
     return this.ranksService.remove(+id)
   }
 }

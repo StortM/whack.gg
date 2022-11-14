@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Rank } from 'src/ranks/entities/rank.entity'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
 export class Division {
@@ -7,4 +8,7 @@ export class Division {
 
   @Column()
   name!: string
+
+  @OneToMany(() => Rank, (rank) => rank.division)
+  ranks!: Rank[]
 }

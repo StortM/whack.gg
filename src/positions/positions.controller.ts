@@ -29,20 +29,20 @@ export class PositionsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Position | undefined> {
+  findOne(@Param('id') id: number): Promise<Position | undefined> {
     return this.positionsService.findOne(id)
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updatePositionDto: UpdatePositionDto
   ): Promise<Position | undefined> {
     return this.positionsService.update(id, updatePositionDto)
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
+  remove(@Param('id') id: number): Promise<void> {
     return this.positionsService.remove(+id)
   }
 }

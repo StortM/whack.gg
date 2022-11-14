@@ -29,7 +29,7 @@ export class DivisionsService {
   }
 
   async findOne(id: string): Promise<Division | undefined> {
-    return await this.divisionRepository.findOne({ id: id })
+    return await this.divisionRepository.findOne(id)
   }
 
   async update(

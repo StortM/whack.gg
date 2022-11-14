@@ -28,12 +28,12 @@ export class PositionsService {
     return await this.positionRepository.find()
   }
 
-  async findOne(id: string): Promise<Position | undefined> {
+  async findOne(id: number): Promise<Position | undefined> {
     return await this.positionRepository.findOne({ id: id })
   }
 
   async update(
-    id: string,
+    id: number,
     updatePositionDto: UpdatePositionDto
   ): Promise<Position | undefined> {
     await this.positionRepository.update(id, updatePositionDto)

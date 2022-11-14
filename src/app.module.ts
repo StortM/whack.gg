@@ -6,7 +6,7 @@ import * as Joi from 'joi'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
 import { UsersModule } from './users/users.module'
-import { SummonerModule } from './summoner/summoner.module'
+import { SummonerModule } from './summoners/summoner.module'
 import { RanksModule } from './ranks/ranks.module';
 import { TiersModule } from './tiers/tiers.module';
 import { DivisionsModule } from './divisions/divisions.module';
