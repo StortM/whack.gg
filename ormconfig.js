@@ -5,7 +5,7 @@ module.exports = {
   ],
   migrations: ['dist/migrations/*{.ts,.js}'],
   seeds: [
-    'dist/gamemodes/entities/seeds/*.seed{.ts,.js}',
+    'dist/game-modes/entities/seeds/*.seed{.ts,.js}',
     'dist/positions/entities/seeds/*.seed{.ts,.js}',
     'dist/matches/entities/seeds/*.seed{.ts,.js}',
     'dist/teams/entities/seeds/*.seed{.ts,.js}',

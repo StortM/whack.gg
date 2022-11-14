@@ -1,8 +1,9 @@
-import { Gamemode } from 'src/gamemodes/entities/gamemodes.entity'
+import { GameMode } from 'src/game-modes/entities/game-mode.entity'
 import { Team } from 'src/teams/entities/team.entity'
 import {
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn
@@ -19,8 +20,12 @@ export class Match {
   @Column({ type: 'bigint' })
   gameCreation!: number
 
-  @ManyToOne(() => Gamemode)
-  gameMode!: number
+  @Column()
+  gameModeId!: number
+
+  @ManyToOne(() => GameMode, (gameMode) => gameMode.match)
+  @JoinColumn({ name: 'gameModeId' })
+  gameMode!: GameMode
 
   @OneToMany(() => Team, (team) => team.match)
   teams!: Team[]

@@ -1,12 +1,16 @@
 import { Length } from 'class-validator'
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Match } from 'src/matches/entities/match.entity'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
 export class GameMode {
-  @PrimaryGeneratedColumn('uuid')
-  id!: string
+  @PrimaryGeneratedColumn()
+  id!: number
 
   @Column()
   @Length(1, 45)
   name!: string
+
+  @OneToMany(() => Match, (match) => match.gameMode)
+  match!: Match
 }

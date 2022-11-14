@@ -1,9 +1,10 @@
 import { Factory, Seeder } from 'typeorm-seeding'
 import { Connection } from 'typeorm'
-import { Gamemode } from '../gamemodes.entity'
+import { GameMode } from '../game-mode.entity'
+
 export default class CreateGameModes implements Seeder {
   public async run(_: Factory, connection: Connection): Promise<void> {
-    const gamemodes: Partial<Gamemode>[] = [
+    const gamemodes: Partial<GameMode>[] = [
       { id: 1, name: 'CLASSIC' },
       { id: 2, name: 'ODIN' },
       { id: 3, name: 'ARAM' },
@@ -30,7 +31,7 @@ export default class CreateGameModes implements Seeder {
       transactionalEntityManager
         .createQueryBuilder()
         .insert()
-        .into(Gamemode)
+        .into(GameMode)
         .values(gamemodes)
         .execute()
     })

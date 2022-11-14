@@ -29,20 +29,20 @@ export class GameModesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<GameMode | undefined> {
+  findOne(@Param('id') id: number): Promise<GameMode | undefined> {
     return this.gameModesService.findOne(id)
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateGameModeDto: UpdateGameModeDto
   ): Promise<GameMode | undefined> {
     return this.gameModesService.update(id, updateGameModeDto)
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
+  remove(@Param('id') id: number): Promise<void> {
     return this.gameModesService.remove(+id)
   }
 }

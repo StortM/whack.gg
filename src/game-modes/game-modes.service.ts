@@ -17,9 +17,7 @@ export class GameModesService {
   ): Promise<GameMode | undefined> {
     const savedGameMode = await this.gameModeRepository.save(createGameModeDto)
 
-    if (!savedGameMode) {
-      return undefined
-    }
+    if (!savedGameMode) return undefined
 
     return savedGameMode
   }
@@ -28,12 +26,12 @@ export class GameModesService {
     return await this.gameModeRepository.find()
   }
 
-  async findOne(id: string): Promise<GameMode | undefined> {
-    return await this.gameModeRepository.findOne({ id: id })
+  async findOne(id: number): Promise<GameMode | undefined> {
+    return await this.gameModeRepository.findOne(id)
   }
 
   async update(
-    id: string,
+    id: number,
     updateGameModeDto: UpdateGameModeDto
   ): Promise<GameMode | undefined> {
     await this.gameModeRepository.update(id, updateGameModeDto)
