@@ -41,7 +41,7 @@ From here you can run `npm` commands like `npm install -D typescript@latest` and
 
 ## Logging into the platform
 
-The platform is accessible at `http://localhost:3001/`.
+The platform is accessible at `http://localhost:{PORT}/`.
 The login endpoint is `POST auth/login`. The credentials for the test users are:
 ```bash
 Admin user
