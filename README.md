@@ -59,5 +59,3 @@ password: "test3"
 ```
 
 A succesful login attempt will return a JWT token. This token must be included in the `Authorization` header as a bearer token of all subsequent requests.
-
-## Seeding the database
