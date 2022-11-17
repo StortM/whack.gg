@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common'
-import { UsersService } from '../users/users.service'
 import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcrypt'
-import { UserOmittingPasswordHash } from 'src/users/entities/user.entity'
+import { SummonerOmittingPasswordHash } from 'src/summoners/entities/summoner.entity'
+import { SummonerService } from 'src/summoners/summoner.service'
 import { LoginResponse } from './auth.controller'
 
 export type JwtToken = {
-  email: string
+  summonerName: string
   sub: string
   iat: number
   exp: number
@@ -15,43 +15,42 @@ export type JwtToken = {
 @Injectable()
 export class AuthService {
   constructor(
-    private usersService: UsersService,
+    private summonerService: SummonerService,
     private jwtService: JwtService
   ) {}
 
   async validateUser(
-    email: string,
+    summonerName: string,
     pass: string
-  ): Promise<UserOmittingPasswordHash | null> {
-    const user = await this.usersService.findOneWithPasswordHash(email)
-    if (user && (await compare(pass, user.passwordHash))) {
+  ): Promise<SummonerOmittingPasswordHash | null> {
+    const summoner = await this.summonerService.findOneWithPasswordHash(
+      summonerName
+    )
+
+    if (summoner && (await compare(pass, summoner.passwordHash))) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { passwordHash, ...result } = user
+      const { passwordHash, ...result } = summoner
+
       return result
     }
 
     return null
   }
 
-  async login(user: UserOmittingPasswordHash): Promise<LoginResponse> {
-    const payload = { email: user.email, sub: user.id }
+  async login(summoner: SummonerOmittingPasswordHash): Promise<LoginResponse> {
+    const payload = { summonerName: summoner.summonerName, sub: summoner.id }
     return {
       accessToken: this.jwtService.sign(payload),
-      user
+      summoner
     }
   }
 
   async isAdminToken(token: string): Promise<boolean> {
     const decodedToken = this.jwtService.decode(token) as JwtToken
+    const summoner = await this.summonerService.findOne(
+      parseInt(decodedToken.sub)
+    )
 
-    const user = await this.usersService.findOne(decodedToken.sub)
-
-    return user?.isAdmin ?? false
-  }
-
-  async validateEmail(email: string): Promise<boolean> {
-    const user = await !!this.usersService.findOneWithPasswordHash(email)
-
-    return !!user
+    return summoner?.isAdmin ?? false
   }
 }

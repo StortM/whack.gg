@@ -1,16 +1,19 @@
-import { ExtractJwt, Strategy } from 'passport-jwt'
-import { PassportStrategy } from '@nestjs/passport'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
-import { UsersService } from 'src/users/users.service'
-import { UserOmittingPasswordHash } from 'src/users/entities/user.entity'
+import { PassportStrategy } from '@nestjs/passport'
+import { ExtractJwt, Strategy } from 'passport-jwt'
+import { SummonerOmittingPasswordHash } from 'src/summoners/entities/summoner.entity'
+import { SummonerService } from 'src/summoners/summoner.service'
 
 export type JwtAuthenticatedRequest = Request & {
-  user: UserOmittingPasswordHash
+  summoner: SummonerOmittingPasswordHash
 }
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(configService: ConfigService, private userService: UsersService) {
+  constructor(
+    configService: ConfigService,
+    private summonerService: SummonerService
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -20,8 +23,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: {
     sub: string
-    email: string
-  }): Promise<UserOmittingPasswordHash | undefined> {
-    return await this.userService.findOne(payload.sub)
+    summonerName: string
+  }): Promise<SummonerOmittingPasswordHash | undefined> {
+    return await this.summonerService.findOne(parseInt(payload.sub))
   }
 }

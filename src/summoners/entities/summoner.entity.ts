@@ -9,13 +9,16 @@ import {
   OneToMany,
   PrimaryGeneratedColumn
 } from 'typeorm'
+
+export type SummonerOmittingPasswordHash = Omit<Summoner, 'passwordHash'>
+
 @Entity()
 export class Summoner {
   @PrimaryGeneratedColumn()
   id!: number
 
   @Column()
-  name!: string
+  summonerName!: string
 
   @Column()
   level!: number
@@ -25,6 +28,12 @@ export class Summoner {
 
   @Column()
   regionId!: number
+
+  @Column()
+  passwordHash!: string
+
+  @Column()
+  isAdmin!: boolean
 
   @ManyToOne(() => Region, (region) => region.summoners)
   @JoinColumn([{ name: 'regionId' }])

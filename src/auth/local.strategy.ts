@@ -1,26 +1,29 @@
-import { Strategy } from 'passport-local'
-import { PassportStrategy } from '@nestjs/passport'
 import { Injectable, UnauthorizedException } from '@nestjs/common'
-import { AuthService } from './auth.service'
-import { User, UserOmittingPasswordHash } from 'src/users/entities/user.entity'
+import { PassportStrategy } from '@nestjs/passport'
 import { Request } from 'express'
+import { Strategy } from 'passport-local'
+import {
+  Summoner,
+  SummonerOmittingPasswordHash
+} from 'src/summoners/entities/summoner.entity'
+import { AuthService } from './auth.service'
 
-export type AuthenticatedRequest = Request & { user: User }
+export type AuthenticatedRequest = Request & { user: Summoner }
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
-    super({ usernameField: 'email' })
+    super({ usernameField: 'summonerName' })
   }
 
   async validate(
-    email: string,
+    summonerName: string,
     password: string
-  ): Promise<UserOmittingPasswordHash> {
-    const user = await this.authService.validateUser(email, password)
-    if (!user) {
-      throw new UnauthorizedException('Wrong email or password')
+  ): Promise<SummonerOmittingPasswordHash> {
+    const summoner = await this.authService.validateUser(summonerName, password)
+    if (!summoner) {
+      throw new UnauthorizedException('Wrong summonerName or password')
     }
-    return user
+    return summoner
   }
 }

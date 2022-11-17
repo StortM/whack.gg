@@ -3,7 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
-import { Summoner } from './entities/summoner.entity'
+import {
+  Summoner,
+  SummonerOmittingPasswordHash
+} from './entities/summoner.entity'
 
 @Injectable()
 export class SummonerService {
@@ -26,12 +29,29 @@ export class SummonerService {
     return await this.summonerRepository.find()
   }
 
-  async findOne(id: string): Promise<Summoner | undefined> {
-    return await this.summonerRepository.findOne(id)
+  async findOne(id: number): Promise<SummonerOmittingPasswordHash | undefined> {
+    const summoner = await this.summonerRepository.findOne(id)
+
+    if (!summoner) {
+      return undefined
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { passwordHash, ...summonerWithoutPasswordHash } = summoner
+
+    return summonerWithoutPasswordHash
+  }
+
+  async findOneWithPasswordHash(
+    summonerName: string
+  ): Promise<Summoner | undefined> {
+    return await this.summonerRepository.findOne({
+      summonerName: summonerName.toLowerCase().trim()
+    })
   }
 
   async update(
-    id: string,
+    id: number,
     updateSummonerDto: UpdateSummonerDto
   ): Promise<Summoner | undefined> {
     await this.summonerRepository.update(id, updateSummonerDto)

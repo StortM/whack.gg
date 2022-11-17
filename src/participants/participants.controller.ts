@@ -5,12 +5,15 @@ import {
   Body,
   Patch,
   Param,
-  Delete
+  Delete,
+  UseGuards
 } from '@nestjs/common'
 import { ParticipantsService } from './participants.service'
 import { CreateParticipantDto } from './dto/create-participant.dto'
 import { UpdateParticipantDto } from './dto/update-participant.dto'
 import { Participant } from './entities/participant.entity'
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
+import { AdminGuard } from 'src/auth/admin.guard'
 
 @Controller('participants')
 export class ParticipantsController {
@@ -33,6 +36,8 @@ export class ParticipantsController {
     return this.participantsService.findOne(id)
   }
 
+  @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -41,6 +46,8 @@ export class ParticipantsController {
     return this.participantsService.update(id, updateParticipantDto)
   }
 
+  @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.participantsService.remove(+id)
