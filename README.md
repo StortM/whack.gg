@@ -38,6 +38,7 @@ docker-compose exec backend /bin/sh
 ```
 
 From here you can run `npm` commands like `npm install -D typescript@latest` and `npm run test`.
+Here you can also seed the database using the command `npm run seed:run`
 
 ## Logging into the platform
 
@@ -59,3 +60,4 @@ password: "test3"
 
 A succesful login attempt will return a JWT token. This token must be included in the `Authorization` header as a bearer token of all subsequent requests.
 
+## Seeding the database
