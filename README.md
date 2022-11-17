@@ -38,3 +38,24 @@ docker-compose exec backend /bin/sh
 ```
 
 From here you can run `npm` commands like `npm install -D typescript@latest` and `npm run test`.
+
+## Logging into the platform
+
+The platform is accessible at `http://localhost:3001/`.
+The login endpoint is `POST auth/login`. The credentials for the test users are:
+```bash
+Admin user
+summonerName: "KHK TLamp"
+password: "test1"
+
+Regular user
+summonerName: "Dayns"
+password: "test2"
+
+Regular user
+summonerName: "DrÎ±chun"
+password: "test3"
+```
+
+A succesful login attempt will return a JWT token. This token must be included in the `Authorization` header as a bearer token of all subsequent requests.
+
