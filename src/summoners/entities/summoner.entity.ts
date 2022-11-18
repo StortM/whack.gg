@@ -26,8 +26,8 @@ export class Summoner {
   @Column()
   icon!: number
 
-  @Column()
-  regionId!: number
+  @Column({ nullable: true })
+  regionId!: number | null
 
   @Column()
   passwordHash!: string
@@ -39,8 +39,8 @@ export class Summoner {
   @JoinColumn([{ name: 'regionId' }])
   region!: Region
 
-  @Column()
-  rankId!: number
+  @Column({ nullable: true })
+  rankId!: number | null
 
   @ManyToOne(() => Rank, (rank) => rank.summoners)
   @JoinColumn([{ name: 'rankId' }])
