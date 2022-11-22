@@ -1,16 +1,16 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
+  Controller,
+  Delete,
+  Get,
   Param,
-  Delete
+  Patch,
+  Post
 } from '@nestjs/common'
-import { GameModesService } from './game-modes.service'
 import { CreateGameModeDto } from './dto/create-game-mode.dto'
 import { UpdateGameModeDto } from './dto/update-game-mode.dto'
 import { GameMode } from './entities/game-mode.entity'
+import { GameModesService } from './game-modes.service'
 
 @Controller('gameModes')
 export class GameModesController {

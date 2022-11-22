@@ -7,8 +7,8 @@ export default class CreateTier implements Seeder {
     const test: Partial<Tier>[] = [
       { id: 1, value: 'I' },
       { id: 2, value: 'II' },
-      { id: 3, value: 'VI' },
-      { id: 4, value: 'V' }
+      { id: 3, value: 'III' },
+      { id: 4, value: 'IV' }
     ]
 
     await connection

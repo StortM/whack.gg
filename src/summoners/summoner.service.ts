@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
+import { CryptService } from 'src/crypt/crypt.service'
 import { Repository } from 'typeorm'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
@@ -11,12 +12,16 @@ import {
 @Injectable()
 export class SummonerService {
   constructor(
-    @InjectRepository(Summoner) private summonerRepository: Repository<Summoner>
+    @InjectRepository(Summoner)
+    private summonerRepository: Repository<Summoner>,
+    private cryptService: CryptService
   ) {}
 
   async create(
     createSummonerDto: CreateSummonerDto
   ): Promise<Summoner | undefined> {
+    //const hash = this.cryptService.hash(createSummonerDto.password)
+
     const savedSummoner = await this.summonerRepository.save(createSummonerDto)
     if (!savedSummoner) {
       return undefined

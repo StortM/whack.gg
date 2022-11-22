@@ -6,7 +6,11 @@ import { Rank } from 'src/ranks/entities/rank.entity'
 export class CreateSummonerDto {
   @IsString()
   @IsNotEmpty()
-  name!: string
+  summonerName!: string
+
+  @IsString()
+  @IsNotEmpty()
+  password!: string
 
   @IsNumber()
   @IsNotEmpty()

@@ -8,7 +8,8 @@ import {
   Delete,
   HttpException,
   HttpStatus,
-  UseGuards
+  UseGuards,
+  ValidationPipe
 } from '@nestjs/common'
 import { SummonerService } from './summoner.service'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
@@ -25,7 +26,7 @@ export class SummonerController {
 
   @Post()
   create(
-    @Body() createSummonerDto: CreateSummonerDto
+    @Body(new ValidationPipe()) createSummonerDto: CreateSummonerDto
   ): Promise<Summoner | undefined> {
     return this.summonerService.create(createSummonerDto)
   }
