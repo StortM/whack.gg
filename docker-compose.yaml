@@ -15,6 +15,7 @@ services:
       - .env
     depends_on:
       - postgres
+      - neo
     environment:
       NODE_ENV: development
       DEBUG: nodejs-docker-express:*
@@ -38,5 +39,20 @@ services:
       - postgres
     logging:
       driver: none
+
+          ## Defining the Neo4j Database Service        
+  neo:
+      # The image to use
+      image: neo4j:4.4.14
+      # map the ports so we can check the db server is up
+      ports: 
+          - 7474:7474
+          - 7687:7687
+      # mounting a named volume to the container to track db data
+      volumes:
+          - neo4j_data:/data/
+      env_file:
+          - .env
 volumes:
   db:
+  neo4j_data:

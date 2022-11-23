@@ -14,6 +14,36 @@ import { RanksModule } from './ranks/ranks.module'
 import { RegionsModule } from './regions/regions.module'
 import { SummonerModule } from './summoners/summoner.module'
 import { TiersModule } from './tiers/tiers.module'
+import { GqlModule } from './gql/gql.module'
+import { Neo4jGraphQL } from '@neo4j/graphql'
+import { typeDefs } from './gql/type-defs'
+import neo4j from 'neo4j-driver'
+import { GraphQLModule } from '@nestjs/graphql'
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+
+export const gqlProviderFactory = async () => {
+  const { NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD } = process.env
+
+  const driver = neo4j.driver(
+    NEO4J_URI!,
+    neo4j.auth.basic(NEO4J_USERNAME!, NEO4J_PASSWORD!)
+  )
+
+  const neoSchema = new Neo4jGraphQL({
+    typeDefs,
+    driver
+  })
+
+  const schema = await neoSchema.getSchema()
+  await neoSchema.assertIndexesAndConstraints({
+    options: { create: true }
+  })
+
+  return {
+    playground: true,
+    schema
+  }
+}
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -49,6 +79,10 @@ const validation = {
         ),
       inject: [ConfigService]
     }),
+    GraphQLModule.forRootAsync<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      useFactory: gqlProviderFactory
+    }),
     AuthModule,
     SummonerModule,
     RanksModule,
@@ -57,7 +91,8 @@ const validation = {
     GameModesModule,
     RegionsModule,
     PositionsModule,
-    ParticipantsModule
+    ParticipantsModule,
+    GqlModule
   ],
   controllers: [AppController],
   providers: [AppService]
