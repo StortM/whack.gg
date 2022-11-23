@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
+import { MongooseModule, MongooseModuleOptions } from '@nestjs/mongoose'
 import * as Joi from 'joi'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
 import { AppController } from './app.controller'
@@ -48,6 +49,22 @@ const validation = {
           }
         ),
       inject: [ConfigService]
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) =>
+        Object.assign<ConnectionOptions, MongooseModuleOptions>(
+          await getConnectionOptions(),
+          {
+            type: 'mongodb',
+            host: configService.get('MONGO_HOST'),
+            port: +configService.get('MONGO_PORT'),
+            username: configService.get('MONGO_USER'),
+            password: configService.get('MONGO_PASSWORD'),
+            database: configService.get('MONGO_DB'),
+            autoLoadEntities: true
+          }
+        )
     }),
     AuthModule,
     SummonerModule,
