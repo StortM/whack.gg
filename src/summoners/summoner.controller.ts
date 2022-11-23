@@ -19,11 +19,14 @@ import {
   SummonerOmittingPasswordHash
 } from './entities/summoner.entity'
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
+import { AdminGuard } from 'src/auth/admin.guard'
 
 @Controller('summoner')
 export class SummonerController {
   constructor(private readonly summonerService: SummonerService) {}
 
+  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Post()
   create(
     @Body(new ValidationPipe()) createSummonerDto: CreateSummonerDto
@@ -31,11 +34,13 @@ export class SummonerController {
     return this.summonerService.create(createSummonerDto)
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll(): Promise<Summoner[] | undefined> {
     return this.summonerService.findAll()
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findOne(
     @Param('id') id: number
@@ -50,6 +55,7 @@ export class SummonerController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Patch(':id')
   update(
     @Param('id') id: number,
@@ -60,6 +66,7 @@ export class SummonerController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Delete(':id')
   remove(@Param('id') id: number): Promise<void> {
     //TODO - Check if the summoner is the same as the one in the JWT or user is admin. Else throw 403.
