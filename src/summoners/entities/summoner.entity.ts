@@ -26,23 +26,25 @@ export class Summoner {
   @Column()
   icon!: number
 
-  @Column({ nullable: true })
-  regionId!: number | null
-
   @Column()
   passwordHash!: string
 
   @Column()
   isAdmin!: boolean
 
-  @ManyToOne(() => Region, (region) => region.summoners)
+  @Column({ nullable: true })
+  regionId!: number | null
+
+  @ManyToOne(() => Region, (region) => region.summoners, { cascade: true })
   @JoinColumn([{ name: 'regionId' }])
   region!: Region
 
   @Column({ nullable: true })
   rankId!: number | null
 
-  @ManyToOne(() => Rank, (rank) => rank.summoners)
+  @ManyToOne(() => Rank, (rank) => rank.summoners, {
+    cascade: true
+  })
   @JoinColumn([{ name: 'rankId' }])
   rank!: Rank
 

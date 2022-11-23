@@ -5,16 +5,6 @@ import { Division } from '../division.entity'
 export default class CreateDivisions implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<void> {
     const test: Partial<Division>[] = [
-      /* 
-      ('IRON'),
-    ('BRONZE'),
-    ('SLIVER'),
-    ('GOLD'),
-    ('PLATINUM'),
-    ('DIAMOND'),
-    ('MASTER'),
-    ('GRANDMASTER'),
-    ('CHALLENGER'), */
       { id: 1, name: 'IRON' },
       { id: 2, name: 'BRONZE' },
       { id: 3, name: 'SILVER' },

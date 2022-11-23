@@ -31,14 +31,18 @@ export class Rank {
   @Column()
   divisionId!: number
 
-  @ManyToOne(() => Division, (division) => division.ranks)
+  @ManyToOne(() => Division, (division) => division.ranks, {
+    cascade: true
+  })
   @JoinColumn({ name: 'divisionId' })
   division!: Division
 
   @Column()
   tierId!: number
 
-  @ManyToOne(() => Tier, (tier) => tier.ranks)
+  @ManyToOne(() => Tier, (tier) => tier.ranks, {
+    cascade: true
+  })
   @JoinColumn({ name: 'tierId' })
   tier!: Tier
 
