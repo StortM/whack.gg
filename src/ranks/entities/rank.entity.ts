@@ -1,5 +1,6 @@
 import { Min } from 'class-validator'
 import { Division } from 'src/divisions/entities/division.entity'
+import { GameMode } from 'src/game-modes/entities/game-mode.entity'
 import { Summoner } from 'src/summoners/entities/summoner.entity'
 import { Tier } from 'src/tiers/entities/tier.entity'
 import {
@@ -21,16 +22,27 @@ export class Rank {
   lp!: number
 
   @Column()
+  gameModeId!: number
+
+  @ManyToOne(() => GameMode, (gameMode) => gameMode.ranks)
+  @JoinColumn({ name: 'gameModeId' })
+  gameMode!: GameMode
+
+  @Column()
   divisionId!: number
 
-  @ManyToOne(() => Division, (division) => division.ranks)
+  @ManyToOne(() => Division, (division) => division.ranks, {
+    cascade: true
+  })
   @JoinColumn({ name: 'divisionId' })
   division!: Division
 
   @Column()
   tierId!: number
 
-  @ManyToOne(() => Tier, (tier) => tier.ranks)
+  @ManyToOne(() => Tier, (tier) => tier.ranks, {
+    cascade: true
+  })
   @JoinColumn({ name: 'tierId' })
   tier!: Tier
 

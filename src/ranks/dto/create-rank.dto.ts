@@ -1,15 +1,19 @@
-import { IsInstance, IsNumber, Min } from 'class-validator'
-import { Division } from 'src/divisions/entities/division.entity'
-import { Tier } from 'src/tiers/entities/tier.entity'
+import { IsNumber, Min } from 'class-validator'
 
 export class CreateRankDto {
   @IsNumber()
   @Min(0)
   lp!: number
 
-  @IsInstance(Division)
-  division!: Division
+  @IsNumber()
+  @Min(0)
+  divisionId!: number
 
-  @IsInstance(Tier)
-  tier!: Tier
+  @IsNumber()
+  @Min(0)
+  tierId!: number
+
+  @IsNumber()
+  @Min(0)
+  gameModeId!: number
 }

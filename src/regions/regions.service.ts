@@ -30,14 +30,17 @@ export class RegionsService {
     return await this.regionRepository.findOne(id)
   }
 
+  async findFromRegionName(name: string): Promise<Region | undefined> {
+    // assume that there are no duplicate region names, so we can just return the first one
+    return await this.regionRepository.findOne({ where: { name } })
+  }
+
   async update(
     id: number,
     updateRegionDto: UpdateRegionDto
   ): Promise<Region | undefined> {
     await this.regionRepository.update(id, updateRegionDto)
-    const res = this.regionRepository.findOne(id)
-    if (!res) return undefined
-    return res
+    return await this.regionRepository.findOne(id)
   }
 
   async remove(id: number): Promise<void> {
