@@ -1,3 +1,4 @@
+import { IsNumber } from 'class-validator'
 import { Champion } from 'src/champions/entities/champion.entity'
 import { Summoner } from 'src/summoners/entities/summoner.entity'
 
