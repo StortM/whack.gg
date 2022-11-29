@@ -1,3 +1,4 @@
+import { Mastery } from 'src/masteries/entities/mastery.entity'
 import { Participant } from 'src/participants/entities/participant.entity'
 import { Rank } from 'src/ranks/entities/rank.entity'
 import { Region } from 'src/regions/entities/region.entity'
@@ -50,4 +51,7 @@ export class Summoner {
 
   @OneToMany(() => Participant, (participant) => participant.summoner)
   participants!: Participant
+
+  @OneToMany(() => Mastery, (mastery) => mastery.summoner)
+  masteries!: Mastery[]
 }

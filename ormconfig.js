@@ -16,6 +16,7 @@ module.exports = {
     'dist/regions/entities/seeds/*.seed{.ts,.js}',
     'dist/ranks/entities/seeds/*.seed{.ts,.js}',
     'dist/summoners/entities/seeds/*.seed{.ts,.js}',
+    'dist/masteries/entities/seed/*.seed{.ts,.js}',
     'dist/participants/entities/seeds/*.seed{.ts,.js}'
   ],
   synchronize: true,
