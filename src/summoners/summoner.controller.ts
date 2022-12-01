@@ -17,7 +17,10 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
 import { JwtAuthenticatedRequest } from 'src/auth/jwt.strategy'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
-import { SummonerOmittingPasswordHash } from './entities/summoner.entity'
+import {
+  SummonerOmittingPasswordHash,
+  SummonerWithFullRank
+} from './entities/summoner.entity'
 import { SummonerService } from './summoner.service'
 
 @Controller('summoner')
@@ -36,6 +39,21 @@ export class SummonerController {
     return await this.summonerService.findAll()
   }
 
+  @Get(':name')
+  async getFullRank(
+    @Param('name') name: string
+  ): Promise<SummonerWithFullRank | undefined> {
+    const summonerWithFullRank = await this.summonerService.getSummonerFullRank(
+      name
+    )
+
+    if (!summonerWithFullRank) {
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND)
+    }
+
+    console.log(summonerWithFullRank)
+    return summonerWithFullRank
+  }
   @Get(':id')
   async findOne(
     @Param('id') id: number

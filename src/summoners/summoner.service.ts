@@ -7,7 +7,8 @@ import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
 import {
   Summoner,
-  SummonerOmittingPasswordHash
+  SummonerOmittingPasswordHash,
+  SummonerWithFullRank
 } from './entities/summoner.entity'
 
 @Injectable()
@@ -18,6 +19,16 @@ export class SummonerService {
     private cryptService: CryptService,
     private readonly regionsService: RegionsService
   ) {}
+
+  async getSummonerFullRank(
+    summonerName: string
+  ): Promise<SummonerWithFullRank | undefined> {
+    const res = await this.summonerRepository.query(
+      `SELECT getfullsummonerrankbyname('${summonerName}');`
+    )
+    console.log('res', res)
+    return res
+  }
 
   async create(
     createSummonerDto: CreateSummonerDto

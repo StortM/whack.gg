@@ -10,7 +10,7 @@ export class test1669843047590 implements MigrationInterface {
     declare
       summonerRank varchar;
     Begin
-      SELECT division ||' '|| tier
+      SELECT tier ||' '|| division
       INTO summonerRank;
       
       return summonerRank;

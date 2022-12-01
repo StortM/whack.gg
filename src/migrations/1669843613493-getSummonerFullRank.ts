@@ -3,19 +3,19 @@ import { MigrationInterface, QueryRunner } from 'typeorm'
 export class getSummonerFullRank1669843613493 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.query(`
-    CREATE or REPLACE procedure getFullSummonerRankByName(
+    CREATE OR REPLACE FUNCTION getFullSummonerRankByName(
         srName VARCHAR(255)
      )
+     RETURNS TABLE (summonerName varchar, rank varchar, lp int)
      LANGUAGE plpgsql    
      AS $$
-     BEGIN
-         PERFORM summoner."summonerName" AS summoner_name, getFullSummonerRank(division.name, tier.value) as rank, rank.lp as league_points
-         FROM summoner
-         JOIN rank on summoner."rankId" = rank.id
-         JOIN tier on rank."tierId" = tier.Id
-         JOIN division on rank."divisionId" = division.Id
-         WHERE summoner."summonerName" = srName;
-         COMMIT;
+     BEGIN		 
+		RETURN QUERY SELECT summoner."summonerName", GetFullSummonerRank(division.name, tier.value), rank.lp
+		    FROM summoner
+			JOIN rank on summoner."rankId" = rank.id
+            JOIN tier on rank."tierId" = tier.Id
+            JOIN division on rank."divisionId" = division.Id
+            WHERE summoner."summonerName" = srName;
      END;$$
     `)
   }

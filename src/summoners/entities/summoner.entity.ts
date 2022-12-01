@@ -1,3 +1,4 @@
+import { string } from 'joi'
 import { Participant } from 'src/participants/entities/participant.entity'
 import { Rank } from 'src/ranks/entities/rank.entity'
 import { Region } from 'src/regions/entities/region.entity'
@@ -11,6 +12,12 @@ import {
 } from 'typeorm'
 
 export type SummonerOmittingPasswordHash = Omit<Summoner, 'passwordHash'>
+
+export type SummonerWithFullRank = {
+  summerName: string
+  rank: string
+  lp: number
+}
 
 @Entity()
 export class Summoner {
