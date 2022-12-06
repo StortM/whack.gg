@@ -1,49 +1,22 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import * as Joi from 'joi'
+import { Neo4jConfig, Neo4jModule } from 'nest-neo4j/dist'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { AuthModule } from './auth/auth.module'
 import { DivisionsModule } from './divisions/divisions.module'
 import { GameModesModule } from './game-modes/game-modes.module'
+import { UserModule } from './graph/graph.module'
 import { ParticipantsModule } from './participants/participants.module'
 import { PositionsModule } from './positions/positions.module'
 import { RanksModule } from './ranks/ranks.module'
 import { RegionsModule } from './regions/regions.module'
 import { SummonerModule } from './summoners/summoner.module'
 import { TiersModule } from './tiers/tiers.module'
-import { GqlModule } from './gql/gql.module'
-import { Neo4jGraphQL } from '@neo4j/graphql'
-import { typeDefs } from './gql/type-defs'
-import neo4j from 'neo4j-driver'
-import { GraphQLModule } from '@nestjs/graphql'
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
-
-export const gqlProviderFactory = async () => {
-  const { NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD } = process.env
-
-  const driver = neo4j.driver(
-    NEO4J_URI!,
-    neo4j.auth.basic(NEO4J_USERNAME!, NEO4J_PASSWORD!)
-  )
-
-  const neoSchema = new Neo4jGraphQL({
-    typeDefs,
-    driver
-  })
-
-  const schema = await neoSchema.getSchema()
-  await neoSchema.assertIndexesAndConstraints({
-    options: { create: true }
-  })
-
-  return {
-    playground: true,
-    schema
-  }
-}
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -61,7 +34,19 @@ const validation = {
 
 @Module({
   imports: [
-    ConfigModule.forRoot(validation),
+    ConfigModule.forRoot({ ...validation, isGlobal: true }),
+    Neo4jModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService): Neo4jConfig => ({
+        scheme: configService.get('NEO4J_SCHEME')!,
+        host: configService.get('NEO4J_HOST')!,
+        port: configService.get('NEO4J_PORT')!,
+        username: configService.get('NEO4J_USERNAME')!,
+        password: configService.get('NEO4J_PASSWORD')!,
+        database: configService.get('NEO4J_DATABASE')
+      })
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) =>
@@ -79,10 +64,6 @@ const validation = {
         ),
       inject: [ConfigService]
     }),
-    GraphQLModule.forRootAsync<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      useFactory: gqlProviderFactory
-    }),
     AuthModule,
     SummonerModule,
     RanksModule,
@@ -92,7 +73,7 @@ const validation = {
     RegionsModule,
     PositionsModule,
     ParticipantsModule,
-    GqlModule
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService]

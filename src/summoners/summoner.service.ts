@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { CryptService } from 'src/crypt/crypt.service'
 import { RegionsService } from 'src/regions/regions.service'
@@ -63,6 +63,8 @@ export class SummonerService {
     const summoner = await this.summonerRepository.findOne(id)
 
     if (!summoner) {
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND)
+
       return undefined
     }
 
