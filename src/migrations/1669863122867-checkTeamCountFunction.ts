@@ -12,10 +12,10 @@ export class checkTeamCountFunction1669863122867 implements MigrationInterface {
         BEGIN
         team_count := (SELECT COUNT(*) FROM team WHERE team."matchId" = NEW."matchId");
         IF team_count > 2 THEN
-        RAISE NOTICE 'YOU CAN ONLY ASSIGN TWO TEAMS PER MATCH!';
-        RETURN NEW;
-        END IF;
+        RAISE EXCEPTION 'YOU CAN ONLY ASSIGN TWO TEAMS PER MATCH!';
         RETURN null;
+        END IF;
+        RETURN NEW;
         END;
     $$`)
   }

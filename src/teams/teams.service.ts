@@ -13,7 +13,13 @@ export class TeamsService {
   ) {}
 
   async create(createTeamDto: CreateTeamDto): Promise<Team | undefined> {
-    const savedTeam = await this.teamRepository.save(createTeamDto)
+    const savedTeam = await this.teamRepository
+      .save(createTeamDto)
+      .catch((error) => {
+        if (error.driverError.where.includes('checkteamcount()')) {
+          throw error
+        }
+      })
 
     if (!savedTeam) {
       return undefined

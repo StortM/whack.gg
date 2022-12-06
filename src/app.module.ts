@@ -13,6 +13,7 @@ import { PositionsModule } from './positions/positions.module'
 import { RanksModule } from './ranks/ranks.module'
 import { RegionsModule } from './regions/regions.module'
 import { SummonerModule } from './summoners/summoner.module'
+import { TeamsModule } from './teams/teams.module'
 import { TiersModule } from './tiers/tiers.module'
 
 // Object containing Joi validations for envvars.
@@ -57,7 +58,8 @@ const validation = {
     GameModesModule,
     RegionsModule,
     PositionsModule,
-    ParticipantsModule
+    ParticipantsModule,
+    TeamsModule
   ],
   controllers: [AppController],
   providers: [AppService]

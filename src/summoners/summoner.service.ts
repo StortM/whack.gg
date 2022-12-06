@@ -26,7 +26,7 @@ export class SummonerService {
     const res = await this.summonerRepository.query(
       `SELECT getfullsummonerrankbyname('${summonerName}');`
     )
-    console.log('res', res)
+
     return res
   }
 
