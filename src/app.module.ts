@@ -2,23 +2,25 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
+import { MongooseModule } from '@nestjs/mongoose'
 import * as Joi from 'joi'
 import { Neo4jConfig, Neo4jModule } from 'nest-neo4j/dist'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { AuthModule } from './auth/auth.module'
-import { DivisionsModule } from './divisions/divisions.module'
-import { GameModesModule } from './game-modes/game-modes.module'
+import { AuthModule } from './sql/auth/auth.module'
+import { DivisionsModule } from './sql/divisions/divisions.module'
+import { GameModesModule } from './sql/game-modes/game-modes.module'
 import { UserModule } from './graph/graph.module'
-import { ParticipantsModule } from './participants/participants.module'
-import { PositionsModule } from './positions/positions.module'
-import { RanksModule } from './ranks/ranks.module'
-import { RegionsModule } from './regions/regions.module'
-import { SummonerModule } from './summoners/summoner.module'
-import { TiersModule } from './tiers/tiers.module'
-import { MasteriesModule } from './masteries/masteries.module'
-import { ChampionsModule } from './champions/champions.module'
+import { ParticipantsModule } from './sql/participants/participants.module'
+import { PositionsModule } from './sql/positions/positions.module'
+import { RanksModule } from './sql/ranks/ranks.module'
+import { RegionsModule } from './sql/regions/regions.module'
+import { SummonerModule } from './sql/summoners/summoner.module'
+import { ChampionsModule } from './sql/champions/champions.module'
+import { RegionsModule as MongoRegionsModule } from './mongo/regions/regions.module'
+import { MasteriesModule } from './sql/masteries/masteries.module'
+import { TiersModule } from './sql/tiers/tiers.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -30,7 +32,24 @@ const validation = {
     POSTGRES_USER: Joi.string().required(),
     POSTGRES_PASSWORD: Joi.string().required(),
     POSTGRES_DB: Joi.string().required(),
-    TOKEN_SECRET: Joi.string().required()
+    DATABASE_URI: Joi.string().required(),
+    TOKEN_SECRET: Joi.string().required(),
+    MONGO_INITDB_ROOT_USERNAME: Joi.string().required(),
+    MONGO_INITDB_ROOT_PASSWORD: Joi.string().required(),
+    MONGO_INITDB_PORT: Joi.number().required(),
+    ME_CONFIG_BASICAUTH_USERNAME: Joi.string().required(),
+    ME_CONFIG_BASICAUTH_PASSWORD: Joi.string().required(),
+    ME_CONFIG_MONGODB_URL: Joi.string().required(),
+    NEO4J_AUTH: Joi.string().required(),
+    NEO4J_USERNAME: Joi.string().required(),
+    NEO4J_PASSWORD: Joi.string().required(),
+    NEO4J_URI: Joi.string().required(),
+    NEO4J_SCHEME: Joi.string().required(),
+    NEO4J_PORT: Joi.number().required(),
+    NEO4J_HOST: Joi.string().required(),
+    HASH_ROUNDS: Joi.number().required(),
+    JWT_SECRET: Joi.string().required(),
+    JWT_EXPIRES_IN: Joi.string().required()
   })
 }
 
@@ -66,7 +85,17 @@ const validation = {
         ),
       inject: [ConfigService]
     }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('DATABASE_URI'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      }),
+      inject: [ConfigService]
+    }),
     AuthModule,
+    ChampionsModule,
     SummonerModule,
     RanksModule,
     TiersModule,
@@ -75,6 +104,7 @@ const validation = {
     RegionsModule,
     PositionsModule,
     ParticipantsModule,
+    MongoRegionsModule,
     UserModule,
     MasteriesModule,
     ChampionsModule
