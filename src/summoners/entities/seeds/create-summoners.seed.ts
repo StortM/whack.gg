@@ -3,7 +3,7 @@ import { Connection } from 'typeorm'
 import { Factory, Seeder } from 'typeorm-seeding'
 import { Summoner } from '../summoner.entity'
 
-export default class CreateTier implements Seeder {
+export default class CreateSummoners implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<void> {
     const cryptService = new CryptService()
 

@@ -1,3 +1,4 @@
+import { Mastery } from 'src/masteries/entities/mastery.entity'
 import { Participant } from 'src/participants/entities/participant.entity'
 import { Rank } from 'src/ranks/entities/rank.entity'
 import { Region } from 'src/regions/entities/region.entity'
@@ -26,26 +27,31 @@ export class Summoner {
   @Column()
   icon!: number
 
-  @Column({ nullable: true })
-  regionId!: number | null
-
   @Column()
   passwordHash!: string
 
   @Column()
   isAdmin!: boolean
 
-  @ManyToOne(() => Region, (region) => region.summoners)
+  @Column({ nullable: true })
+  regionId!: number | null
+
+  @ManyToOne(() => Region, (region) => region.summoners, { cascade: true })
   @JoinColumn([{ name: 'regionId' }])
   region!: Region
 
   @Column({ nullable: true })
   rankId!: number | null
 
-  @ManyToOne(() => Rank, (rank) => rank.summoners)
+  @ManyToOne(() => Rank, (rank) => rank.summoners, {
+    cascade: true
+  })
   @JoinColumn([{ name: 'rankId' }])
   rank!: Rank
 
   @OneToMany(() => Participant, (participant) => participant.summoner)
   participants!: Participant
+
+  @OneToMany(() => Mastery, (mastery) => mastery.summoner)
+  masteries!: Mastery[]
 }

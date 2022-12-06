@@ -1,8 +1,5 @@
 module.exports = {
-  entities: [
-    'dist/**/*.entity{.ts,.js}',
-    'dist/summoner/entities/*.entity{.ts,.js}'
-  ],
+  entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['dist/migrations/*{.ts,.js}'],
   seeds: [
     'dist/game-modes/entities/seeds/*.seed{.ts,.js}',
@@ -16,6 +13,7 @@ module.exports = {
     'dist/regions/entities/seeds/*.seed{.ts,.js}',
     'dist/ranks/entities/seeds/*.seed{.ts,.js}',
     'dist/summoners/entities/seeds/*.seed{.ts,.js}',
+    'dist/masteries/entities/seed/*.seed{.ts,.js}',
     'dist/participants/entities/seeds/*.seed{.ts,.js}'
   ],
   synchronize: true,

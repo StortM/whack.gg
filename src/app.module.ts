@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import { MongooseModule } from '@nestjs/mongoose'
 import * as Joi from 'joi'
+import { Neo4jConfig, Neo4jModule } from 'nest-neo4j/dist'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { AuthModule } from './auth/auth.module'
 import { DivisionsModule } from './divisions/divisions.module'
 import { GameModesModule } from './game-modes/game-modes.module'
+import { UserModule } from './graph/graph.module'
 import { ParticipantsModule } from './participants/participants.module'
 import { PositionsModule } from './positions/positions.module'
 import { RanksModule } from './ranks/ranks.module'
@@ -17,6 +20,7 @@ import { SummonerModule } from './summoners/summoner.module'
 import { TiersModule } from './tiers/tiers.module'
 import { ChampionsModule } from './champions/champions.module'
 import { RegionsModule as MongoRegionsModule } from './mongo/regions/regions.module'
+import { MasteriesModule } from './masteries/masteries.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -35,7 +39,19 @@ const validation = {
 
 @Module({
   imports: [
-    ConfigModule.forRoot(validation),
+    ConfigModule.forRoot({ ...validation, isGlobal: true }),
+    Neo4jModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService): Neo4jConfig => ({
+        scheme: configService.get('NEO4J_SCHEME')!,
+        host: configService.get('NEO4J_HOST')!,
+        port: configService.get('NEO4J_PORT')!,
+        username: configService.get('NEO4J_USERNAME')!,
+        password: configService.get('NEO4J_PASSWORD')!,
+        database: configService.get('NEO4J_DATABASE')
+      })
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) =>
@@ -72,7 +88,10 @@ const validation = {
     RegionsModule,
     PositionsModule,
     ParticipantsModule,
-    MongoRegionsModule
+    MongoRegionsModule,
+    UserModule,
+    MasteriesModule,
+    ChampionsModule
   ],
   controllers: [AppController],
   providers: [AppService]

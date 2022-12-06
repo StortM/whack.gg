@@ -8,12 +8,12 @@ import {
   Delete,
   UseGuards
 } from '@nestjs/common'
-import { ChampionsService } from './champions.service'
 import { CreateChampionDto } from './dto/create-champion.dto'
 import { UpdateChampionDto } from './dto/update-champion.dto'
 import { Champion } from './entities/champion.entity'
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
 import { AdminGuard } from 'src/auth/admin.guard'
+import { ChampionsService } from './champions.service'
 
 @Controller('champions')
 export class ChampionsController {

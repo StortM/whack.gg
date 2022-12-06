@@ -1,5 +1,12 @@
 import { Type } from 'class-transformer'
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  MinLength
+} from 'class-validator'
 import { CreateRankDto } from 'src/ranks/dto/create-rank.dto'
 import { Rank } from 'src/ranks/entities/rank.entity'
 
@@ -9,6 +16,7 @@ export class CreateSummonerDto {
   summonerName!: string
 
   @IsString()
+  @MinLength(6)
   @IsNotEmpty()
   password!: string
 
@@ -20,9 +28,13 @@ export class CreateSummonerDto {
   @IsNotEmpty()
   icon!: number
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  regionId!: number
+  regionName!: string
+
+  @IsNotEmpty()
+  @IsBoolean()
+  isAdmin!: boolean
 
   @IsOptional()
   @Type(() => CreateRankDto)

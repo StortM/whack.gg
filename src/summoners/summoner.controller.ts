@@ -1,25 +1,25 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
   HttpException,
   HttpStatus,
+  Param,
+  Patch,
+  Post,
+  Request,
+  UnauthorizedException,
   UseGuards,
   ValidationPipe
 } from '@nestjs/common'
-import { SummonerService } from './summoner.service'
+import { AdminGuard } from 'src/auth/admin.guard'
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
+import { JwtAuthenticatedRequest } from 'src/auth/jwt.strategy'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
-import {
-  Summoner,
-  SummonerOmittingPasswordHash
-} from './entities/summoner.entity'
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
-import { AdminGuard } from 'src/auth/admin.guard'
+import { SummonerOmittingPasswordHash } from './entities/summoner.entity'
+import { SummonerService } from './summoner.service'
 
 @Controller('summoner')
 export class SummonerController {
@@ -28,16 +28,16 @@ export class SummonerController {
   @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
   @Post()
-  create(
+  async create(
     @Body(new ValidationPipe()) createSummonerDto: CreateSummonerDto
-  ): Promise<Summoner | undefined> {
-    return this.summonerService.create(createSummonerDto)
+  ): Promise<SummonerOmittingPasswordHash | undefined> {
+    return await this.summonerService.create(createSummonerDto)
   }
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  findAll(): Promise<Summoner[] | undefined> {
-    return this.summonerService.findAll()
+  async findAll(): Promise<SummonerOmittingPasswordHash[] | undefined> {
+    return await this.summonerService.findAll()
   }
 
   @UseGuards(JwtAuthGuard)
@@ -57,19 +57,33 @@ export class SummonerController {
   @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: number,
-    @Body() updateSummonerDto: UpdateSummonerDto
-  ): Promise<Summoner | undefined> {
-    //TODO - Check if the summoner is the same as the one in the JWT or user is admin. Else throw 403.
-    return this.summonerService.update(id, updateSummonerDto)
+    @Body() updateSummonerDto: UpdateSummonerDto,
+    @Request() { summoner }: JwtAuthenticatedRequest
+  ): Promise<SummonerOmittingPasswordHash | undefined> {
+    const summonerFromDB = await this.summonerService.findOne(id)
+
+    // Autorize admins and summoners
+    if (!summoner.isAdmin && summoner.id !== summonerFromDB?.id)
+      throw new UnauthorizedException()
+
+    return await this.summonerService.update(id, updateSummonerDto)
   }
 
   @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
   @Delete(':id')
-  remove(@Param('id') id: number): Promise<void> {
-    //TODO - Check if the summoner is the same as the one in the JWT or user is admin. Else throw 403.
-    return this.summonerService.remove(+id)
+  async remove(
+    @Param('id') id: number,
+    @Request() { summoner }: JwtAuthenticatedRequest
+  ): Promise<void> {
+    const summonerFromDB = await this.summonerService.findOne(id)
+
+    // Autorize admins and summoners
+    if (!summoner.isAdmin && summoner.id !== summonerFromDB?.id)
+      throw new UnauthorizedException()
+
+    return await this.summonerService.remove(+id)
   }
 }

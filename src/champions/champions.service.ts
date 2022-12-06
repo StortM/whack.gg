@@ -25,7 +25,11 @@ export class ChampionsService {
   }
 
   async findAll(): Promise<Champion[]> {
-    return await this.championRepository.find()
+    return await this.championRepository.find({
+      order: {
+        id: 'ASC'
+      }
+    })
   }
 
   async findOne(id: number): Promise<Champion | undefined> {

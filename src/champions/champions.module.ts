@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
-import { ChampionsService } from './champions.service'
-import { ChampionsController } from './champions.controller'
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { ChampionsController } from './champions.controller'
+import { ChampionsService } from './champions.service'
 import { Champion } from './entities/champion.entity'
 
 @Module({
