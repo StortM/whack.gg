@@ -19,6 +19,8 @@ import { AdminGuard } from 'src/auth/admin.guard'
 export class ParticipantsController {
   constructor(private readonly participantsService: ParticipantsService) {}
 
+  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Post()
   create(
     @Body() createParticipantDto: CreateParticipantDto
@@ -32,11 +34,14 @@ export class ParticipantsController {
     return this.participantsService.findAll()
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Participant | undefined> {
     return this.participantsService.findOne(id)
   }
 
+  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,

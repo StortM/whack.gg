@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
+import { MongooseModule } from '@nestjs/mongoose'
 import * as Joi from 'joi'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
 import { AppController } from './app.controller'
@@ -15,6 +16,7 @@ import { RegionsModule } from './regions/regions.module'
 import { SummonerModule } from './summoners/summoner.module'
 import { TeamsModule } from './teams/teams.module'
 import { TiersModule } from './tiers/tiers.module'
+import { ChampionsModule } from './champions/champions.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -26,6 +28,7 @@ const validation = {
     POSTGRES_USER: Joi.string().required(),
     POSTGRES_PASSWORD: Joi.string().required(),
     POSTGRES_DB: Joi.string().required(),
+    DATABASE_URI: Joi.string().required(),
     TOKEN_SECRET: Joi.string().required()
   })
 }
@@ -50,7 +53,17 @@ const validation = {
         ),
       inject: [ConfigService]
     }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('DATABASE_URI'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      }),
+      inject: [ConfigService]
+    }),
     AuthModule,
+    ChampionsModule,
     SummonerModule,
     RanksModule,
     TiersModule,

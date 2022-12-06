@@ -15,6 +15,7 @@ services:
       - .env
     depends_on:
       - postgres
+      - mongo
     environment:
       NODE_ENV: development
       DEBUG: nodejs-docker-express:*
@@ -26,7 +27,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - db:/var/lib/postgresql/data
+      - postgres_db:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
@@ -38,5 +39,27 @@ services:
       - postgres
     logging:
       driver: none
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_db:/data/db
+    env_file:
+      - .env
+    logging:
+      driver: none
+
+  mongo-express:
+    image: mongo-express:latest
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    env_file:
+      - .env
+    depends_on:
+      - mongo
 volumes:
-  db:
+  postgres_db:
+  mongo_db:

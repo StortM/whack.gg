@@ -22,11 +22,14 @@ import {
   SummonerWithFullRank
 } from './entities/summoner.entity'
 import { SummonerService } from './summoner.service'
+import { AdminGuard } from 'src/auth/admin.guard'
 
 @Controller('summoner')
 export class SummonerController {
   constructor(private readonly summonerService: SummonerService) {}
 
+  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Post()
   async create(
     @Body(new ValidationPipe()) createSummonerDto: CreateSummonerDto
@@ -34,6 +37,7 @@ export class SummonerController {
     return await this.summonerService.create(createSummonerDto)
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(): Promise<SummonerOmittingPasswordHash[] | undefined> {
     return await this.summonerService.findAll()
@@ -54,6 +58,7 @@ export class SummonerController {
     console.log(summonerWithFullRank)
     return summonerWithFullRank
   }
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findOne(
     @Param('id') id: number
@@ -68,6 +73,7 @@ export class SummonerController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Patch(':id')
   async update(
     @Param('id') id: number,
@@ -84,6 +90,7 @@ export class SummonerController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Delete(':id')
   async remove(
     @Param('id') id: number,
