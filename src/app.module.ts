@@ -26,6 +26,7 @@ const validation = {
     POSTGRES_USER: Joi.string().required(),
     POSTGRES_PASSWORD: Joi.string().required(),
     POSTGRES_DB: Joi.string().required(),
+    DATABASE_URI: Joi.string().required(),
     TOKEN_SECRET: Joi.string().required()
   })
 }
@@ -50,9 +51,15 @@ const validation = {
         ),
       inject: [ConfigService]
     }),
-    MongooseModule.forRoot(
-      `${process.env.DB_URL}:${process.env.DB_PORT}/${process.env.DB_NAME}`
-    ),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('DATABASE_URI'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      }),
+      inject: [ConfigService]
+    }),
     AuthModule,
     SummonerModule,
     RanksModule,
