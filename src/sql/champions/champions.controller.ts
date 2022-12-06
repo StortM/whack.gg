@@ -6,14 +6,16 @@ import {
   Patch,
   Param,
   Delete,
-  UseGuards
+  UseGuards,
+  HttpException,
+  HttpStatus
 } from '@nestjs/common'
 import { CreateChampionDto } from './dto/create-champion.dto'
 import { UpdateChampionDto } from './dto/update-champion.dto'
-import { Champion } from './entities/champion.entity'
-import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
+import { Champion, ChampionBans } from './entities/champion.entity'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
 import { ChampionsService } from './champions.service'
+import { JwtAuthGuard } from '../auth/jwt-auth.guard'
 
 @Controller('champions')
 export class ChampionsController {
@@ -32,6 +34,17 @@ export class ChampionsController {
   @Get()
   findAll(): Promise<Champion[] | undefined> {
     return this.championsService.findAll()
+  }
+
+  @Get('championsBans')
+  championBanRate(): Promise<ChampionBans[] | undefined> {
+    const res = this.championsService.championBans()
+
+    if (!res) {
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND)
+    }
+
+    return res
   }
 
   @UseGuards(JwtAuthGuard)

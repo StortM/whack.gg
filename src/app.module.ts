@@ -21,6 +21,7 @@ import { ChampionsModule } from './sql/champions/champions.module'
 import { RegionsModule as MongoRegionsModule } from './mongo/regions/regions.module'
 import { MasteriesModule } from './sql/masteries/masteries.module'
 import { TiersModule } from './sql/tiers/tiers.module'
+import { TeamsModule } from './sql/teams/teams.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -104,6 +105,7 @@ const validation = {
     RegionsModule,
     PositionsModule,
     ParticipantsModule,
+    TeamsModule,
     MongoRegionsModule,
     UserModule,
     MasteriesModule,

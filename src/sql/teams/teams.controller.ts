@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  HttpException,
+  HttpStatus,
   UseGuards
 } from '@nestjs/common'
 import { TeamsService } from './teams.service'
@@ -23,7 +25,12 @@ export class TeamsController {
   @UseGuards(AdminGuard)
   @Post()
   create(@Body() createTeamDto: CreateTeamDto): Promise<Team | undefined> {
-    return this.teamsService.create(createTeamDto)
+    return this.teamsService.create(createTeamDto).catch(() => {
+      throw new HttpException(
+        'You can only assign 2 teams pr match.',
+        HttpStatus.BAD_REQUEST
+      )
+    })
   }
 
   @UseGuards(JwtAuthGuard)

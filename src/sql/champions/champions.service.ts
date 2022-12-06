@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import { CreateChampionDto } from './dto/create-champion.dto'
 import { UpdateChampionDto } from './dto/update-champion.dto'
-import { Champion } from './entities/champion.entity'
+import { Champion, ChampionBans } from './entities/champion.entity'
 
 @Injectable()
 export class ChampionsService {
@@ -11,6 +11,14 @@ export class ChampionsService {
     @InjectRepository(Champion)
     private championRepository: Repository<Champion>
   ) {}
+
+  async championBans(): Promise<ChampionBans[] | undefined> {
+    const res = await this.championRepository.query(
+      'SELECT * FROM championbanrate'
+    )
+
+    return res
+  }
 
   async create(
     createChampionDto: CreateChampionDto

@@ -13,6 +13,12 @@ import {
 
 export type SummonerOmittingPasswordHash = Omit<Summoner, 'passwordHash'>
 
+export type SummonerWithFullRank = {
+  summerName: string
+  rank: string
+  lp: number
+}
+
 @Entity()
 export class Summoner {
   @PrimaryGeneratedColumn()
