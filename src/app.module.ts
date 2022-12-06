@@ -33,7 +33,23 @@ const validation = {
     POSTGRES_PASSWORD: Joi.string().required(),
     POSTGRES_DB: Joi.string().required(),
     DATABASE_URI: Joi.string().required(),
-    TOKEN_SECRET: Joi.string().required()
+    TOKEN_SECRET: Joi.string().required(),
+    MONGO_INITDB_ROOT_USERNAME: Joi.string().required(),
+    MONGO_INITDB_ROOT_PASSWORD: Joi.string().required(),
+    MONGO_INITDB_PORT: Joi.number().required(),
+    ME_CONFIG_BASICAUTH_USERNAME: Joi.string().required(),
+    ME_CONFIG_BASICAUTH_PASSWORD: Joi.string().required(),
+    ME_CONFIG_MONGODB_URL: Joi.string().required(),
+    NEO4J_AUTH: Joi.string().required(),
+    NEO4J_USERNAME: Joi.string().required(),
+    NEO4J_PASSWORD: Joi.string().required(),
+    NEO4J_URI: Joi.string().required(),
+    NEO4J_SCHEME: Joi.string().required(),
+    NEO4J_PORT: Joi.number().required(),
+    NEO4J_HOST: Joi.string().required(),
+    HASH_ROUNDS: Joi.number().required(),
+    JWT_SECRET: Joi.string().required(),
+    JWT_EXPIRES_IN: Joi.string().required()
   })
 }
 
