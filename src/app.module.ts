@@ -15,6 +15,7 @@ import { RanksModule } from './ranks/ranks.module'
 import { RegionsModule } from './regions/regions.module'
 import { SummonerModule } from './summoners/summoner.module'
 import { TiersModule } from './tiers/tiers.module'
+import { ChampionsModule } from './champions/champions.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -61,6 +62,7 @@ const validation = {
       inject: [ConfigService]
     }),
     AuthModule,
+    ChampionsModule,
     SummonerModule,
     RanksModule,
     TiersModule,
