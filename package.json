@@ -26,10 +26,12 @@
     "schema:sync": "typeorm schema:sync",
     "schema:log": "typeorm schema:log",
     "schema:drop": "typeorm schema:drop",
+    "docker:up": "docker-compose up",
     "docker:build": "docker-compose up --build",
     "docker:down": "docker-compose down -v",
     "docker:exec": "docker exec -i $(docker-compose ps -q backend)",
-    "docker:seed:run": "npm run docker:exec -- npm run seed:run"
+    "docker:seed:run": "npm run docker:exec -- npm run seed:run",
+    "docker:schema:drop": "npm run docker:exec -- npm run schema:drop"
   },
   "dependencies": {
     "@apollo/gateway": "^2.2.1",
