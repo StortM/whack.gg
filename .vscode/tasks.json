@@ -17,13 +17,13 @@
 			"type": "npm",
 			"script": "docker:down",
 			"problemMatcher": [],
-			"label": "Close Backends",
+			"label": "Backend down",
 		},
 		{
 			"type": "npm",
 			"script": "docker:seed:run",
 			"problemMatcher": [],
-			"label": "Seed backend",
+			"label": "Seed SQL",
 		},
 		{
 			"type": "npm",
