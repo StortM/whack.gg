@@ -1,0 +1,35 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "docker:up",
+			"problemMatcher": [],
+			"label": "Run Backend",
+		},
+		{
+			"type": "npm",
+			"script": "docker:build",
+			"problemMatcher": [],
+			"label": "Run Backend & Build",
+		},
+		{
+			"type": "npm",
+			"script": "docker:down",
+			"problemMatcher": [],
+			"label": "Backend down",
+		},
+		{
+			"type": "npm",
+			"script": "docker:seed:run",
+			"problemMatcher": [],
+			"label": "Seed SQL",
+		},
+		{
+			"type": "npm",
+			"script": "docker:schema:drop",
+			"problemMatcher": [],
+			"label": "Drop SQL Schema",
+		}
+	]
+}
