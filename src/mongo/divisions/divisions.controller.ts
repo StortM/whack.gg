@@ -12,8 +12,8 @@ import { DivisionsService } from './divisions.service'
 import { CreateDivisionDto } from './dto/create-division.dto'
 import { UpdateDivisionDto } from './dto/update-division.dto'
 import { Division } from './schemas/divisions.schema'
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
-import { AdminGuard } from 'src/auth/admin.guard'
+// import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
+// import { AdminGuard } from 'src/auth/admin.guard'
 
 @Controller('mongo-divisions')
 export class DivisionsController {

@@ -12,8 +12,8 @@ import { TiersService } from './tiers.service'
 import { CreateTierDto } from './dto/create-tier.dto'
 import { UpdateTierDto } from './dto/update-tier.dto'
 import { Tier } from './schemas/tiers.schema'
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
-import { AdminGuard } from 'src/auth/admin.guard'
+// import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
+// import { AdminGuard } from 'src/auth/admin.guard'
 
 @Controller('mongo-tiers')
 export class TiersController {

@@ -9,14 +9,43 @@ The only local dependencies required are `docker`.
 New environment variables must be added to `.env.ci` and `.env.example`.
 
 ```
-PORT=3001 (port for backend)
-POSTGRES_HOST=
-POSTGRES_PORT=
-POSTGRES_USER=
-POSTGRES_PASSWORD=
-POSTGRES_DB=
-PGADMIN_DEFAULT_EMAIL=
-PGADMIN_DEFAULT_PASSWORD=
+# Server
+TOKEN_SECRET=someSecret
+PORT=3001
+
+# Postgres
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_USER=user
+POSTGRES_PASSWORD=pass
+POSTGRES_DB=POSTGRES_DB
+
+# PG Admin
+PGADMIN_DEFAULT_EMAIL=mail@example.com
+PGADMIN_DEFAULT_PASSWORD=pass
+
+# MongoDB
+DATABASE_URI="mongodb://user:pass@mongo:27017/db?directConnection=true&authSource=admin"
+MONGO_INITDB_ROOT_USERNAME=user
+MONGO_INITDB_ROOT_PASSWORD=pass
+MONGO_INITDB_PORT=27017
+
+# Mongo Express 
+ME_CONFIG_BASICAUTH_USERNAME=user
+ME_CONFIG_BASICAUTH_PASSWORD=pass
+ME_CONFIG_MONGODB_URL="mongodb://user:pass@mongo:27017"
+
+# Neo4j
+NEO4J_AUTH=none
+NEO4J_USERNAME=neo4j
+NEO4J_PASSWORD=password
+NEO4J_URI=bolt://neo:7687
+NEO4J_SCHEME=neo4j
+NEO4J_PORT=7687
+NEO4J_HOST=neo
+HASH_ROUNDS=10
+JWT_SECRET=mySecret
+JWT_EXPIRES_IN=30d
 ```
 
 ## Configuring Local Development Environment

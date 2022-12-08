@@ -1,22 +1,20 @@
 module.exports = {
-  entities: [
-    'dist/**/*.entity{.ts,.js}',
-    'dist/summoner/entities/*.entity{.ts,.js}'
-  ],
-  migrations: ['dist/migrations/*{.ts,.js}'],
+  entities: ['dist/sql/**/*.entity{.ts,.js}'],
+  migrations: ['dist/sql/migrations/*{.ts,.js}'],
   seeds: [
-    'dist/game-modes/entities/seeds/*.seed{.ts,.js}',
-    'dist/positions/entities/seeds/*.seed{.ts,.js}',
-    'dist/matches/entities/seeds/*.seed{.ts,.js}',
-    'dist/teams/entities/seeds/*.seed{.ts,.js}',
-    'dist/champions/entities/seeds/*.seed{.ts,.js}',
-    'dist/teams_bans_champions/entities/seeds/*.seed{.ts,.js}',
-    'dist/tiers/entities/seeds/*.seed{.ts,.js}',
-    'dist/divisions/entities/seeds/*.seed{.ts,.js}',
-    'dist/regions/entities/seeds/*.seed{.ts,.js}',
-    'dist/ranks/entities/seeds/*.seed{.ts,.js}',
-    'dist/summoners/entities/seeds/*.seed{.ts,.js}',
-    'dist/participants/entities/seeds/*.seed{.ts,.js}'
+    'dist/sql/game-modes/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/positions/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/matches/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/teams/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/champions/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/teams_bans_champions/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/tiers/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/divisions/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/regions/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/ranks/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/summoners/entities/seeds/*.seed{.ts,.js}',
+    'dist/sql/masteries/entities/seed/*.seed{.ts,.js}',
+    'dist/sql/participants/entities/seeds/*.seed{.ts,.js}'
   ],
   synchronize: true,
   type: 'postgres',
@@ -27,5 +25,5 @@ module.exports = {
   factories: [],
   logging: 'all',
   database: process.env['POSTGRES_DB'],
-  cli: { migrationsDir: 'migrations' }
+  cli: { migrationsDir: './src/migrations' }
 }

@@ -12,8 +12,8 @@ import { GameModesService } from './game-modes.service'
 import { CreateGameModeDto } from './dto/create-game-mode.dto'
 import { UpdateGameModeDto } from './dto/update-game-mode.dto'
 import { GameMode } from './schemas/game-modes.schema'
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
-import { AdminGuard } from 'src/auth/admin.guard'
+// import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
+// import { AdminGuard } from 'src/auth/admin.guard'
 
 @Controller('mongo-game-modes')
 export class GameModesController {

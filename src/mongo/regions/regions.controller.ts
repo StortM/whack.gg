@@ -12,8 +12,8 @@ import { RegionsService } from './regions.service'
 import { CreateRegionDto } from './dto/create-region.dto'
 import { UpdateRegionDto } from './dto/update-region.dto'
 import { Region } from './schemas/regions.schema'
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
-import { AdminGuard } from 'src/auth/admin.guard'
+// import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
+// import { AdminGuard } from 'src/sql/auth/admin.guard'
 
 @Controller('mongo-regions')
 export class RegionsController {
