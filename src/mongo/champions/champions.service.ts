@@ -1,40 +1,40 @@
 import { Model } from 'mongoose'
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
-import { Division, DivisionDocument } from './schemas/divisions.schema'
-import { CreateDivisionDto } from './dto/create-division.dto'
-import { UpdateDivisionDto } from './dto/update-division.dto'
+import { Champion, ChampionDocument } from './schemas/champions.schema'
+import { CreateChampionDto } from './dto/create-champion.dto'
+import { UpdateChampionDto } from './dto/update-champion.dto'
 
 @Injectable()
-export class DivisionsService {
+export class ChampionsService {
   constructor(
-    @InjectModel(Division.name) private divisionModel: Model<DivisionDocument>
+    @InjectModel(Champion.name) private championModel: Model<ChampionDocument>
   ) {}
 
-  async create(createDivisionDto: CreateDivisionDto): Promise<Division> {
-    const createdDivision = new this.divisionModel(createDivisionDto)
-    return createdDivision.save()
+  async create(createChampionDto: CreateChampionDto): Promise<Champion> {
+    const createdChampion = new this.championModel(createChampionDto)
+    return createdChampion.save()
   }
 
-  async findAll(): Promise<Division[] | undefined> {
-    return await this.divisionModel.find().exec()
+  async findAll(): Promise<Champion[] | undefined> {
+    return await this.championModel.find().exec()
   }
 
-  async findOne(id: string): Promise<Division | null> {
-    return await this.divisionModel.findById(id).exec()
+  async findOne(id: string): Promise<Champion | null> {
+    return await this.championModel.findById(id).exec()
   }
 
   async update(
     id: string,
-    updateDivisionDto: UpdateDivisionDto
-  ): Promise<Division | null> {
-    await this.divisionModel.findByIdAndUpdate(id, updateDivisionDto)
-    const res = this.divisionModel.findById(id)
+    updateChampionDto: UpdateChampionDto
+  ): Promise<Champion | null> {
+    await this.championModel.findByIdAndUpdate(id, updateChampionDto)
+    const res = this.championModel.findById(id)
     if (!res) return null
     return res
   }
 
   async remove(id: string): Promise<void> {
-    await this.divisionModel.findByIdAndDelete(id)
+    await this.championModel.findByIdAndDelete(id)
   }
 }
