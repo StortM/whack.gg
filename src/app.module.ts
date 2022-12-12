@@ -19,6 +19,7 @@ import { RegionsModule } from './sql/regions/regions.module'
 import { SummonerModule } from './sql/summoners/summoner.module'
 import { ChampionsModule } from './sql/champions/champions.module'
 import { RegionsModule as MongoRegionsModule } from './mongo/regions/regions.module'
+import { MasteriesModule as MongoMasteriesModule } from './mongo/masteries/masteries.module'
 import { MasteriesModule } from './sql/masteries/masteries.module'
 import { TiersModule } from './sql/tiers/tiers.module'
 import { TeamsModule } from './sql/teams/teams.module'
@@ -107,6 +108,7 @@ const validation = {
     ParticipantsModule,
     TeamsModule,
     MongoRegionsModule,
+    MongoMasteriesModule,
     UserModule,
     MasteriesModule,
     ChampionsModule
