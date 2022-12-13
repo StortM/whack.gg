@@ -3,11 +3,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { JwtModule } from '@nestjs/jwt'
 import { PassportModule } from '@nestjs/passport'
 import { Neo4jService } from 'nest-neo4j/dist'
+import { CryptService } from 'src/sql/crypt/crypt.service'
 import { AuthService } from '../auth/auth.service'
 import { JwtStrategy } from '../auth/jwt.strategy'
 import { LocalStrategy } from '../auth/local.strategy'
-import { EncryptionService } from '../encryption/encryption.service'
-import { ParticipantController } from '../participant/profile.controller'
 import { SummonerController } from './summoner.controller'
 import { SummonerService } from './summoner.service'
 
@@ -31,9 +30,9 @@ import { SummonerService } from './summoner.service'
     LocalStrategy,
     JwtStrategy,
     AuthService,
-    EncryptionService
+    CryptService
   ],
-  controllers: [SummonerController, ParticipantController],
+  controllers: [SummonerController],
   exports: []
 })
 export class SummonerModule implements OnModuleInit {

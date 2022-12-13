@@ -1,20 +1,19 @@
 import { Injectable } from '@nestjs/common'
 import { Neo4jService } from 'nest-neo4j/dist'
-import { EncryptionService } from '../encryption/encryption.service'
+import { CryptService } from 'src/sql/crypt/crypt.service'
 import { CreateSummonerDto } from './dto/create-sumoner.dto'
-import { Summoner } from './entities/summoner.entity'
+import { UpdateSummonerDto } from './dto/update-summoner.dto'
+import { SummonerNode } from './entities/summoner.entity'
 
 @Injectable()
 export class SummonerService {
   constructor(
     private readonly neo4jService: Neo4jService,
-    private readonly encryptionService: EncryptionService
+    private readonly cryptService: CryptService
   ) {}
 
-  async create(createSummonerDto: CreateSummonerDto): Promise<Summoner> {
+  async create(createSummonerDto: CreateSummonerDto): Promise<SummonerNode> {
     const { summonerName, password, isAdmin, level, icon } = createSummonerDto
-
-    console.log('here')
 
     return this.neo4jService
       .write(
@@ -22,7 +21,7 @@ export class SummonerService {
             CREATE (s:Summoner {
                 id: randomUUID(),
                 summonerName: $summonerName,
-                hashedPassword: $hashedPassword,
+                passwordHash: $passwordHash,
                 isAdmin: $isAdmin,
                 level: $level,
                 icon: $icon
@@ -31,35 +30,26 @@ export class SummonerService {
         `,
         {
           summonerName,
-          hashedPassword: await this.encryptionService.hash(password),
+          passwordHash: await this.cryptService.hash(password),
           isAdmin,
           level: level ?? null,
           icon: icon ?? null
         }
       )
-      .then(({ records }) => new Summoner(records[0].get('s')))
+      .then(({ records }) => new SummonerNode(records[0].get('s')))
   }
 
-  async findBySummonerName(
-    summonerName: string
-  ): Promise<Summoner | undefined> {
-    const res = await this.neo4jService.read(
-      'MATCH (s:Summoner {summonerName: $summonerName}) RETURN s',
-      { summonerName }
-    )
+  async update(
+    id: number,
+    updateSummonerDto: UpdateSummonerDto
+  ): Promise<SummonerNode | undefined> {
+    const summonerNode = await this.findOne(updateSummonerDto.id)
 
-    return res.records.length
-      ? new Summoner(res.records[0].get('s'))
-      : undefined
-  }
+    if (!summonerNode) return
 
-  async updateSummoner(
-    summoner: Summoner,
-    updates: Record<string, unknown>
-  ): Promise<Summoner> {
-    if (updates.password)
-      updates.password = await this.encryptionService.hash(
-        updates.password as string
+    if (updateSummonerDto.password)
+      updateSummonerDto.password = await this.cryptService.hash(
+        updateSummonerDto.password as string
       )
 
     return this.neo4jService
@@ -69,9 +59,46 @@ export class SummonerService {
             SET u.updatedAt = localdatetime(), u += $updates
             RETURN s
         `,
-        { id: summoner.getId(), updates }
+        { id: summonerNode.getId(), updateSummonerDto }
       )
-      .then(({ records }) => new Summoner(records[0].get('u')))
+      .then(({ records }) => new SummonerNode(records[0].get('u')))
+  }
+
+  async findAll(): Promise<SummonerNode[]> {
+    return await this.neo4jService
+      .read('MATCH (s:Summoner) RETURN s')
+      .then((res) => {
+        return res.records.map((record) => new SummonerNode(record.get('s')))
+      })
+  }
+
+  async findOne(id: number): Promise<SummonerNode> {
+    return await this.neo4jService
+      .read('MATCH (s:Summoner {id: $id}) RETURN s', { id })
+      .then((res) => {
+        return new SummonerNode(res.records[0].get('s'))
+      })
+  }
+
+  async findBySummonerName(
+    summonerName: string
+  ): Promise<SummonerNode | undefined> {
+    const res = await this.neo4jService.read(
+      'MATCH (s:Summoner {summonerName: $summonerName}) RETURN s',
+      { summonerName }
+    )
+
+    return res.records.length
+      ? new SummonerNode(res.records[0].get('s'))
+      : undefined
+  }
+
+  async remove(id: number): Promise<SummonerNode> {
+    return await this.neo4jService
+      .write('MATCH (s:Summoner {id: $id}) DETACH DELETE s RETURN s', { id })
+      .then((res) => {
+        return new SummonerNode(res.records[0].get('s'))
+      })
   }
 
   /*   async isFollowing(target: Summoner, current: Summoner): Promise<boolean> {

@@ -1,18 +1,22 @@
-import { Type } from 'class-transformer'
-import { IsEmail, ValidateNested } from 'class-validator'
+import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator'
 
-class UpdatedUser {
-  @IsEmail()
-  email?: string
+export class UpdateSummonerDto {
+  @IsNotEmpty()
+  id!: number
 
-  password?: string
+  @IsNotEmpty()
+  @IsString()
+  summonerName!: string
 
-  bio?: string
-  image?: string
-}
+  @IsNotEmpty()
+  password!: string
 
-export class UpdateUserDto {
-  @ValidateNested()
-  @Type(() => UpdatedUser)
-  user!: UpdatedUser
+  @IsBoolean()
+  isAdmin!: boolean
+
+  @IsOptional()
+  level?: number
+
+  @IsOptional()
+  icon?: number
 }

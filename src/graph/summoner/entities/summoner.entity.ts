@@ -1,6 +1,17 @@
 import { Node } from 'neo4j-driver'
 
-export class Summoner {
+export type Summoner = {
+  id: string
+  summonerName: string
+  passwordHash: string
+  isAdmin: boolean
+  level: number | null
+  icon: number | null
+}
+
+export type SummonerOmittingPasswordHash = Omit<Summoner, 'passwordHash'>
+
+export class SummonerNode {
   constructor(private readonly node: Node) {}
 
   getId(): string {
@@ -11,7 +22,7 @@ export class Summoner {
     return (<Record<string, unknown>>this.node.properties).password as string
   }
 
-  getClaims() {
+  getClaims(): Record<string, unknown> {
     const { username, email, bio, image } = <Record<string, unknown>>(
       this.node.properties
     )
@@ -25,15 +36,16 @@ export class Summoner {
     }
   }
 
-  toJson(): Record<string, any> {
-    const { password, bio, image, ...properties } = <Record<string, any>>(
+  toJson(): SummonerOmittingPasswordHash {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { passwordHash, level, icon, ...rest } = <Record<string, unknown>>(
       this.node.properties
     )
 
     return {
-      image: image || 'https://picsum.photos/200',
-      bio: bio || null,
-      ...properties
-    }
+      icon: icon || null,
+      level: level || null,
+      ...rest
+    } as SummonerOmittingPasswordHash
   }
 }

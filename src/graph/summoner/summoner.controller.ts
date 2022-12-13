@@ -1,8 +1,20 @@
-import { Body, Controller, Post, Request, UseFilters } from '@nestjs/common'
-import { Neo4jErrorFilter } from 'nest-neo4j/dist'
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Patch,
+  Post
+} from '@nestjs/common'
 import { AuthService } from '../auth/auth.service'
-import { LoginDto } from '../auth/dto/login.dto'
 import { CreateSummonerDto } from './dto/create-sumoner.dto'
+import { UpdateSummonerDto } from './dto/update-summoner.dto'
+import {
+  SummonerNode,
+  SummonerOmittingPasswordHash
+} from './entities/summoner.entity'
 import { SummonerService } from './summoner.service'
 
 @Controller('graph/summoners')
@@ -14,26 +26,46 @@ export class SummonerController {
 
   // endoint is open but only admins can create admin users
   // TODO: Limit admin creation to only admins
-  @UseFilters(Neo4jErrorFilter)
-  @Post('/')
-  async postIndex(@Body() createSummonerDto: CreateSummonerDto): Promise<any> {
+  @Post()
+  async create(
+    @Body() createSummonerDto: CreateSummonerDto
+  ): Promise<SummonerOmittingPasswordHash> {
     const summoner = await this.summonerService.create(createSummonerDto)
-
-    //const token = this.authService.createToken(summoner)
 
     return summoner.toJson()
   }
 
-  //@UseGuards(LocalAuthGuard)
-  @Post('/login')
-  async postLogin(@Request() request: any, loginDto: LoginDto) {
-    const token = this.authService.createToken(request.user)
+  @Patch(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() updateSummonerDto: UpdateSummonerDto
+  ): Promise<SummonerOmittingPasswordHash> {
+    const summoner = await this.summonerService.update(+id, updateSummonerDto)
 
-    return {
-      user: {
-        ...request.user.toJson(),
-        token
-      }
-    }
+    if (!summoner) throw new NotFoundException()
+
+    return summoner.toJson()
+  }
+
+  // create get endpoint for summoner
+  @Get()
+  async findAll(): Promise<SummonerOmittingPasswordHash[]> {
+    const summoners = await this.summonerService.findAll()
+
+    return summoners.map((summoner: SummonerNode) => summoner.toJson())
+  }
+
+  @Get(':id')
+  async findOne(
+    @Param('id') id: string
+  ): Promise<SummonerOmittingPasswordHash> {
+    const summoner = await this.summonerService.findOne(+id)
+
+    return summoner.toJson()
+  }
+
+  @Delete(':id')
+  async remove(@Param('id') id: string): Promise<void> {
+    this.summonerService.remove(+id)
   }
 }

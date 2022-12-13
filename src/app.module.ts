@@ -1,27 +1,27 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import { MongooseModule } from '@nestjs/mongoose'
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import * as Joi from 'joi'
 import { Neo4jConfig, Neo4jModule } from 'nest-neo4j/dist'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
+import { ParticipantsModule as GraphParticipantsModule } from './graph/participants/participants.module'
+import { SummonerModule as GraphSummonerModule } from './graph/summoner/summoner.module'
+import { RegionsModule as MongoRegionsModule } from './mongo/regions/regions.module'
 import { AuthModule } from './sql/auth/auth.module'
+import { ChampionsModule as SqlChampionsModule } from './sql/champions/champions.module'
 import { DivisionsModule } from './sql/divisions/divisions.module'
 import { GameModesModule } from './sql/game-modes/game-modes.module'
-import { SummonerModule as GraphSummonerModule } from './graph/summoner/summoner.module'
-import { ParticipantsModule } from './sql/participants/participants.module'
+import { MasteriesModule } from './sql/masteries/masteries.module'
+import { ParticipantsModule as SqlParticipantsModule } from './sql/participants/participants.module'
 import { PositionsModule } from './sql/positions/positions.module'
 import { RanksModule } from './sql/ranks/ranks.module'
 import { RegionsModule } from './sql/regions/regions.module'
-import { SummonerModule as SqlSummonerModule } from './sql/summoners/summoner.module'
-import { ChampionsModule } from './sql/champions/champions.module'
-import { RegionsModule as MongoRegionsModule } from './mongo/regions/regions.module'
-import { MasteriesModule } from './sql/masteries/masteries.module'
-import { TiersModule } from './sql/tiers/tiers.module'
 import { TeamsModule } from './sql/teams/teams.module'
+import { TiersModule } from './sql/tiers/tiers.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -96,7 +96,7 @@ const validation = {
       inject: [ConfigService]
     }),
     AuthModule,
-    ChampionsModule,
+    SqlChampionsModule,
     GraphSummonerModule,
     RanksModule,
     TiersModule,
@@ -104,12 +104,12 @@ const validation = {
     GameModesModule,
     RegionsModule,
     PositionsModule,
-    ParticipantsModule,
+    SqlParticipantsModule,
     TeamsModule,
     MongoRegionsModule,
     GraphSummonerModule,
     MasteriesModule,
-    ChampionsModule
+    GraphParticipantsModule
   ],
   controllers: [AppController],
   providers: [AppService]

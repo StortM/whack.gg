@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { PassportStrategy } from '@nestjs/passport'
 import { ExtractJwt, Strategy } from 'passport-jwt'
-import { Summoner } from '../summoner/entities/summoner.entity'
+import { SummonerNode } from '../summoner/entities/summoner.entity'
 import { SummonerService } from '../summoner/summoner.service'
 
 @Injectable()
@@ -17,7 +17,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       secretOrKey: configService.get('JWT_SECRET')
     })
   }
-  async validate(payload: any): Promise<Summoner | undefined> {
+  async validate(payload: any): Promise<SummonerNode | undefined> {
     return this.userService.findBySummonerName(payload.summonerName)
   }
 }
