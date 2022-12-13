@@ -28,6 +28,8 @@ import { GameModesModule as MongoGameModesModule } from './mongo/game-modes/game
 import { DivisionsModule as MongoDivisionsModule } from './mongo/divisions/divisions.module'
 import { ChampionsModule as MongoChampionsModule } from './mongo/champions/champions.module'
 import { PositionsModule as MongoPositionsModule } from './mongo/positions/positions.module'
+import { SummonerModule as MongoSummonerModule } from './mongo/summoner/summoners.module'
+import { MatchesModule as MongoMatchModule } from './mongo/matches/matches.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -122,7 +124,9 @@ const validation = {
     MongoGameModesModule,
     MongoDivisionsModule,
     MongoChampionsModule,
-    MongoPositionsModule
+    MongoPositionsModule,
+    MongoSummonerModule,
+    MongoMatchModule
   ],
   controllers: [AppController],
   providers: [AppService]

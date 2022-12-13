@@ -6,7 +6,8 @@ import {
   Patch,
   Param,
   Delete,
-  UseGuards
+  UseGuards,
+  ValidationPipe
 } from '@nestjs/common'
 import { MatchesService } from './matches.service'
 import { CreateMatchDto } from './dto/create-match.dto'
@@ -22,7 +23,9 @@ export class MatchesController {
   @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
   @Post()
-  create(@Body() createMatchDto: CreateMatchDto): Promise<Match | undefined> {
+  create(
+    @Body(new ValidationPipe()) createMatchDto: CreateMatchDto
+  ): Promise<Match | undefined> {
     return this.matchesService.create(createMatchDto)
   }
 
