@@ -11,12 +11,12 @@ import { AppService } from './app.service'
 import { AuthModule } from './sql/auth/auth.module'
 import { DivisionsModule } from './sql/divisions/divisions.module'
 import { GameModesModule } from './sql/game-modes/game-modes.module'
-import { UserModule } from './graph/graph.module'
+import { SummonerModule as GraphSummonerModule } from './graph/summoner/summoner.module'
 import { ParticipantsModule } from './sql/participants/participants.module'
 import { PositionsModule } from './sql/positions/positions.module'
 import { RanksModule } from './sql/ranks/ranks.module'
 import { RegionsModule } from './sql/regions/regions.module'
-import { SummonerModule } from './sql/summoners/summoner.module'
+import { SummonerModule as SqlSummonerModule } from './sql/summoners/summoner.module'
 import { ChampionsModule } from './sql/champions/champions.module'
 import { RegionsModule as MongoRegionsModule } from './mongo/regions/regions.module'
 import { MasteriesModule } from './sql/masteries/masteries.module'
@@ -97,7 +97,7 @@ const validation = {
     }),
     AuthModule,
     ChampionsModule,
-    SummonerModule,
+    GraphSummonerModule,
     RanksModule,
     TiersModule,
     DivisionsModule,
@@ -107,7 +107,7 @@ const validation = {
     ParticipantsModule,
     TeamsModule,
     MongoRegionsModule,
-    UserModule,
+    GraphSummonerModule,
     MasteriesModule,
     ChampionsModule
   ],

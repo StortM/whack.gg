@@ -28,8 +28,8 @@ import { SummonerService } from './summoner.service'
 export class SummonerController {
   constructor(private readonly summonerService: SummonerService) {}
 
-  @UseGuards(JwtAuthGuard)
-  @UseGuards(AdminGuard)
+  // endoint is open but only admins can create admin users
+  // TODO: Limit admin creation to only admins
   @Post()
   async create(
     @Body(new ValidationPipe()) createSummonerDto: CreateSummonerDto

@@ -1,18 +1,18 @@
 import { Node } from 'neo4j-driver'
 
-export class User {
+export class Summoner {
   constructor(private readonly node: Node) {}
 
   getId(): string {
-    return (<Record<string, any>>this.node.properties).id
+    return (<Record<string, unknown>>this.node.properties).id as string
   }
 
   getPassword(): string {
-    return (<Record<string, any>>this.node.properties).password
+    return (<Record<string, unknown>>this.node.properties).password as string
   }
 
   getClaims() {
-    const { username, email, bio, image } = <Record<string, any>>(
+    const { username, email, bio, image } = <Record<string, unknown>>(
       this.node.properties
     )
 

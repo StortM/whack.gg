@@ -9,23 +9,23 @@ import {
   UseGuards
 } from '@nestjs/common'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'
-import { User } from '../entities/user.entity'
-import { UserService } from '../graph.service'
+import { Summoner } from '../summoner/entities/summoner.entity'
+import { SummonerService } from '../summoner/summoner.service'
 
-@Controller('profiles')
-export class ProfileController {
-  constructor(private readonly userService: UserService) {}
+@Controller('/graph/participants')
+export class ParticipantController {
+  constructor(private readonly summonerService: SummonerService) {}
 
-  @UseGuards(JwtAuthGuard)
+  /*   @UseGuards(JwtAuthGuard)
   @Get('/:username')
   async getIndex(@Request() request: any, @Param('username') username: string) {
-    const user = await this.userService.findByUsername(username)
+    const user = await this.summonerService.findBySummonerName(username)
 
     if (!user) throw new NotFoundException(`User ${username} not found`)
 
-    const following = await this.userService.isFollowing(
+    const following = await this.summonerService.isFollowing(
       user,
-      <User>request.user
+      <Summoner>request.user
     )
 
     return {
@@ -42,7 +42,7 @@ export class ProfileController {
     @Request() request: any,
     @Param('username') username: string
   ) {
-    const user = await this.userService.follow(request.user, username)
+    const user = await this.summonerService.follow(request.user, username)
 
     if (!user) throw new NotFoundException(`User ${username} not found`)
 
@@ -60,7 +60,7 @@ export class ProfileController {
     @Request() request: any,
     @Param('username') username: string
   ) {
-    const user = await this.userService.unfollow(request.user, username)
+    const user = await this.summonerService.unfollow(request.user, username)
 
     if (!user) throw new NotFoundException(`User ${username} not found`)
 
@@ -70,5 +70,5 @@ export class ProfileController {
         following: false
       }
     }
-  }
+  } */
 }
