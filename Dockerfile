@@ -19,5 +19,5 @@ RUN ["npm", "run", "build"]
 
 FROM test as production
 RUN ["npm", "ci", "--only=production"]
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start:prod"]
 
