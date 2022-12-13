@@ -69,19 +69,54 @@ export class ParticipantsService {
       })
   }
 
-  findAll() {
-    return `This action returns all participants`
+  async findAll(): Promise<ParticipantNode[]> {
+    return this.neo4jService
+      .read(
+        `
+            MATCH (p:Participant)
+            RETURN p
+        `
+      )
+      .then((res) =>
+        res.records.map((record) => new ParticipantNode(record.get('p')))
+      )
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} participant`
+  async findOne(id: number): Promise<ParticipantNode> {
+    return await this.neo4jService
+      .read(
+        `
+            MATCH (p:Participant {id: $id})
+            RETURN p
+        `,
+        { id }
+      )
+      .then((res) => new ParticipantNode(res.records[0].get('p')))
   }
 
-  update(id: number, updateParticipantDto: UpdateParticipantDto) {
-    return
+  async update(
+    id: number,
+    updateParticipantDto: UpdateParticipantDto
+  ): Promise<ParticipantNode> {
+    return await this.neo4jService
+      .write(
+        `
+            MATCH (p:Participant {id: $id})
+            SET p += $updateParticipantDto
+            RETURN p
+        `,
+        { id, updateParticipantDto }
+      )
+      .then((res) => new ParticipantNode(res.records[0].get('p')))
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} participant`
+  async remove(id: number): Promise<void> {
+    await this.neo4jService.write(
+      `
+            MATCH (p:Participant {id: $id})
+            DETACH DELETE p
+        `,
+      { id }
+    )
   }
 }

@@ -28,25 +28,34 @@ export class ParticipantsController {
   }
 
   @Get()
-  async findAll() {
-    return this.participantsService.findAll()
+  async findAll(): Promise<Participant[]> {
+    return await this.participantsService
+      .findAll()
+      .then((participants) =>
+        participants.map((participant) => participant.toJson())
+      )
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return this.participantsService.findOne(+id)
+  async findOne(@Param('id') id: string): Promise<Participant> {
+    return await this.participantsService.findOne(+id).then((participant) => {
+      if (!participant) throw new Error('Participant not found')
+      return participant.toJson()
+    })
   }
 
   @Patch(':id')
   async update(
     @Param('id') id: string,
     @Body() updateParticipantDto: UpdateParticipantDto
-  ) {
-    return this.participantsService.update(+id, updateParticipantDto)
+  ): Promise<Participant> {
+    return (
+      await this.participantsService.update(+id, updateParticipantDto)
+    ).toJson()
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string): Promise<void> {
     return this.participantsService.remove(+id)
   }
 }
