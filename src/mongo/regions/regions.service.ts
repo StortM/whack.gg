@@ -24,6 +24,11 @@ export class RegionsService {
     return await this.regionModel.findById(id).exec()
   }
 
+  async findFromRegionName(name: string): Promise<Region | null> {
+    // assume that there are no duplicate region names, so we can just return the first one
+    return await this.regionModel.findOne({ name }).exec()
+  }
+
   async update(
     id: string,
     updateRegionDto: UpdateRegionDto

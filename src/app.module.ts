@@ -11,7 +11,7 @@ import { AppService } from './app.service'
 import { AuthModule } from './sql/auth/auth.module'
 import { DivisionsModule } from './sql/divisions/divisions.module'
 import { GameModesModule } from './sql/game-modes/game-modes.module'
-import { UserModule } from './graph/graph.module'
+// import { UserModule } from './graph/graph.module'
 import { ParticipantsModule } from './sql/participants/participants.module'
 import { PositionsModule } from './sql/positions/positions.module'
 import { RanksModule } from './sql/ranks/ranks.module'
@@ -30,6 +30,7 @@ import { ChampionsModule as MongoChampionsModule } from './mongo/champions/champ
 import { PositionsModule as MongoPositionsModule } from './mongo/positions/positions.module'
 import { SummonerModule as MongoSummonerModule } from './mongo/summoner/summoners.module'
 import { MatchesModule as MongoMatchModule } from './mongo/matches/matches.module'
+import { AuthModule as MongoAuthModule } from './mongo/auth/auth.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -116,7 +117,7 @@ const validation = {
     TeamsModule,
     MongoRegionsModule,
     MongoMasteriesModule,
-    UserModule,
+    // UserModule,
     MasteriesModule,
     ChampionsModule,
     MongoRegionsModule,
@@ -126,7 +127,8 @@ const validation = {
     MongoChampionsModule,
     MongoPositionsModule,
     MongoSummonerModule,
-    MongoMatchModule
+    MongoMatchModule,
+    MongoAuthModule
   ],
   controllers: [AppController],
   providers: [AppService]

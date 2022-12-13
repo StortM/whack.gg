@@ -1,19 +1,39 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator'
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString
+} from 'class-validator'
 import { Mastery } from 'src/mongo/masteries/schemas/masteries.schema'
 import { Rank } from '../schemas/summoners.schema'
 
 export class createSummonerDto {
   @IsNotEmpty()
   @IsString()
-  name!: string
+  summonerName!: string
 
+  @IsString()
+  @IsNotEmpty()
+  password!: string
+
+  @IsBoolean()
+  @IsNotEmpty()
+  isAdmin!: boolean
+
+  @IsString()
+  @IsOptional()
+  regionName?: string
+
+  @IsOptional()
   @IsNumber()
-  level!: number
+  level?: number
 
+  @IsOptional()
   @IsNumber()
-  icon!: number
+  icon?: number
 
-  rank!: Rank[]
+  rank?: Rank[]
 
-  masteries!: Mastery[]
+  masteries?: Mastery[]
 }

@@ -12,40 +12,43 @@ import {
 } from '@nestjs/common'
 import { createSummonerDto } from './dto/create-summoner.dto'
 import { SummonersService } from './summoners.service'
-import { Summoner } from './schemas/summoners.schema'
+import {
+  Summoner,
+  SummonerOmittingPasswordHash
+} from './schemas/summoners.schema'
 import { updateSummonerDto } from './dto/update-summoner.dto'
 import { Mastery } from '../masteries/schemas/masteries.schema'
 
-// import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
-// import { AdminGuard } from 'src/sql/auth/admin.guard'
+import { JwtAuthGuard } from './../auth/jwt-auth.guard'
+import { AdminGuard } from './../auth/admin.guard'
 
 @Controller('mongo-summoners')
 export class SummonerController {
   constructor(private readonly summonersService: SummonersService) {}
 
-  // @UseGuards(JwtAuthGuard)
-  // @UseGuards(AdminGuard)
   @Post()
   async create(
     @Body(new ValidationPipe()) createSummonerDto: createSummonerDto
-  ): Promise<Summoner | null> {
+  ): Promise<SummonerOmittingPasswordHash | null> {
     return this.summonersService.create(createSummonerDto)
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll(): Promise<Summoner[] | null> {
     return this.summonersService.findAll()
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Summoner | null> {
+  findOne(
+    @Param('id') id: string
+  ): Promise<SummonerOmittingPasswordHash | null> {
     return this.summonersService.findOne(id)
   }
 
-  // @UseGuards(JwtAuthGuard)
-  // @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -54,8 +57,8 @@ export class SummonerController {
     return this.summonersService.update(id, updateRegionDto)
   }
 
-  // @UseGuards(JwtAuthGuard)
-  // @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.summonersService.remove(id)
