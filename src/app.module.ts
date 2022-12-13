@@ -11,7 +11,7 @@ import { AppService } from './app.service'
 import { ParticipantsModule as GraphParticipantsModule } from './graph/participants/participants.module'
 import { SummonerModule as GraphSummonerModule } from './graph/summoner/summoner.module'
 import { RegionsModule as MongoRegionsModule } from './mongo/regions/regions.module'
-import { AuthModule } from './sql/auth/auth.module'
+import { AuthModule as SqlGraphModule } from './sql/auth/auth.module'
 import { ChampionsModule as SqlChampionsModule } from './sql/champions/champions.module'
 import { DivisionsModule } from './sql/divisions/divisions.module'
 import { GameModesModule } from './sql/game-modes/game-modes.module'
@@ -22,6 +22,7 @@ import { RanksModule } from './sql/ranks/ranks.module'
 import { RegionsModule } from './sql/regions/regions.module'
 import { TeamsModule } from './sql/teams/teams.module'
 import { TiersModule } from './sql/tiers/tiers.module'
+import { AuthModule as GraphAuthModule } from './graph/auth/auth.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -47,10 +48,7 @@ const validation = {
     NEO4J_URI: Joi.string().required(),
     NEO4J_SCHEME: Joi.string().required(),
     NEO4J_PORT: Joi.number().required(),
-    NEO4J_HOST: Joi.string().required(),
-    HASH_ROUNDS: Joi.number().required(),
-    JWT_SECRET: Joi.string().required(),
-    JWT_EXPIRES_IN: Joi.string().required()
+    NEO4J_HOST: Joi.string().required()
   })
 }
 
@@ -95,7 +93,7 @@ const validation = {
       }),
       inject: [ConfigService]
     }),
-    AuthModule,
+    SqlGraphModule,
     SqlChampionsModule,
     GraphSummonerModule,
     RanksModule,
@@ -109,7 +107,8 @@ const validation = {
     MongoRegionsModule,
     GraphSummonerModule,
     MasteriesModule,
-    GraphParticipantsModule
+    GraphParticipantsModule,
+    GraphAuthModule
   ],
   controllers: [AppController],
   providers: [AppService]

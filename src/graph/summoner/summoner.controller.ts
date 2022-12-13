@@ -8,7 +8,6 @@ import {
   Patch,
   Post
 } from '@nestjs/common'
-import { AuthService } from '../auth/auth.service'
 import { CreateSummonerDto } from './dto/create-sumoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
 import {
@@ -19,10 +18,7 @@ import { SummonerService } from './summoner.service'
 
 @Controller('graph/summoners')
 export class SummonerController {
-  constructor(
-    private readonly summonerService: SummonerService,
-    private readonly authService: AuthService
-  ) {}
+  constructor(private readonly summonerService: SummonerService) {}
 
   // endoint is open but only admins can create admin users
   // TODO: Limit admin creation to only admins

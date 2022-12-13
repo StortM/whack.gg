@@ -33,7 +33,7 @@ import { SummonerService } from './summoner.service'
     CryptService
   ],
   controllers: [SummonerController],
-  exports: []
+  exports: [SummonerService]
 })
 export class SummonerModule implements OnModuleInit {
   constructor(private readonly neo4jService: Neo4jService) {}

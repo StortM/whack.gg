@@ -36,9 +36,9 @@ export class SummonerNode {
     }
   }
 
-  toJson(): SummonerOmittingPasswordHash {
+  toJson(): Summoner {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { passwordHash, level, icon, ...rest } = <Record<string, unknown>>(
+    const { level, icon, ...rest } = <Record<string, unknown>>(
       this.node.properties
     )
 
@@ -46,6 +46,6 @@ export class SummonerNode {
       icon: icon || null,
       level: level || null,
       ...rest
-    } as SummonerOmittingPasswordHash
+    } as Summoner
   }
 }
