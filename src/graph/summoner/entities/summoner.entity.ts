@@ -22,20 +22,6 @@ export class SummonerNode {
     return (<Record<string, unknown>>this.node.properties).password as string
   }
 
-  getClaims(): Record<string, unknown> {
-    const { username, email, bio, image } = <Record<string, unknown>>(
-      this.node.properties
-    )
-
-    return {
-      sub: username,
-      username,
-      email,
-      bio,
-      image: image || 'https://picsum.photos/200'
-    }
-  }
-
   toJson(): Summoner {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { level, icon, ...rest } = <Record<string, unknown>>(

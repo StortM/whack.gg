@@ -6,7 +6,7 @@ export class Region {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column()
+  @Column({ unique: true })
   name!: string
 
   @OneToMany(() => Summoner, (summoner) => summoner.region)

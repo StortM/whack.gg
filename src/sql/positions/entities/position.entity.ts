@@ -6,7 +6,7 @@ export class Position {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column()
+  @Column({ unique: true })
   name!: string
 
   @OneToMany(() => Participant, (participant) => participant.position)

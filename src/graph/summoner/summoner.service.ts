@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { Neo4jService } from 'nest-neo4j/dist'
-import { CryptService } from 'src/sql/crypt/crypt.service'
+import { CryptService } from 'src/crypt/crypt.service'
 import { CreateSummonerDto } from './dto/create-sumoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
 import { SummonerNode } from './entities/summoner.entity'

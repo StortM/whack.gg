@@ -1,8 +1,14 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
+import {
+  Body,
+  HttpException,
+  HttpStatus,
+  Injectable,
+  ValidationPipe
+} from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { CryptService } from 'src/sql/crypt/crypt.service'
+import { CryptService } from 'src/crypt/crypt.service'
 import { RegionsService } from 'src/sql/regions/regions.service'
-import { Repository } from 'typeorm'
+import { FindOneOptions, Repository } from 'typeorm'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
 import {
@@ -31,6 +37,7 @@ export class SummonerService {
   }
 
   async create(
+    @Body(new ValidationPipe())
     createSummonerDto: CreateSummonerDto
   ): Promise<SummonerOmittingPasswordHash | undefined> {
     const { password, regionName, ...rest } = createSummonerDto
@@ -70,13 +77,14 @@ export class SummonerService {
     })
   }
 
-  async findOne(id: number): Promise<SummonerOmittingPasswordHash | undefined> {
-    const summoner = await this.summonerRepository.findOne(id)
+  async findOne(
+    id: number,
+    options?: FindOneOptions
+  ): Promise<SummonerOmittingPasswordHash | undefined> {
+    const summoner = await this.summonerRepository.findOne(id, options)
 
     if (!summoner) {
       throw new HttpException('Not found', HttpStatus.NOT_FOUND)
-
-      return undefined
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

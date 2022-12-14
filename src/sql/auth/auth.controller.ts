@@ -16,8 +16,6 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req: AuthenticatedRequest): Promise<LoginResponse> {
-    console.log('req', req.body)
-
     return this.authService.login({
       ...req.user,
       summonerName: req.user.summonerName.toLowerCase() // Case-insentitive compare.
