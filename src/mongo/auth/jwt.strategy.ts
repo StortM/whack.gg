@@ -9,7 +9,7 @@ export type JwtAuthenticatedRequest = Request & {
   summoner: SummonerOmittingPasswordHash
 }
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy, 'mongo-jwt') {
   constructor(
     configService: ConfigService,
     private summonerService: SummonersService

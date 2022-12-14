@@ -1,11 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import { HydratedDocument, LeanDocument } from 'mongoose'
+import { HydratedDocument } from 'mongoose'
 
 export type SummonerDocument = HydratedDocument<Summoner>
 
 export type SummonerOmittingPasswordHash = Omit<Summoner, 'passwordHash'>
-
-export type LeanSummonerDocument = LeanDocument<Summoner>
 
 export class Rank {
   gameMode!: string

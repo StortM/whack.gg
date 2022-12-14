@@ -7,10 +7,10 @@ import { AuthController } from './auth.controller'
 import { AuthService } from './auth.service'
 import { JwtStrategy } from './jwt.strategy'
 import { LocalStrategy } from './local.strategy'
+import { forwardRef } from '@nestjs/common/utils'
 
 @Module({
   imports: [
-    SummonerModule,
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -19,7 +19,8 @@ import { LocalStrategy } from './local.strategy'
         signOptions: { expiresIn: '24h' }
       }),
       inject: [ConfigService]
-    })
+    }),
+    forwardRef(() => SummonerModule)
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy, ConfigService],
   exports: [AuthService, JwtModule],

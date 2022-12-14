@@ -1,7 +1,7 @@
 import { Model } from 'mongoose'
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
-import { LeanSummonerDocument, Summoner } from './schemas/summoners.schema'
+import { Summoner } from './schemas/summoners.schema'
 import { SummonerOmittingPasswordHash } from './schemas/summoners.schema'
 import { SummonerDocument } from './schemas/summoners.schema'
 import { createSummonerDto } from './dto/create-summoner.dto'
@@ -54,7 +54,7 @@ export class SummonersService {
   }
 
   async findOne(id: string): Promise<SummonerOmittingPasswordHash | null> {
-    return await this.summonerModel.findById(id).exec()
+    return await this.summonerModel.findById(id).lean().exec()
   }
 
   async update(
