@@ -47,7 +47,6 @@ describe('/summoner', () => {
       await request(app.getHttpServer())
         .post('/auth/login')
         .send({ summonerName: regularSummoner.summonerName, password })
-        .expect(201)
     ).body.accessToken
 
     const adminPassword = 'adminpassword'
@@ -71,6 +70,7 @@ describe('/summoner', () => {
 
   describe('POST /summoner', () => {
     it('Can POST a summoner from a valid dto', async () => {
+      // Arrange
       const createSummonerDto = await factory(CreateSummonerDto)({
         summonerName: 'testsummoner',
         password: 'password',
@@ -79,6 +79,7 @@ describe('/summoner', () => {
         regionName: 'EUW'
       }).make()
 
+      // Act
       const result = await request(app.getHttpServer())
         .post(endpoint)
         .send(createSummonerDto)
@@ -88,13 +89,19 @@ describe('/summoner', () => {
         relations: ['region']
       })
 
-      expect(result.body).toBeDefined()
-      expect(result.body.summonerName).toEqual(createSummonerDto.summonerName)
-      expect(result.body.level).toEqual(createSummonerDto.level)
-      expect(result.body.icon).toEqual(createSummonerDto.icon)
-      expect(summoner?.region?.name).toEqual(createSummonerDto.regionName)
+      // Assert
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { id, rankId, participants, masteries, regionId, region, ...rest } =
+        result.body
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { password, ...createSummonerDtoNoPassword } = createSummonerDto
+
+      expect({ ...rest, regionName: summoner?.region?.name }).toEqual(
+        createSummonerDtoNoPassword
+      )
     })
-    it('Can not POST a summoner in a region that does not exist', async () => {
+    it('Can not POST a summoner without a region', async () => {
       const createSummonerDto = await factory(CreateSummonerDto)({
         summonerName: 'testsummoner',
         password: 'password',
