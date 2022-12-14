@@ -43,7 +43,7 @@ export class SummonerController {
     return await this.summonerService.findAll()
   }
 
-  @Get(':name')
+  @Get('rank/:name')
   async getFullRank(
     @Param('name') name: string
   ): Promise<SummonerWithFullRank | undefined> {
