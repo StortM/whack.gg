@@ -8,6 +8,7 @@ import { Neo4jConfig, Neo4jModule } from 'nest-neo4j/dist'
 import { ConnectionOptions, getConnectionOptions } from 'typeorm'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
+import { AuthModule as GraphAuthModule } from './graph/auth/auth.module'
 import { ParticipantsModule as GraphParticipantsModule } from './graph/participants/participants.module'
 import { SummonerModule as GraphSummonerModule } from './graph/summoner/summoner.module'
 import { RegionsModule as MongoRegionsModule } from './mongo/regions/regions.module'
@@ -22,7 +23,6 @@ import { RanksModule } from './sql/ranks/ranks.module'
 import { RegionsModule } from './sql/regions/regions.module'
 import { TeamsModule } from './sql/teams/teams.module'
 import { TiersModule } from './sql/tiers/tiers.module'
-import { AuthModule as GraphAuthModule } from './graph/auth/auth.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
