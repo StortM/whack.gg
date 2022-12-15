@@ -1,5 +1,5 @@
 import { IsNumber } from 'class-validator'
-import { Summoner } from 'src/mongo/summoner/schemas/summoners.schema'
+import { Summoner } from './../../summoner/schemas/summoners.schema'
 
 export class CreateMasteryDto {
   @IsNumber()
