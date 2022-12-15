@@ -43,9 +43,6 @@ NEO4J_URI=bolt://neo:7687
 NEO4J_SCHEME=neo4j
 NEO4J_PORT=7687
 NEO4J_HOST=neo
-HASH_ROUNDS=10
-JWT_SECRET=mySecret
-JWT_EXPIRES_IN=30d
 ```
 
 ## Configuring Local Development Environment
