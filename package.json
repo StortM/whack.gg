@@ -36,7 +36,6 @@
   "dependencies": {
     "@apollo/gateway": "^2.2.1",
     "@apollo/server": "^4.2.1",
-    "@faker-js/faker": "^7.6.0",
     "@neo4j/graphql": "^3.12.2",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^1.0.1",

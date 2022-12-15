@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import * as faker from 'faker'
 import { define } from 'typeorm-seeding'
 import { Region } from '../regions/entities/region.entity'
 

@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import * as faker from 'faker'
 import { Mastery } from 'src/sql/masteries/entities/mastery.entity'
 import { Rank } from 'src/sql/ranks/entities/rank.entity'
 import { define } from 'typeorm-seeding'
