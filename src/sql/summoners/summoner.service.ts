@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { CryptService } from 'src/sql/crypt/crypt.service'
+import { CryptService } from 'src/crypt/crypt.service'
 import { RegionsService } from 'src/sql/regions/regions.service'
 import { Repository } from 'typeorm'
 import { CreateSummonerDto } from './dto/create-summoner.dto'

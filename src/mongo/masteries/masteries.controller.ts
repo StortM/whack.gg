@@ -11,8 +11,8 @@ import {
   HttpStatus
 } from '@nestjs/common'
 import { Mastery } from './schemas/masteries.schema'
-import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
-import { AdminGuard } from 'src/sql/auth/admin.guard'
+import { JwtAuthGuard } from './../auth/jwt-auth.guard'
+import { AdminGuard } from './../auth/admin.guard'
 import { MasteriesService } from './masteries.service'
 import { CreateMasteryDto } from './dto/create-mastery.dto'
 import { UpdateMasteryDto } from './dto/update-mastery.dto'
@@ -21,8 +21,8 @@ import { UpdateMasteryDto } from './dto/update-mastery.dto'
 export class MasteriesController {
   constructor(private readonly masteriesService: MasteriesService) {}
 
-  // @UseGuards(JwtAuthGuard)
-  // @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuard)
   @Post()
   async create(
     @Body() createMasteryDto: CreateMasteryDto

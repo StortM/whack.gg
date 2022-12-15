@@ -9,7 +9,8 @@ export class eventDailyMatches1669899511813 implements MigrationInterface {
         DECLARE
             matches_played int;
         BEGIN
-            matches_played := (SELECT COUNT(*) FROM match WHERE to_timestamp(1664189971916 / 1000)::date = now());
+            matches_played := (SELECT COUNT(*) FROM match WHERE 
+            to_timestamp(match."gameCreation" / 1000)::date = now());
             INSERT INTO audit_matches VALUES(0, matches_played, now()::date);
             COMMIT;
         END;$$

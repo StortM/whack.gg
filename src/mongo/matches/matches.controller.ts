@@ -6,17 +6,17 @@ import {
   Patch,
   Param,
   Delete,
-  UseGuards,
-  ValidationPipe
+  UseGuards
 } from '@nestjs/common'
-import { MatchesService } from './matches.service'
 import { CreateMatchDto } from './dto/create-match.dto'
 import { UpdateMatchDto } from './dto/update-match.dto'
-import { Match } from './entities/match.entity'
-import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
-import { AdminGuard } from 'src/sql/auth/admin.guard'
+import { MatchesService } from './matches.service'
+import { Match } from './schema/matches.schema'
 
-@Controller('matches')
+import { JwtAuthGuard } from './../auth/jwt-auth.guard'
+import { AdminGuard } from './../auth/admin.guard'
+
+@Controller('mongo-matches')
 export class MatchesController {
   constructor(private readonly matchesService: MatchesService) {}
 
@@ -24,9 +24,9 @@ export class MatchesController {
   @UseGuards(AdminGuard)
   @Post()
   create(
-    @Body(new ValidationPipe()) createMatchDto: CreateMatchDto
+    @Body() createPositionDto: CreateMatchDto
   ): Promise<Match | undefined> {
-    return this.matchesService.create(createMatchDto)
+    return this.matchesService.create(createPositionDto)
   }
 
   @UseGuards(JwtAuthGuard)
@@ -37,7 +37,7 @@ export class MatchesController {
 
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Match | undefined> {
+  findOne(@Param('id') id: string): Promise<Match | null> {
     return this.matchesService.findOne(id)
   }
 
@@ -46,15 +46,15 @@ export class MatchesController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateMatchDto: UpdateMatchDto
-  ): Promise<Match | undefined> {
-    return this.matchesService.update(id, updateMatchDto)
+    @Body() updatePositionDto: UpdateMatchDto
+  ): Promise<Match | null> {
+    return this.matchesService.update(id, updatePositionDto)
   }
 
   @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
-    return this.matchesService.remove(+id)
+    return this.matchesService.remove(id)
   }
 }

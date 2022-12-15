@@ -1,4 +1,4 @@
-import { CryptService } from 'src/sql/crypt/crypt.service'
+import { CryptService } from 'src/crypt/crypt.service'
 import { Connection } from 'typeorm'
 import { Factory, Seeder } from 'typeorm-seeding'
 import { Summoner } from '../summoner.entity'
