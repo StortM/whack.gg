@@ -9,6 +9,7 @@ import { Region, RegionSchema } from './schemas/regions.schema'
     MongooseModule.forFeature([{ name: Region.name, schema: RegionSchema }])
   ],
   controllers: [RegionsController],
-  providers: [RegionsService]
+  providers: [RegionsService],
+  exports: [RegionsService]
 })
 export class RegionsModule {}

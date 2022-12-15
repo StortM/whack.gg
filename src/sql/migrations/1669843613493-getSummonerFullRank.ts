@@ -10,7 +10,8 @@ export class getSummonerFullRank1669843613493 implements MigrationInterface {
      LANGUAGE plpgsql    
      AS $$
      BEGIN		 
-		RETURN QUERY SELECT summoner."summonerName", GetFullSummonerRank(division.name, tier.value), rank.lp
+		RETURN QUERY SELECT summoner."summonerName", 
+    GetFullSummonerRank(division.name, tier.value), rank.lp
 		    FROM summoner
 			JOIN rank on summoner."rankId" = rank.id
             JOIN tier on rank."tierId" = tier.Id

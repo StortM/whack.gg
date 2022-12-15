@@ -3,8 +3,8 @@ import { SummonerService } from './summoner.service'
 import { SummonerController } from './summoner.controller'
 import { Summoner } from './entities/summoner.entity'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { RegionsModule } from 'src/sql/regions/regions.module'
 import { CryptService } from 'src/crypt/crypt.service'
+import { RegionsModule } from 'src/sql/regions/regions.module'
 import { AuthModule } from '../auth/auth.module'
 
 @Module({
