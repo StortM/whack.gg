@@ -1,6 +1,9 @@
 import { CryptService } from './crypt.service'
 
 export class MockCryptService implements CryptService {
+  hashSync(input: string): string {
+    return `hashed-${input}`
+  }
   async hash(input: string): Promise<string> {
     return `hashed-${input}`
   }

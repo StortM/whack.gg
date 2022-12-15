@@ -2,22 +2,36 @@ import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { PassportStrategy } from '@nestjs/passport'
 import { ExtractJwt, Strategy } from 'passport-jwt'
-import { User } from '../entities/user.entity'
-import { UserService } from '../graph.service'
+import { SummonerOmittingPasswordHash } from '../summoner/entities/summoner.entity'
+import { SummonerService } from '../summoner/summoner.service'
 
+export type JwtAuthenticatedRequest = Request & {
+  summoner: SummonerOmittingPasswordHash
+}
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy, 'graph-jwt') {
   constructor(
-    private readonly configService: ConfigService,
-    private readonly userService: UserService
+    configService: ConfigService,
+    private summonerService: SummonerService
   ) {
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Token'),
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: configService.get('JWT_SECRET')
+      secretOrKey: configService.get('TOKEN_SECRET')
     })
   }
-  async validate(payload: any): Promise<User | undefined> {
-    return this.userService.findByEmail(payload.email)
+
+  async validate(payload: {
+    sub: string
+    summonerName: string
+  }): Promise<SummonerOmittingPasswordHash | undefined> {
+    const summoner = await this.summonerService.findOne(parseInt(payload.sub))
+    if (summoner) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { passwordHash, ...rest } = summoner.toJson()
+      return { ...rest }
+    }
+
+    return
   }
 }

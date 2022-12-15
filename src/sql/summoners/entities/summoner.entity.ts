@@ -24,7 +24,7 @@ export class Summoner {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column()
+  @Column({ unique: true })
   summonerName!: string
 
   @Column()
@@ -44,7 +44,7 @@ export class Summoner {
 
   @ManyToOne(() => Region, (region) => region.summoners, { cascade: true })
   @JoinColumn([{ name: 'regionId' }])
-  region!: Region
+  region?: Region
 
   @Column({ nullable: true })
   rankId!: number | null
@@ -53,11 +53,11 @@ export class Summoner {
     cascade: true
   })
   @JoinColumn([{ name: 'rankId' }])
-  rank!: Rank
+  rank?: Rank
 
   @OneToMany(() => Participant, (participant) => participant.summoner)
-  participants!: Participant
+  participants?: Participant
 
   @OneToMany(() => Mastery, (mastery) => mastery.summoner)
-  masteries!: Mastery[]
+  masteries?: Mastery[]
 }

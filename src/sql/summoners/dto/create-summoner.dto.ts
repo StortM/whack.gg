@@ -1,9 +1,11 @@
 import { Type } from 'class-transformer'
 import {
   IsBoolean,
+  IsInt,
   IsNotEmpty,
   IsNumber,
   IsOptional,
+  IsPositive,
   IsString,
   MinLength
 } from 'class-validator'
@@ -22,10 +24,14 @@ export class CreateSummonerDto {
 
   @IsNumber()
   @IsNotEmpty()
+  @IsPositive()
+  @IsInt()
   level!: number
 
   @IsNumber()
   @IsNotEmpty()
+  @IsInt()
+  @IsPositive()
   icon!: number
 
   @IsString()
@@ -33,6 +39,13 @@ export class CreateSummonerDto {
   regionName!: string
 
   @IsNotEmpty()
+  // string
+  // 0
+  // null
+  // undefined
+
+  // true
+  // false
   @IsBoolean()
   isAdmin!: boolean
 

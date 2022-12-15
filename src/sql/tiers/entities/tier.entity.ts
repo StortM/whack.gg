@@ -6,7 +6,7 @@ export class Tier {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column()
+  @Column({ unique: true })
   value!: string
 
   @OneToMany(() => Rank, (rank) => rank.tier)

@@ -8,7 +8,7 @@ export class GameMode {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column()
+  @Column({ unique: true })
   @Length(1, 45)
   name!: string
 

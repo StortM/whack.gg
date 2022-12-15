@@ -1,5 +1,5 @@
 import { Controller, Post, Request, UseGuards } from '@nestjs/common'
-import { SummonerOmittingPasswordHash } from 'src/sql/summoners/entities/summoner.entity'
+import { SummonerOmittingPasswordHash } from '../summoner/entities/summoner.entity'
 import { LocalAuthGuard } from './auth-local.guard'
 import { AuthService } from './auth.service'
 import { AuthenticatedRequest } from './local.strategy'
@@ -9,7 +9,7 @@ export interface LoginResponse {
   summoner: SummonerOmittingPasswordHash
 }
 
-@Controller('auth')
+@Controller('graph/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
