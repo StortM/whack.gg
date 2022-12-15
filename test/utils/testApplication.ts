@@ -1,7 +1,6 @@
 import { INestApplication } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import { Summoner } from 'src/sql/summoners/entities/summoner.entity'
-import { SummonerService } from 'src/sql/summoners/summoner.service'
 import { Connection } from 'typeorm'
 import { AppModule } from '../../src/app.module'
 
