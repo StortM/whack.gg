@@ -85,3 +85,13 @@ password: "test3"
 ```
 
 A succesful login attempt will return a JWT token. This token must be included in the `Authorization` header as a bearer token of all subsequent requests.
+
+## Tests
+
+To run the tests, first start up the development server as described above. Next, open a new terminal and enter the container using:
+```bash
+docker-compose exec backend /bin/sh
+```
+
+From here you can run `npm run test` to run all unit tests and `npm run test:integration` to run all integration tests.
+Please note that only the sql related endpoints are tested.
