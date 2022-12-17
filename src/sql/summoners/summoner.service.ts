@@ -1,13 +1,8 @@
-import {
-  Body,
-  HttpException,
-  HttpStatus,
-  Injectable,
-  ValidationPipe
-} from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { CryptService } from 'src/crypt/crypt.service'
 import { RegionsService } from 'src/sql/regions/regions.service'
+import { isValid } from 'src/utils/isValid'
 import { FindOneOptions, Repository } from 'typeorm'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
@@ -37,13 +32,16 @@ export class SummonerService {
   }
 
   async create(
-    @Body(new ValidationPipe())
     createSummonerDto: CreateSummonerDto
   ): Promise<SummonerOmittingPasswordHash | undefined> {
+    const dtoValid = await isValid(CreateSummonerDto, createSummonerDto)
+    if (!dtoValid) return
+
     const { password, regionName, ...rest } = createSummonerDto
 
     // check and fetch region
     const region = await this.regionsService.findFromRegionName(regionName)
+
     if (!region) return undefined
 
     const hash = await this.cryptService.hash(password)
@@ -55,10 +53,7 @@ export class SummonerService {
     }
 
     const savedSummoner = await this.summonerRepository.save(summonerToSave)
-
-    if (!savedSummoner) {
-      return undefined
-    }
+    if (!savedSummoner) return undefined
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...summonerNoPassword } = savedSummoner
@@ -82,10 +77,7 @@ export class SummonerService {
     options?: FindOneOptions
   ): Promise<SummonerOmittingPasswordHash | undefined> {
     const summoner = await this.summonerRepository.findOne(id, options)
-
-    if (!summoner) {
-      throw new HttpException('Not found', HttpStatus.NOT_FOUND)
-    }
+    if (!summoner) return undefined
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...summonerWithoutPasswordHash } = summoner

@@ -34,7 +34,6 @@ export class SummonerController {
   ) {}
 
   // endoint is open but only admins can create admin users
-  // TODO: Limit admin creation to only admins
   @Post()
   async create(
     @Body(new ValidationPipe()) createSummonerDto: CreateSummonerDto,
@@ -56,9 +55,8 @@ export class SummonerController {
     }
 
     const res = await this.summonerService.create(createSummonerDto)
-    if (!res) {
-      throw new HttpException('Not found', HttpStatus.NOT_FOUND)
-    }
+    if (!res) throw new HttpException('Not found', HttpStatus.NOT_FOUND)
+
     return res
   }
 
