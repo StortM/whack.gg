@@ -10,5 +10,5 @@ export class Tier {
   value!: string
 
   @OneToMany(() => Rank, (rank) => rank.tier)
-  ranks!: Rank[]
+  ranks?: Rank[]
 }

@@ -14,7 +14,7 @@ import {
 export type SummonerOmittingPasswordHash = Omit<Summoner, 'passwordHash'>
 
 export type SummonerWithFullRank = {
-  summerName: string
+  summonerName: string
   rank: string
   lp: number
 }

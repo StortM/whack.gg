@@ -25,6 +25,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     sub: string
     summonerName: string
   }): Promise<SummonerOmittingPasswordHash | undefined> {
-    return await this.summonerService.findOne(parseInt(payload.sub))
+    return await this.summonerService.findOne({ id: parseInt(payload.sub) })
   }
 }

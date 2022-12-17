@@ -3,8 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { CryptService } from 'src/crypt/crypt.service'
 import { RegionsService } from 'src/sql/regions/regions.service'
 import { isValid } from 'src/utils/isValid'
+import { UpdateResourceId } from 'src/utils/UpdateResourceId'
 import { FindOneOptions, Repository } from 'typeorm'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
+import { SummonerNameDto } from './dto/summonerNameDto.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
 import {
   Summoner,
@@ -22,13 +24,18 @@ export class SummonerService {
   ) {}
 
   async getSummonerFullRank(
-    summonerName: string
+    getSummonerFullRankDto: SummonerNameDto
   ): Promise<SummonerWithFullRank | undefined> {
+    const dtoValid = await isValid(SummonerNameDto, getSummonerFullRankDto)
+    if (!dtoValid) return
+
     const res = await this.summonerRepository.query(
-      `SELECT getfullsummonerrankbyname('${summonerName}');`
+      `SELECT getfullsummonerrankbyname('${getSummonerFullRankDto.name}');`
     )
 
-    return res
+    if (!res || !res[0]) return undefined
+
+    return res[0].getfullsummonerrankbyname
   }
 
   async create(
@@ -41,7 +48,6 @@ export class SummonerService {
 
     // check and fetch region
     const region = await this.regionsService.findFromRegionName(regionName)
-
     if (!region) return undefined
 
     const hash = await this.cryptService.hash(password)
@@ -73,9 +79,12 @@ export class SummonerService {
   }
 
   async findOne(
-    id: number,
+    id: UpdateResourceId,
     options?: FindOneOptions
   ): Promise<SummonerOmittingPasswordHash | undefined> {
+    const dtoValid = await isValid(UpdateResourceId, id)
+    if (!dtoValid) return
+
     const summoner = await this.summonerRepository.findOne(id, options)
     if (!summoner) return undefined
 
@@ -87,17 +96,25 @@ export class SummonerService {
 
   // only use this for authentication
   async findOneWithPasswordHash(
-    summonerName: string
+    summonerNameDto: SummonerNameDto
   ): Promise<Summoner | undefined> {
+    const dtoValid = await isValid(SummonerNameDto, summonerNameDto)
+    if (!dtoValid) return
+
     return await this.summonerRepository.findOne({
-      summonerName: summonerName.toLowerCase().trim()
+      summonerName: summonerNameDto.name.toLowerCase().trim()
     })
   }
 
   async update(
-    id: number,
+    updateResourceid: UpdateResourceId,
     updateSummonerDto: UpdateSummonerDto
   ): Promise<SummonerOmittingPasswordHash | undefined> {
+    const dtoValid = await isValid(UpdateSummonerDto, updateSummonerDto)
+    const idValid = await isValid(UpdateResourceId, updateResourceid)
+    if (!dtoValid || !idValid) return
+
+    const { id } = updateResourceid
     // fetch existing summoner
     const summoner = await this.summonerRepository.findOne(id)
     if (!summoner) return undefined

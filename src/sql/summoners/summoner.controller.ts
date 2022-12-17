@@ -71,7 +71,7 @@ export class SummonerController {
     @Param('name') name: string
   ): Promise<SummonerWithFullRank | undefined> {
     const summonerWithFullRank = await this.summonerService.getSummonerFullRank(
-      name
+      { name }
     )
 
     if (!summonerWithFullRank) {
@@ -87,7 +87,7 @@ export class SummonerController {
   async findOne(
     @Param('id') id: number
   ): Promise<SummonerOmittingPasswordHash | undefined> {
-    const summoner = await this.summonerService.findOne(id)
+    const summoner = await this.summonerService.findOne({ id })
 
     if (!summoner) {
       throw new HttpException('Not found', HttpStatus.NOT_FOUND)
@@ -104,13 +104,13 @@ export class SummonerController {
     @Body() updateSummonerDto: UpdateSummonerDto,
     @Request() { summoner }: JwtAuthenticatedRequest
   ): Promise<SummonerOmittingPasswordHash | undefined> {
-    const summonerFromDB = await this.summonerService.findOne(id)
+    const summonerFromDB = await this.summonerService.findOne({ id })
 
     // Autorize admins and summoners
     if (!summoner.isAdmin && summoner.id !== summonerFromDB?.id)
       throw new UnauthorizedException()
 
-    return await this.summonerService.update(id, updateSummonerDto)
+    return await this.summonerService.update({ id }, updateSummonerDto)
   }
 
   @UseGuards(JwtAuthGuard)
@@ -120,7 +120,7 @@ export class SummonerController {
     @Param('id') id: number,
     @Request() { summoner }: JwtAuthenticatedRequest
   ): Promise<void> {
-    const summonerFromDB = await this.summonerService.findOne(id)
+    const summonerFromDB = await this.summonerService.findOne({ id })
 
     // Autorize admins and summoners
     if (!summoner.isAdmin && summoner.id !== summonerFromDB?.id)

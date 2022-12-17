@@ -7,6 +7,7 @@ import {
   IsOptional,
   IsPositive,
   IsString,
+  Max,
   MaxLength,
   MinLength,
   Validate
@@ -36,12 +37,14 @@ export class CreateSummonerDto {
   @IsNotEmpty()
   @IsPositive()
   @IsInt()
+  @Max(2147483647)
   level!: number
 
   @IsNumber()
   @IsNotEmpty()
   @IsInt()
   @IsPositive()
+  @Max(2438)
   icon!: number
 
   @IsString()
