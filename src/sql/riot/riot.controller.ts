@@ -3,7 +3,7 @@ import { SummonerOmittingPasswordHash } from '../summoners/entities/summoner.ent
 import { FetchSummonerDto } from './dto/fetch-summoner.dto'
 import { RiotService } from './riot.service'
 
-@Controller('riot')
+@Controller('/sql/riot')
 export class RiotController {
   constructor(private readonly riotService: RiotService) {}
 

@@ -4,7 +4,7 @@ import { getRepositoryToken } from '@nestjs/typeorm'
 import { AppModule } from 'src/app.module'
 import { UpdateResourceId } from 'src/utils/UpdateResourceId'
 import { Connection, Repository } from 'typeorm'
-import { factory, useSeeding } from 'typeorm-seeding'
+import { factory, tearDownDatabase, useSeeding } from 'typeorm-seeding'
 import { Division } from '../divisions/entities/division.entity'
 import { GameMode } from '../game-modes/entities/game-mode.entity'
 import { Rank } from '../ranks/entities/rank.entity'
@@ -39,7 +39,7 @@ describe('Summoner service', () => {
     app = module.createNestApplication()
 
     await app.init()
-    useSeeding()
+    await useSeeding()
   })
 
   beforeEach(async () => {
@@ -78,6 +78,7 @@ describe('Summoner service', () => {
     const connection = app.get(Connection)
     await connection.dropDatabase()
     await connection.synchronize(true)
+
     module.close()
   })
 
@@ -137,7 +138,7 @@ describe('Summoner service', () => {
     }
   ]
 
-  describe.each(summonerNameTestValues)('create() - SummonerName', (value) => {
+  describe.each(summonerNameTestValues)('create - SummonerName', (value) => {
     it(`will return correct value for ${value.summonerName}`, async () => {
       defaultSummonerDto.summonerName = value.summonerName as unknown as string
 

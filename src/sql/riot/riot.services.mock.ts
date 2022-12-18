@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import { isValid } from 'src/utils/isValid'
 import { SummonerOmittingPasswordHash } from '../summoners/entities/summoner.entity'
 import { FetchSummonerDto } from './dto/fetch-summoner.dto'
 import { IRiotService } from './riot.service'
@@ -18,6 +19,9 @@ export class MockRiotService implements IRiotService {
   async createSummonerFromName(
     fetchSummonerDto: FetchSummonerDto
   ): Promise<SummonerOmittingPasswordHash | undefined> {
+    const dtoValid = await isValid(FetchSummonerDto, fetchSummonerDto)
+    if (!dtoValid) return
+
     return {
       id: 1,
       summonerName: fetchSummonerDto.summonerName,
