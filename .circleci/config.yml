@@ -67,7 +67,7 @@ jobs:
 
       - run:
           name: docker up
-          command: npm run docker:exec
+          command: npm run docker:build
 
       - run:
           name: Run tests
