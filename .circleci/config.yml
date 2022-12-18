@@ -11,6 +11,7 @@ orbs:
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
 
+
   build-and-test:
     # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -24,21 +25,22 @@ jobs:
       - checkout
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
       # The orb install-packages step will also automatically cache them for faster future runs.
-      
+      - node/install-packages:
+          # If you are using yarn, change the line below from "npm" to "yarn"
+          pkg-manager: npm
 
       - run:
-          name: Start PostgreSQL container
-          command: |
-            docker-compose up -d
+          name: Run lint
+          command: npm run lint
+      - run: 
+          name: copy .env.ci ->
+          command: cp .env.ci .env
+      - run:
+          name : run docker up
+          command: docker-compose up --build 
       - run:
           name: Run tests
-          command: |
-            # Replace this with your test command
-            pytest
-      - run:
-          name: Stop PostgreSQL container
-          command: |
-            docker-compose down
+          command: npm test
 
 workflows:
   # Below is the definition of your workflow.
