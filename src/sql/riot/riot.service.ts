@@ -7,8 +7,18 @@ import { SummonerService } from '../summoners/summoner.service'
 import { FetchSummonerDto } from './dto/fetch-summoner.dto'
 import { RegionCodes, RegionName, RiotSummoner } from './riot.types'
 
+export interface IRiotService {
+  createSummonerFromName(
+    fetchSummonerDto: FetchSummonerDto
+  ): Promise<SummonerOmittingPasswordHash | undefined>
+  fetchSummonerByName(
+    summonerName: string,
+    region: string
+  ): Promise<RiotSummoner>
+}
+
 @Injectable()
-export class RiotService {
+export class RiotService implements IRiotService {
   private riotApiKey
 
   constructor(
