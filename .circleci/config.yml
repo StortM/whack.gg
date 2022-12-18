@@ -2,6 +2,13 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+services:
+  postgres:
+    image: postgres:13
+    env:
+      POSTGRES_PASSWORD: pass
+      POSGRES_USER: user
+      POSTGRES: db
 orbs:
   # The Node.js orb contains a set of prepackaged CircleCI configuration you can utilize
   # Orbs reduce the amount of configuration required for common tasks.
@@ -27,8 +34,8 @@ jobs:
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
       - run:
-        name: install dependencies
-        command: npm ci
+          name: Run tests
+          command: npm test
 
 workflows:
   # Below is the definition of your workflow.
