@@ -9,25 +9,20 @@ orbs:
   node: circleci/node@4.7
 
 jobs:
-  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
- build-docker:
-    # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
-    # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
-    docker:
-      - image: circle/posgres:13
-    # Then run your tests!
-    # CircleCI will report the results back to your VCS provider.
-    steps:
-      # Checkout the code as the first step.
-      - checkout
-      # Next, the node orb's install-packages step will install the dependencies from a package.json.
-      # The orb install-packages step will also automatically cache them for faster future runs.
+  build: # name of your job
+    docker: # executor type
+      - image: cimg/base:stable # primary container will run the latest, production-ready base image
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
 
-      - run:
-          name: Run docker
-          command: echo test
-  
+    steps:
+        # Commands run in the primary container
+
+
+jobs:
+  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
+
   build-and-test:
     # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -64,6 +59,5 @@ workflows:
   sample:
     jobs:
       - build-and-test
-      - build-docker
       # For running simple node tests, you could optionally use the node/test job from the orb to replicate and replace the job above in fewer lines.
       # - node/test
