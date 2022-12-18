@@ -9,6 +9,8 @@ services:
       POSTGRES_PASSWORD: pass
       POSGRES_USER: user
       POSTGRES: db
+    ports:
+      - 5432:5432
 orbs:
   # The Node.js orb contains a set of prepackaged CircleCI configuration you can utilize
   # Orbs reduce the amount of configuration required for common tasks.
