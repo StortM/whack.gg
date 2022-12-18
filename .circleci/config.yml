@@ -10,15 +10,8 @@ jobs:
       POSTGRES_DB: db
     steps:
       - checkout
-      - run: docker build . -t kvalifik/kvalifik-image --target=test
-      - run: cp .env.ci .env
-      - run: docker run --env-file=.env --net=host kvalifik/kvalifik-image npm run lint
-      - run: docker run --env-file=.env --net=host kvalifik/kvalifik-image npm run build
-      - run: |
-          docker run --env-file=.env --net=host kvalifik/kvalifik-image npx typeorm migration:run
-          docker run --env-file=.env --net=host kvalifik/kvalifik-image npx typeorm schema:log | grep "Your schema is up to date"
-      - run: docker run --env-file=.env --net=host kvalifik/kvalifik-image npm run test
-      - run: docker run --env-file=.env --net=host kvalifik/kvalifik-image npm run test:e2e
+      - setup_remote_docker:
+        version: 20.10.14
 
 services:
   postgres:
