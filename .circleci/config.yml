@@ -13,9 +13,11 @@ jobs:
   build:
     docker:
       - image: circleci/postgres:13
-      auth: 
-        username: mydockerhub-user
-        password: $DOCKERHUB_PASSWORD
+      - env:
+        - POSTGRES_PASSWORD: pass
+              POSTGRES_USER: user
+              POSTGRES_DB: db
+      - ports: 
       
 
   build-and-test:
@@ -38,6 +40,9 @@ jobs:
       - run:
           name: Run lint
           command: npm run lint
+      - run: 
+          name: copy .env.ci
+          command: cp .env.ci .env
 
       - run:
           name: Run tests
