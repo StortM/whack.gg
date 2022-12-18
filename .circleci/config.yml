@@ -13,6 +13,20 @@ jobs:
       - setup_remote_docker:
         version: 20.10.14
 
+version: 2.1
+
+orbs:
+  node: circleci/node@3.0.0
+  
+  jobs:
+    build:
+      docker:
+        - postgres:
+            - image: postgres:13
+            
+            enviroment:
+              
+          
 services:
   postgres:
     image: postgres:13
