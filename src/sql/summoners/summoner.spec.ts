@@ -14,21 +14,6 @@ import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { Summoner } from './entities/summoner.entity'
 import { SummonerService } from './summoner.service'
 
-/* export type MockType<T> = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  [P in keyof T]?: jest.Mock<{}>
-}
-
-export const repositoryMockFactory: () => MockType<Repository<any>> = jest.fn(
-  () => ({
-    findOne: jest.fn((entity) => entity),
-    save: jest.fn((entity) => entity),
-    update: jest.fn((entity) => entity),
-    delete: jest.fn((entity) => entity)
-    // ...
-  })
-) */
-
 describe('Summoner service', () => {
   let summonerService: SummonerService
   let summonerRepository: Repository<Summoner>
@@ -45,19 +30,7 @@ describe('Summoner service', () => {
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
-      imports: [AppModule],
-      providers: [
-        SummonerService,
-        {
-          provide: getRepositoryToken(Summoner),
-          useValue: {
-            findOne: jest.fn((entity) => entity),
-            save: jest.fn((entity) => entity),
-            update: jest.fn((entity) => entity),
-            delete: jest.fn((entity) => entity)
-          }
-        }
-      ]
+      imports: [AppModule]
     }).compile()
 
     summonerService = module.get<SummonerService>(SummonerService)
@@ -95,8 +68,9 @@ describe('Summoner service', () => {
     }).create()
 
     testSummoner = await factory(Summoner)({
-      rank: testRank,
-      regionName: testRegion.name
+      summonerName: 'testSummoner',
+      rankId: testRank.id,
+      regionId: testRegion.id
     }).create()
   })
 
@@ -598,16 +572,23 @@ describe('Summoner service', () => {
     'getSummonerFullRank - SummonerName',
     (value) => {
       it(`will return correct value for ${value.summonerName}`, async () => {
-        await factory(Summoner)({
+        const testSummoner = await factory(Summoner)({
           summonerName: value.summonerName,
-          rank: testRank
+          rankId: testRank.id,
+          regionId: testRegion.id
         }).create()
+
+        const expected = {
+          summonerName: testSummoner.summonerName,
+          rank: `${testDivision.name} ${testTier.value}`,
+          lp: testRank.lp
+        }
 
         const res = await summonerService.getSummonerFullRank({
           name: value.summonerName
         })
 
-        expect(res).toContain(value.expected)
+        expect(res).toEqual(expected)
       })
     }
   )
@@ -619,7 +600,8 @@ describe('Summoner service', () => {
       it(`will return correct value for ${value.summonerName}`, async () => {
         await factory(Summoner)({
           summonerName: value.summonerName,
-          rank: testRank
+          rankId: testRank.id,
+          regionId: testRegion.id
         }).create()
 
         const res = await summonerService.getSummonerFullRank({
