@@ -1,6 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import axios from 'axios'
+import { isValid } from 'src/utils/isValid'
 import { CreateSummonerDto } from '../summoners/dto/create-summoner.dto'
 import { SummonerOmittingPasswordHash } from '../summoners/entities/summoner.entity'
 import { SummonerService } from '../summoners/summoner.service'
@@ -31,6 +32,9 @@ export class RiotService implements IRiotService {
   async createSummonerFromName(
     fetchSummonerDto: FetchSummonerDto
   ): Promise<SummonerOmittingPasswordHash | undefined> {
+    const dtoValid = await isValid(FetchSummonerDto, fetchSummonerDto)
+    if (!dtoValid) return
+
     const riotSummoner = await this.fetchSummonerByName(
       fetchSummonerDto.summonerName,
       fetchSummonerDto.regionName
