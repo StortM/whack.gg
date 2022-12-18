@@ -30,7 +30,7 @@ jobs:
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
     docker:
       - image:  cimg/node:16.10
-      - image: circleci/postgres:13-alpine-ram
+      - image: circleci/postgres:13
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
