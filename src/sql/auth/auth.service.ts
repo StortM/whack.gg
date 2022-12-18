@@ -41,7 +41,7 @@ export class AuthService {
     const payload = { summonerName: summoner.summonerName, sub: summoner.id }
     return {
       accessToken: this.jwtService.sign(payload),
-      summoner
+      user: summoner
     }
   }
 

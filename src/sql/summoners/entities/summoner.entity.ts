@@ -40,14 +40,14 @@ export class Summoner {
   isAdmin!: boolean
 
   @Column({ nullable: true })
-  regionId!: number | null
+  regionId?: number | null
 
   @ManyToOne(() => Region, (region) => region.summoners, { cascade: true })
   @JoinColumn([{ name: 'regionId' }])
   region?: Region
 
   @Column({ nullable: true })
-  rankId!: number | null
+  rankId?: number | null
 
   @ManyToOne(() => Rank, (rank) => rank.summoners, {
     cascade: true
@@ -56,7 +56,7 @@ export class Summoner {
   rank?: Rank
 
   @OneToMany(() => Participant, (participant) => participant.summoner)
-  participants?: Participant
+  participants?: Participant[]
 
   @OneToMany(() => Mastery, (mastery) => mastery.summoner)
   masteries?: Mastery[]

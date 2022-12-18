@@ -45,7 +45,19 @@ describe('Summoner service', () => {
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
-      imports: [AppModule]
+      imports: [AppModule],
+      providers: [
+        SummonerService,
+        {
+          provide: getRepositoryToken(Summoner),
+          useValue: {
+            findOne: jest.fn((entity) => entity),
+            save: jest.fn((entity) => entity),
+            update: jest.fn((entity) => entity),
+            delete: jest.fn((entity) => entity)
+          }
+        }
+      ]
     }).compile()
 
     summonerService = module.get<SummonerService>(SummonerService)
@@ -81,6 +93,7 @@ describe('Summoner service', () => {
       divisionId: testDivision.id,
       gameModeId: testGameMode.id
     }).create()
+
     testSummoner = await factory(Summoner)({
       rank: testRank,
       regionName: testRegion.name
@@ -664,7 +677,6 @@ describe('Summoner service', () => {
         const res = await summonerService.findOneWithPasswordHash({
           name: value.summonerName as unknown as string
         })
-
         expect(res).toEqual(value.expected)
       })
     }

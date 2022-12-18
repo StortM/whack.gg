@@ -35,7 +35,27 @@ export class SummonerService {
 
     if (!res || !res[0]) return undefined
 
-    return res[0].getfullsummonerrankbyname
+    const summonerRank = res[0].getfullsummonerrankbyname as string
+    // cleanup string
+    // remove first and last character from res
+    const summonerRankFormatted = summonerRank.substring(
+      1,
+      summonerRank.length - 1
+    )
+    // remove double quotes
+    const summonerRankFormattedNoQuotes = summonerRankFormatted.replace(
+      /"/g,
+      ''
+    )
+
+    // slice string on comma
+    const [summonerName, rank, lp] = summonerRankFormattedNoQuotes.split(',')
+
+    return {
+      summonerName,
+      rank,
+      lp: parseInt(lp)
+    } as SummonerWithFullRank
   }
 
   async create(
@@ -137,7 +157,14 @@ export class SummonerService {
 
     await this.summonerRepository.update(id, updatedSummoner)
 
-    return await this.summonerRepository.findOne(id)
+    const savedSummoner = await this.summonerRepository.findOne(id, {
+      relations: ['region']
+    })
+    if (!savedSummoner) return undefined
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { passwordHash, ...summonerNoPassword } = savedSummoner
+    return summonerNoPassword
   }
 
   async remove(id: number): Promise<void> {

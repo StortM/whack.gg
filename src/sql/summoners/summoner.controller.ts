@@ -14,7 +14,6 @@ import {
   UseGuards,
   ValidationPipe
 } from '@nestjs/common'
-import { AdminGuard } from 'src/sql/auth/admin.guard'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { JwtAuthenticatedRequest } from 'src/sql/auth/jwt.strategy'
 import { AuthService } from '../auth/auth.service'
@@ -74,11 +73,9 @@ export class SummonerController {
       { name }
     )
 
-    if (!summonerWithFullRank) {
+    if (!summonerWithFullRank)
       throw new HttpException('Not found', HttpStatus.NOT_FOUND)
-    }
 
-    console.log(summonerWithFullRank)
     return summonerWithFullRank
   }
 
@@ -87,7 +84,7 @@ export class SummonerController {
   async findOne(
     @Param('id') id: number
   ): Promise<SummonerOmittingPasswordHash | undefined> {
-    const summoner = await this.summonerService.findOne({ id })
+    const summoner = await this.summonerService.findOne({ id: +id })
 
     if (!summoner) {
       throw new HttpException('Not found', HttpStatus.NOT_FOUND)
@@ -97,33 +94,31 @@ export class SummonerController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @UseGuards(AdminGuard)
   @Patch(':id')
   async update(
     @Param('id') id: number,
     @Body() updateSummonerDto: UpdateSummonerDto,
-    @Request() { summoner }: JwtAuthenticatedRequest
+    @Request() req: JwtAuthenticatedRequest
   ): Promise<SummonerOmittingPasswordHash | undefined> {
-    const summonerFromDB = await this.summonerService.findOne({ id })
+    const summonerFromDB = await this.summonerService.findOne({ id: +id })
 
     // Autorize admins and summoners
-    if (!summoner.isAdmin && summoner.id !== summonerFromDB?.id)
+    if (!req.user?.isAdmin && req.user?.id !== summonerFromDB?.id)
       throw new UnauthorizedException()
 
-    return await this.summonerService.update({ id }, updateSummonerDto)
+    return await this.summonerService.update({ id: +id }, updateSummonerDto)
   }
 
   @UseGuards(JwtAuthGuard)
-  @UseGuards(AdminGuard)
   @Delete(':id')
   async remove(
     @Param('id') id: number,
-    @Request() { summoner }: JwtAuthenticatedRequest
+    @Request() { user }: JwtAuthenticatedRequest
   ): Promise<void> {
-    const summonerFromDB = await this.summonerService.findOne({ id })
+    const summonerFromDB = await this.summonerService.findOne({ id: +id })
 
     // Autorize admins and summoners
-    if (!summoner.isAdmin && summoner.id !== summonerFromDB?.id)
+    if (!user.isAdmin && user.id !== summonerFromDB?.id)
       throw new UnauthorizedException()
 
     return await this.summonerService.remove(+id)
