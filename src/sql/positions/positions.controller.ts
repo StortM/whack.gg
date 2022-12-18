@@ -18,9 +18,8 @@ import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 @Controller('positions')
 export class PositionsController {
   constructor(private readonly positionsService: PositionsService) {}
-
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(
     @Body() createPositionDto: CreatePositionDto
