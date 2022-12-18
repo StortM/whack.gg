@@ -19,8 +19,8 @@ import { AdminGuard } from 'src/sql/auth/admin.guard'
 export class RegionsController {
   constructor(private readonly regionsService: RegionsService) {}
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(
     @Body() createRegionDto: CreateRegionDto
@@ -40,8 +40,8 @@ export class RegionsController {
     return this.regionsService.findOne(id)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: number,
@@ -50,8 +50,8 @@ export class RegionsController {
     return this.regionsService.update(id, updateRegionDto)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: number): Promise<void> {
     return this.regionsService.remove(+id)

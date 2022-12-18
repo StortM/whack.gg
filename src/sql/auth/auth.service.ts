@@ -23,9 +23,9 @@ export class AuthService {
     summonerName: string,
     pass: string
   ): Promise<SummonerOmittingPasswordHash | null> {
-    const summoner = await this.summonerService.findOneWithPasswordHash(
-      summonerName
-    )
+    const summoner = await this.summonerService.findOneWithPasswordHash({
+      name: summonerName
+    })
 
     if (summoner && (await compare(pass, summoner.passwordHash))) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -41,15 +41,15 @@ export class AuthService {
     const payload = { summonerName: summoner.summonerName, sub: summoner.id }
     return {
       accessToken: this.jwtService.sign(payload),
-      summoner
+      user: summoner
     }
   }
 
   async isAdminToken(token: string): Promise<boolean> {
     const decodedToken = this.jwtService.decode(token) as JwtToken
-    const summoner = await this.summonerService.findOne(
-      parseInt(decodedToken.sub)
-    )
+    const summoner = await this.summonerService.findOne({
+      id: parseInt(decodedToken.sub)
+    })
 
     return summoner?.isAdmin ?? false
   }

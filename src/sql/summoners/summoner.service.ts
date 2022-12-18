@@ -1,15 +1,12 @@
-import {
-  Body,
-  HttpException,
-  HttpStatus,
-  Injectable,
-  ValidationPipe
-} from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { CryptService } from 'src/crypt/crypt.service'
 import { RegionsService } from 'src/sql/regions/regions.service'
+import { isValid } from 'src/utils/isValid'
+import { UpdateResourceId } from 'src/utils/UpdateResourceId'
 import { FindOneOptions, Repository } from 'typeorm'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
+import { SummonerNameDto } from './dto/summonerNameDto.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
 import {
   Summoner,
@@ -27,19 +24,46 @@ export class SummonerService {
   ) {}
 
   async getSummonerFullRank(
-    summonerName: string
+    getSummonerFullRankDto: SummonerNameDto
   ): Promise<SummonerWithFullRank | undefined> {
+    const dtoValid = await isValid(SummonerNameDto, getSummonerFullRankDto)
+    if (!dtoValid) return
+
     const res = await this.summonerRepository.query(
-      `SELECT getfullsummonerrankbyname('${summonerName}');`
+      `SELECT getfullsummonerrankbyname('${getSummonerFullRankDto.name}');`
     )
 
-    return res
+    if (!res || !res[0]) return undefined
+
+    const summonerRank = res[0].getfullsummonerrankbyname as string
+    // cleanup string
+    // remove first and last character from res
+    const summonerRankFormatted = summonerRank.substring(
+      1,
+      summonerRank.length - 1
+    )
+    // remove double quotes
+    const summonerRankFormattedNoQuotes = summonerRankFormatted.replace(
+      /"/g,
+      ''
+    )
+
+    // slice string on comma
+    const [summonerName, rank, lp] = summonerRankFormattedNoQuotes.split(',')
+
+    return {
+      summonerName,
+      rank,
+      lp: parseInt(lp)
+    } as SummonerWithFullRank
   }
 
   async create(
-    @Body(new ValidationPipe())
     createSummonerDto: CreateSummonerDto
   ): Promise<SummonerOmittingPasswordHash | undefined> {
+    const dtoValid = await isValid(CreateSummonerDto, createSummonerDto)
+    if (!dtoValid) return
+
     const { password, regionName, ...rest } = createSummonerDto
 
     // check and fetch region
@@ -55,10 +79,7 @@ export class SummonerService {
     }
 
     const savedSummoner = await this.summonerRepository.save(summonerToSave)
-
-    if (!savedSummoner) {
-      return undefined
-    }
+    if (!savedSummoner) return undefined
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...summonerNoPassword } = savedSummoner
@@ -78,14 +99,14 @@ export class SummonerService {
   }
 
   async findOne(
-    id: number,
+    id: UpdateResourceId,
     options?: FindOneOptions
   ): Promise<SummonerOmittingPasswordHash | undefined> {
-    const summoner = await this.summonerRepository.findOne(id, options)
+    const dtoValid = await isValid(UpdateResourceId, id)
+    if (!dtoValid) return
 
-    if (!summoner) {
-      throw new HttpException('Not found', HttpStatus.NOT_FOUND)
-    }
+    const summoner = await this.summonerRepository.findOne(id, options)
+    if (!summoner) return undefined
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...summonerWithoutPasswordHash } = summoner
@@ -95,17 +116,25 @@ export class SummonerService {
 
   // only use this for authentication
   async findOneWithPasswordHash(
-    summonerName: string
+    summonerNameDto: SummonerNameDto
   ): Promise<Summoner | undefined> {
+    const dtoValid = await isValid(SummonerNameDto, summonerNameDto)
+    if (!dtoValid) return
+
     return await this.summonerRepository.findOne({
-      summonerName: summonerName.toLowerCase().trim()
+      summonerName: summonerNameDto.name.toLowerCase().trim()
     })
   }
 
   async update(
-    id: number,
+    updateResourceid: UpdateResourceId,
     updateSummonerDto: UpdateSummonerDto
   ): Promise<SummonerOmittingPasswordHash | undefined> {
+    const dtoValid = await isValid(UpdateSummonerDto, updateSummonerDto)
+    const idValid = await isValid(UpdateResourceId, updateResourceid)
+    if (!dtoValid || !idValid) return
+
+    const { id } = updateResourceid
     // fetch existing summoner
     const summoner = await this.summonerRepository.findOne(id)
     if (!summoner) return undefined
@@ -128,7 +157,14 @@ export class SummonerService {
 
     await this.summonerRepository.update(id, updatedSummoner)
 
-    return await this.summonerRepository.findOne(id)
+    const savedSummoner = await this.summonerRepository.findOne(id, {
+      relations: ['region']
+    })
+    if (!savedSummoner) return undefined
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { passwordHash, ...summonerNoPassword } = savedSummoner
+    return summonerNoPassword
   }
 
   async remove(id: number): Promise<void> {

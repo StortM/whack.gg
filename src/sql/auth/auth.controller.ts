@@ -6,7 +6,7 @@ import { AuthenticatedRequest } from './local.strategy'
 
 export interface LoginResponse {
   accessToken: string
-  summoner: SummonerOmittingPasswordHash
+  user: SummonerOmittingPasswordHash
 }
 
 @Controller('auth')
