@@ -1,18 +1,3 @@
-version: 2.1
-
-jobs:
-  build:
-    docker:
-      - image: circleci/node:10.15.3
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: db
-    steps:
-      - checkout
-      - setup_remote_docker:
-        version: 20.10.14
-
 services:
   postgres:
     image: postgres:13
