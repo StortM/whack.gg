@@ -7,7 +7,7 @@ import { RiotService } from './riot.service'
 export class RiotController {
   constructor(private readonly riotService: RiotService) {}
 
-  @Post('')
+  @Post()
   async fetchSummoner(
     @Body() fetchSummonerDto: FetchSummonerDto
   ): Promise<SummonerOmittingPasswordHash> {
