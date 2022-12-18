@@ -20,7 +20,7 @@ jobs:
       - image: cimg/postgres:15.0.0
     steps:
       - checkout
-      
+
   build-and-test:
     # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -45,9 +45,6 @@ jobs:
           name: copy .env.ci ->
           command: cp .env.ci .env
       - run:
-          name : run docker up
-          command: docker-compose up --build 
-      - run:
           name: Run tests
           command: npm test
 
@@ -59,5 +56,6 @@ workflows:
   sample:
     jobs:
       - build-and-test
+      - build
       # For running simple node tests, you could optionally use the node/test job from the orb to replicate and replace the job above in fewer lines.
       # - node/test
