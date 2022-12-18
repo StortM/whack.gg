@@ -17,8 +17,9 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
 
     steps:
-        # Commands run in the primary container
-
+        run:
+          name: ls
+          command: ls
 
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
