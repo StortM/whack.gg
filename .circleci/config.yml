@@ -40,9 +40,6 @@ jobs:
           name: copy .env.ci ->
           command: cp .env.ci .env
       - run:
-          name: Run tests
-          command: npm test
-      - run:
           name: Install Docker Compose
           environment:
             COMPOSE_VERSION: '1.29.2'
@@ -50,6 +47,10 @@ jobs:
             curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
+
+      - run:
+          name: Run tests
+          command: npm test
      
 
 
