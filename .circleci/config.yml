@@ -18,6 +18,8 @@ jobs:
   build:
     docker:
      - image: circleci/postgres:13
+    environment:
+          port: 5432
     steps:
       - checkout
       
