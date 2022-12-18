@@ -1,13 +1,7 @@
-services:
-  postgres:
-    image: postgres:13
-    ports: ["5432:5432"]
-    environment:
-      POSTGRES_PASSWORD: pass
-      POSTGRES_USER: user
-      POSTGRES_DB: db
-    options:
-      - health-cmd: pg_isready
-      - health-interval: 10s
-      - health-timeout: 5s
-      - health-retries: 5
+jobs:
+  my-job:
+    docker:
+      - image: cimg/node:lts
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
