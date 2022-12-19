@@ -11,7 +11,7 @@ import { AuthService } from './auth.service'
 export type AuthenticatedRequest = Request & { user: Summoner }
 
 @Injectable()
-export class LocalStrategy extends PassportStrategy(Strategy) {
+export class LocalStrategy extends PassportStrategy(Strategy, 'sql-local') {
   constructor(private authService: AuthService) {
     super({ usernameField: 'summonerName' })
   }
@@ -20,6 +20,8 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     summonerName: string,
     password: string
   ): Promise<SummonerOmittingPasswordHash> {
+    console.log(summonerName, password)
+
     const summoner = await this.authService.validateUser(summonerName, password)
     if (!summoner) {
       throw new UnauthorizedException('Wrong summonerName or password')

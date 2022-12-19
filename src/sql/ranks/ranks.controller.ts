@@ -26,7 +26,7 @@ export class RanksController {
     return this.ranksService.create(createRankDto)
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   findAll(): Promise<Rank[] | undefined> {
     return this.ranksService.findAll()

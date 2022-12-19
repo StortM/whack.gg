@@ -28,13 +28,13 @@ export class ParticipantsController {
     return this.participantsService.create(createParticipantDto)
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   findAll(): Promise<Participant[] | undefined> {
     return this.participantsService.findAll()
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Participant | undefined> {
     return this.participantsService.findOne(id)

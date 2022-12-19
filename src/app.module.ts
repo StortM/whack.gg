@@ -33,6 +33,7 @@ import { RegionsModule as SqlRegionsModule } from './sql/regions/regions.module'
 import { SummonerModule as SqlSummonerModule } from './sql/summoners/summoner.module'
 import { TeamsModule as SqlTeamsModule } from './sql/teams/teams.module'
 import { TiersModule as SqlTiersModule } from './sql/tiers/tiers.module'
+import { MatchesModule as SqlMatchesModule } from './sql/matches/matches.module'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -115,6 +116,7 @@ const validation = {
     SqlParticipantsModule,
     SqlTeamsModule,
     SqlMasteriesModule,
+    SqlMatchesModule,
     MongoRegionsModule,
     MongoMasteriesModule,
     MongoRegionsModule,
