@@ -1,0 +1,60 @@
+
+> template-backend-nestjs@0.0.1 schema:sync
+> typeorm schema:sync
+
+query: SELECT * FROM current_schema()
+query: START TRANSACTION
+query: SELECT * FROM current_schema()
+query: SELECT * FROM current_database()
+query: SELECT "table_schema", "table_name" FROM "information_schema"."tables" WHERE ("table_schema" = 'public' AND "table_name" = 'position') OR ("table_schema" = 'public' AND "table_name" = 'division') OR ("table_schema" = 'public' AND "table_name" = 'tier') OR ("table_schema" = 'public' AND "table_name" = 'rank') OR ("table_schema" = 'public' AND "table_name" = 'game_mode') OR ("table_schema" = 'public' AND "table_name" = 'match') OR ("table_schema" = 'public' AND "table_name" = 'teams_bans_champions') OR ("table_schema" = 'public' AND "table_name" = 'team') OR ("table_schema" = 'public' AND "table_name" = 'participant') OR ("table_schema" = 'public' AND "table_name" = 'region') OR ("table_schema" = 'public' AND "table_name" = 'summoner') OR ("table_schema" = 'public' AND "table_name" = 'mastery') OR ("table_schema" = 'public' AND "table_name" = 'champion')
+query: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+creating a new table: public.position
+query: CREATE TABLE "position" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, CONSTRAINT "UQ_94b556b24267b2d75d6d05fcd18" UNIQUE ("name"), CONSTRAINT "PK_b7f483581562b4dc62ae1a5b7e2" PRIMARY KEY ("id"))
+creating a new table: public.division
+query: CREATE TABLE "division" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, CONSTRAINT "UQ_296566b07c0653123c292aa2f85" UNIQUE ("name"), CONSTRAINT "PK_b6f0d207e38106dbddabab3a078" PRIMARY KEY ("id"))
+creating a new table: public.tier
+query: CREATE TABLE "tier" ("id" SERIAL NOT NULL, "value" character varying NOT NULL, CONSTRAINT "UQ_74fab256d5bee12394b6e04471c" UNIQUE ("value"), CONSTRAINT "PK_14d67ceef0dbea040e39e97e7f6" PRIMARY KEY ("id"))
+creating a new table: public.rank
+query: CREATE TABLE "rank" ("id" SERIAL NOT NULL, "lp" integer NOT NULL, "gameModeId" integer NOT NULL, "divisionId" integer NOT NULL, "tierId" integer NOT NULL, CONSTRAINT "PK_a5dfd2e605e5e4fb8578caec083" PRIMARY KEY ("id"))
+creating a new table: public.game_mode
+query: CREATE TABLE "game_mode" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, CONSTRAINT "UQ_044d3c0ab088b8b1f604ac080a7" UNIQUE ("name"), CONSTRAINT "PK_ef9a2ad96f7bcea1655cd17e575" PRIMARY KEY ("id"))
+creating a new table: public.match
+query: CREATE TABLE "match" ("id" SERIAL NOT NULL, "duration" integer NOT NULL, "gameCreation" bigint NOT NULL, "gameModeId" integer NOT NULL, CONSTRAINT "PK_92b6c3a6631dd5b24a67c69f69d" PRIMARY KEY ("id"))
+creating a new table: public.teams_bans_champions
+query: CREATE TABLE "teams_bans_champions" ("id" SERIAL NOT NULL, "teamId" integer NOT NULL, "championId" integer NOT NULL, CONSTRAINT "PK_cb41a9d1d9be0122d7db865886c" PRIMARY KEY ("id"))
+creating a new table: public.team
+query: CREATE TABLE "team" ("id" SERIAL NOT NULL, "matchId" integer NOT NULL, "matchWon" boolean NOT NULL, CONSTRAINT "PK_f57d8293406df4af348402e4b74" PRIMARY KEY ("id"))
+creating a new table: public.participant
+query: CREATE TABLE "participant" ("id" SERIAL NOT NULL, "assists" integer NOT NULL, "deaths" integer NOT NULL, "kills" integer NOT NULL, "baronKills" integer NOT NULL, "consumablePurchased" integer NOT NULL, "damageDealtToBuildings" integer NOT NULL, "damageDealtToObjectives" integer NOT NULL, "damageDealtToTurrets" integer NOT NULL, "damageSelfMitigated" integer NOT NULL, "doubleKills" integer NOT NULL, "tripleKills" integer NOT NULL, "quadraKills" integer NOT NULL, "pentaKills" integer NOT NULL, "teamId" integer NOT NULL, "positionId" integer NOT NULL, "summonerId" integer NOT NULL, "championId" integer NOT NULL, CONSTRAINT "PK_64da4237f502041781ca15d4c41" PRIMARY KEY ("id"))
+creating a new table: public.region
+query: CREATE TABLE "region" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, CONSTRAINT "UQ_8d766fc1d4d2e72ecd5f6567a02" UNIQUE ("name"), CONSTRAINT "PK_5f48ffc3af96bc486f5f3f3a6da" PRIMARY KEY ("id"))
+creating a new table: public.summoner
+query: CREATE TABLE "summoner" ("id" SERIAL NOT NULL, "summonerName" character varying NOT NULL, "level" integer NOT NULL, "icon" integer NOT NULL, "passwordHash" character varying NOT NULL, "isAdmin" boolean NOT NULL, "regionId" integer, "rankId" integer, CONSTRAINT "UQ_0a95bfed82f0527697c02c7a670" UNIQUE ("summonerName"), CONSTRAINT "PK_7c746c00ef539c0d32371637edd" PRIMARY KEY ("id"))
+creating a new table: public.mastery
+query: CREATE TABLE "mastery" ("id" SERIAL NOT NULL, "level" integer NOT NULL, "summonerId" integer NOT NULL, "championId" integer NOT NULL, "championPoints" integer NOT NULL, "lastPlayed" bigint NOT NULL, CONSTRAINT "PK_08b4375077a495c321989930897" PRIMARY KEY ("id"))
+creating a new table: public.champion
+query: CREATE TABLE "champion" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, CONSTRAINT "UQ_4b4ebac06839a99191b3a71ecb9" UNIQUE ("name"), CONSTRAINT "PK_1b5629380079d160350cfc907b7" PRIMARY KEY ("id"))
+creating a foreign keys: FK_a6ff80b1ed1f17dbf2e187e3cf5, FK_1645586002706599412a649370f, FK_fab4530c1b816247c963fda247c on table "rank"
+query: ALTER TABLE "rank" ADD CONSTRAINT "FK_a6ff80b1ed1f17dbf2e187e3cf5" FOREIGN KEY ("gameModeId") REFERENCES "game_mode"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+query: ALTER TABLE "rank" ADD CONSTRAINT "FK_1645586002706599412a649370f" FOREIGN KEY ("divisionId") REFERENCES "division"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+query: ALTER TABLE "rank" ADD CONSTRAINT "FK_fab4530c1b816247c963fda247c" FOREIGN KEY ("tierId") REFERENCES "tier"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+creating a foreign keys: FK_8be3d9cb8a809d47b159b0f571b on table "match"
+query: ALTER TABLE "match" ADD CONSTRAINT "FK_8be3d9cb8a809d47b159b0f571b" FOREIGN KEY ("gameModeId") REFERENCES "game_mode"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+creating a foreign keys: FK_f15e53a8cf4b7e271df0417f102, FK_0f78355d0873121b26521b91537 on table "teams_bans_champions"
+query: ALTER TABLE "teams_bans_champions" ADD CONSTRAINT "FK_f15e53a8cf4b7e271df0417f102" FOREIGN KEY ("teamId") REFERENCES "team"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+query: ALTER TABLE "teams_bans_champions" ADD CONSTRAINT "FK_0f78355d0873121b26521b91537" FOREIGN KEY ("championId") REFERENCES "champion"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+creating a foreign keys: FK_12b7ae15b9104ba083bdc725e5b on table "team"
+query: ALTER TABLE "team" ADD CONSTRAINT "FK_12b7ae15b9104ba083bdc725e5b" FOREIGN KEY ("matchId") REFERENCES "match"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+creating a foreign keys: FK_de50d18cd1e7a9c50438149510b, FK_c1ff1f1c77179861f3ed4442da3, FK_6509fdbc38e17f3fd525e7ab841, FK_1941e5027834467b8385502361a on table "participant"
+query: ALTER TABLE "participant" ADD CONSTRAINT "FK_de50d18cd1e7a9c50438149510b" FOREIGN KEY ("teamId") REFERENCES "team"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+query: ALTER TABLE "participant" ADD CONSTRAINT "FK_c1ff1f1c77179861f3ed4442da3" FOREIGN KEY ("positionId") REFERENCES "position"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+query: ALTER TABLE "participant" ADD CONSTRAINT "FK_6509fdbc38e17f3fd525e7ab841" FOREIGN KEY ("summonerId") REFERENCES "summoner"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+query: ALTER TABLE "participant" ADD CONSTRAINT "FK_1941e5027834467b8385502361a" FOREIGN KEY ("championId") REFERENCES "champion"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+creating a foreign keys: FK_0a413a16bcceb537fde8ae53e32, FK_79a1fad28c0e7ec7b15b67ddf18 on table "summoner"
+query: ALTER TABLE "summoner" ADD CONSTRAINT "FK_0a413a16bcceb537fde8ae53e32" FOREIGN KEY ("regionId") REFERENCES "region"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+query: ALTER TABLE "summoner" ADD CONSTRAINT "FK_79a1fad28c0e7ec7b15b67ddf18" FOREIGN KEY ("rankId") REFERENCES "rank"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+creating a foreign keys: FK_c5d1c9c533ebc11c747b0bf5838, FK_54aba8f4ea2d80f49f239ffb82a on table "mastery"
+query: ALTER TABLE "mastery" ADD CONSTRAINT "FK_c5d1c9c533ebc11c747b0bf5838" FOREIGN KEY ("summonerId") REFERENCES "summoner"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+query: ALTER TABLE "mastery" ADD CONSTRAINT "FK_54aba8f4ea2d80f49f239ffb82a" FOREIGN KEY ("championId") REFERENCES "champion"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+query: COMMIT
+Schema synchronization finished successfully.

@@ -1,0 +1,188 @@
+
+> template-backend-nestjs@0.0.1 test:integration
+> jest --config ./test/jest-integration.json --runInBand
+
+ PASS  test/summoner.integration-spec.ts (13.109 s)
+  ● Console
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      adminsummoner adminpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+ PASS  test/auth.integration-spec.ts
+  ● Console
+
+    console.log
+      testname banankage
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+    console.log
+      regularsummoner testpassword
+
+      at LocalStrategy.validate (../src/sql/auth/local.strategy.ts:23:13)
+
+ PASS  test/riot.integration-spec.ts
+ PASS  test/app.integration-spec.ts
+
+Test Suites: 4 passed, 4 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        16.182 s
+Ran all test suites.

@@ -1,0 +1,480 @@
+npm WARN old lockfile 
+npm WARN old lockfile The package-lock.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile 
+⸨⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@apollo/server/node_modules/http-error
+⸨⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@apollo/server/node_modules/http-error
+⸨⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@apollo/server/node_modules/http-error
+⸨⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@apollo/server/node_modules/http-error
+⸨####⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⸩ ⠦ idealTree:inflate:@apollo/server/node_modules/uuid: sill
+⸨#######⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⸩ ⠏ idealTree:inflate:@apollo/utils.stripsensitiveliterals: 
+⸨##########⠂⠂⠂⠂⠂⠂⠂⠂⸩ ⠙ idealTree:inflate:@aws-sdk/credential-provider-process: 
+⸨###########⠂⠂⠂⠂⠂⠂⠂⸩ ⠸ idealTree:inflate:@aws-sdk/middleware-recursion-detectio
+⸨###########⠂⠂⠂⠂⠂⠂⠂⸩ ⠙ idealTree:inflate:@aws-sdk/middleware-signing: sill infl
+⸨############⠂⠂⠂⠂⠂⠂⸩ ⠹ idealTree:inflate:@aws-sdk/protocol-http: sill inflate n
+⸨############⠂⠂⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@aws-sdk/service-error-classification:
+⸨############⠂⠂⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@aws-sdk/util-buffer-from: sill inflat
+⸨#############⠂⠂⠂⠂⠂⸩ ⠦ idealTree:inflate:@aws-sdk/util-user-agent-browser: sill
+⸨#############⠂⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@babel/generator/node_modules/source-m
+⸨#############⠂⠂⠂⠂⠂⸩ ⠹ idealTree:inflate:@babel/helper-module-imports: sill inf
+⸨##############⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@babel/helper-validator-option: sill i
+⸨##############⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@babel/plugin-syntax-bigint: sill infl
+⸨##############⠂⠂⠂⠂⸩ ⠇ idealTree:inflate:@babel/plugin-syntax-nullish-coalescin
+⸨##############⠂⠂⠂⠂⸩ ⠏ idealTree:inflate:@babel/plugin-syntax-typescript: sill 
+⸨##############⠂⠂⠂⠂⸩ ⠸ idealTree:inflate:@eslint/eslintrc/node_modules/ajv: sil
+⸨##############⠂⠂⠂⠂⸩ ⠏ idealTree:inflate:@graphql-tools/merge: sill inflate nod
+⸨###############⠂⠂⠂⸩ ⠸ idealTree:inflate:@humanwhocodes/object-schema: sill inf
+⸨###############⠂⠂⠂⸩ ⠼ idealTree:inflate:@jest/test-sequencer: sill inflate nod
+⸨###############⠂⠂⠂⸩ ⠦ idealTree:inflate:@nestjs/cli/node_modules/acorn: sill i
+⸨###############⠂⠂⠂⸩ ⠧ idealTree:inflate:@nestjs/cli/node_modules/tapable: sill
+⸨###############⠂⠂⠂⸩ ⠦ idealTree:inflate:@nestjs/graphql/node_modules/@graphql-
+⸨###############⠂⠂⠂⸩ ⠦ idealTree:inflate:@nestjs/schematics/node_modules/ajv-fo
+⸨################⠂⠂⸩ ⠙ idealTree:inflate:@nodelib/fs.walk: sill inflate node_mo
+⸨################⠂⠂⸩ ⠼ idealTree:inflate:@protobufjs/path: sill inflate node_mo
+⸨################⠂⠂⸩ ⠇ idealTree:inflate:@sinonjs/commons: sill inflate node_mo
+⸨################⠂⠂⸩ ⠋ idealTree:inflate:@types/eslint: sill inflate node_modul
+⸨################⠂⠂⸩ ⠇ idealTree:inflate:@types/long: sill inflate node_modules
+⸨################⠂⠂⸩ ⠼ idealTree:inflate:@types/passport-strategy: sill inflate
+⸨################⠂⠂⸩ ⠦ idealTree:inflate:@types/stack-utils: sill inflate node_
+⸨################⠂⠂⸩ ⠹ idealTree:inflate:@types/yargs: sill inflate node_module
+⸨################⠂⠂⸩ ⠋ idealTree:inflate:@typescript-eslint/eslint-plugin/node_
+⸨################⠂⠂⸩ ⠼ idealTree:inflate:@webassemblyjs/helper-wasm-section: si
+⸨################⠂⠂⸩ ⠇ idealTree:inflate:@webassemblyjs/leb128: sill inflate no
+⸨################⠂⠂⸩ ⠹ idealTree:inflate:@webassemblyjs/wasm-edit: sill inflate
+⸨################⠂⠂⸩ ⠇ idealTree:inflate:abbrev: sill inflate node_modules/abbr
+⸨################⠂⠂⸩ ⠼ idealTree:inflate:anymatch: sill inflate node_modules/an
+⸨################⠂⠂⸩ ⠹ idealTree:inflate:are-we-there-yet/node_modules/readable
+⸨################⠂⠂⸩ ⠧ idealTree:inflate:arg: sill inflate node_modules/arg
+⸨################⠂⠂⸩ ⠼ idealTree:inflate:base64-js: sill inflate node_modules/b
+⸨################⠂⠂⸩ ⠼ idealTree:inflate:braces: sill inflate node_modules/brac
+⸨################⠂⠂⸩ ⠴ idealTree:inflate:cacache: sill inflate node_modules/cac
+⸨#################⠂⸩ ⠸ idealTree:inflate:cjs-module-lexer: sill inflate node_mo
+⸨#################⠂⸩ ⠏ idealTree:inflate:cli-table3: sill inflate node_modules/
+⸨#################⠂⸩ ⠧ idealTree:inflate:concat-stream: sill inflate node_modul
+⸨#################⠂⸩ ⠸ idealTree:inflate:cosmiconfig: sill inflate node_modules
+⸨#################⠂⸩ ⠇ idealTree:inflate:deep-is: sill inflate node_modules/dee
+⸨#################⠂⸩ ⠇ idealTree:inflate:domexception/node_modules/webidl-conve
+⸨#################⠂⸩ ⠙ idealTree:inflate:end-of-stream: sill inflate node_modul
+⸨#################⠂⸩ ⠸ idealTree:inflate:escodegen/node_modules/estraverse: sil
+⸨#################⠂⸩ ⠼ idealTree:inflate:espree: sill inflate node_modules/espr
+⸨#################⠂⸩ ⠹ idealTree:inflate:expect: sill inflate node_modules/expe
+⸨#################⠂⸩ ⠦ idealTree:inflate:fastq: sill inflate node_modules/fastq
+⸨#################⠂⸩ ⠧ idealTree:inflate:follow-redirects: sill inflate node_mo
+⸨#################⠂⸩ ⠙ idealTree:inflate:gensync: sill inflate node_modules/gen
+⸨#################⠂⸩ ⠼ idealTree:inflate:glob-to-regexp: sill inflate node_modu
+⸨#################⠂⸩ ⠼ idealTree:inflate:has-property-descriptors: sill inflate
+⸨#################⠂⸩ ⠴ idealTree:inflate:import-fresh: sill inflate node_module
+⸨#################⠂⸩ ⠏ idealTree:inflate:ipaddr.js: sill inflate node_modules/i
+⸨#################⠂⸩ ⠏ idealTree:inflate:ipaddr.js: sill inflate node_modules/i
+⸨#################⠂⸩ ⠙ idealTree:inflate:is-callable: sill inflate node_modules
+⸨#################⠂⸩ ⠦ idealTree:inflate:is-interactive: sill inflate node_modu
+⸨#################⠂⸩ ⠴ idealTree:inflate:is-weakmap: sill inflate node_modules/
+⸨#################⠂⸩ ⠧ idealTree:inflate:jest-cli: sill inflate node_modules/je
+⸨#################⠂⸩ ⠇ idealTree:inflate:jest-matcher-utils/node_modules/jest-d
+⸨#################⠂⸩ ⠧ idealTree:inflate:jest-snapshot: sill inflate node_modul
+⸨#################⠂⸩ ⠹ idealTree:inflate:js-levenshtein: sill inflate node_modu
+⸨#################⠂⸩ ⠇ idealTree:inflate:jws: sill inflate node_modules/jws
+⸨#################⠂⸩ ⠏ idealTree:inflate:lodash.get: sill inflate node_modules/
+⸨#################⠂⸩ ⠙ idealTree:inflate:lodash.sortby: sill inflate node_modul
+⸨#################⠂⸩ ⠹ idealTree:inflate:memfs: sill inflate node_modules/memfs
+⸨#################⠂⸩ ⠋ idealTree:inflate:mime-types: sill inflate node_modules/
+⸨#################⠂⸩ ⠼ idealTree:inflate:mongoose/node_modules/mongodb: sill in
+⸨#################⠂⸩ ⠼ idealTree:inflate:mute-stream: sill inflate node_modules
+⸨#################⠂⸩ ⠏ idealTree:inflate:node-modules-regexp: sill inflate node
+⸨#################⠂⸩ ⠦ idealTree:inflate:onetime: sill inflate node_modules/one
+⸨#################⠂⸩ ⠼ idealTree:inflate:parse5-htmlparser2-tree-adapter: sill 
+⸨#################⠂⸩ ⠴ idealTree:inflate:path-type: sill inflate node_modules/p
+⸨#################⠂⸩ ⠴ idealTree:inflate:pg-protocol: sill inflate node_modules
+⸨#################⠂⸩ ⠇ idealTree:inflate:prettier-linter-helpers: sill inflate
+⸨#################⠂⸩ ⠴ idealTree:inflate:rechoir: sill inflate node_modules/rec
+⸨#################⠂⸩ ⠏ idealTree:inflate:retry: sill inflate node_modules/retry
+⸨#################⠂⸩ ⠸ idealTree:inflate:side-channel: sill inflate node_module
+⸨#################⠂⸩ ⠋ idealTree:inflate:sparse-bitfield: sill inflate node_mod
+⸨#################⠂⸩ ⠇ idealTree:inflate:supports-hyperlinks: sill inflate node
+⸨#################⠂⸩ ⠧ idealTree:inflate:text-table: sill inflate node_modules/
+⸨#################⠂⸩ ⠙ idealTree:inflate:tsutils: sill inflate node_modules/tsu
+⸨#################⠂⸩ ⠸ idealTree:inflate:typeorm-seeding/node_modules/wrap-ansi
+⸨#################⠂⸩ ⠧ idealTree:inflate:typeorm-seeding/node_modules/yargs: si
+⸨#################⠂⸩ ⠏ idealTree:inflate:typeorm-seeding/node_modules/yargs-par
+⸨#################⠂⸩ ⠹ idealTree:inflate:util-deprecate: sill inflate node_modu
+⸨#################⠂⸩ ⠏ idealTree:inflate:which-module: sill inflate node_module
+⸨#################⠂⸩ ⠴ idealTree:inflate:xmlchars: sill inflate node_modules/xm
+⸨##################⸩ ⠧ idealTree:inflate:v8-to-istanbul: http fetch GET 200 htt
+
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: '@npmcli/fs@3.1.0',
+npm WARN EBADENGINE   required: { node: '^14.17.0 || ^16.13.0 || >=18.0.0' },
+npm WARN EBADENGINE   current: { node: 'v16.10.0', npm: '7.24.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'cacache@17.0.2',
+npm WARN EBADENGINE   required: { node: '^14.17.0 || ^16.13.0 || >=18.0.0' },
+npm WARN EBADENGINE   current: { node: 'v16.10.0', npm: '7.24.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'make-fetch-happen@11.0.1',
+npm WARN EBADENGINE   required: { node: '^14.17.0 || ^16.13.0 || >=18.0.0' },
+npm WARN EBADENGINE   current: { node: 'v16.10.0', npm: '7.24.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'minipass-fetch@3.0.0',
+npm WARN EBADENGINE   required: { node: '^14.17.0 || ^16.13.0 || >=18.0.0' },
+npm WARN EBADENGINE   current: { node: 'v16.10.0', npm: '7.24.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'ssri@10.0.0',
+npm WARN EBADENGINE   required: { node: '^14.17.0 || ^16.13.0 || >=18.0.0' },
+npm WARN EBADENGINE   current: { node: 'v16.10.0', npm: '7.24.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'unique-filename@3.0.0',
+npm WARN EBADENGINE   required: { node: '^14.17.0 || ^16.13.0 || >=18.0.0' },
+npm WARN EBADENGINE   current: { node: 'v16.10.0', npm: '7.24.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'unique-slug@4.0.0',
+npm WARN EBADENGINE   required: { node: '^14.17.0 || ^16.13.0 || >=18.0.0' },
+npm WARN EBADENGINE   current: { node: 'v16.10.0', npm: '7.24.0' }
+npm WARN EBADENGINE }
+⸨##################⸩ ⠦ idealTree: timing idealTree Completed in 5615ms
+⸨##################⸩ ⠦ idealTree: timing idealTree Completed in 5615ms
+⸨##################⸩ ⠦ idealTree: timing idealTree Completed in 5615ms
+⸨##################⸩ ⠹ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠹ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠹ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠋ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠸ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠧ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠴ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠴ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠴ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠴ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠴ reify:fsevents: sill reify mark deleted [ '/home/circlec
+⸨##################⸩ ⠇ reify:xtend: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠦ reify:xml-name-validator: http fetch GET 200 https://reg
+⸨##################⸩ ⠏ reify:zen-observable-ts: timing reifyNode:node_modules/w
+
+npm WARN deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
+⸨##################⸩ ⠦ reify:w3c-hr-time: WARN deprecated w3c-hr-time@1.0.2: Us
+⸨##################⸩ ⠧ reify:which-boxed-primitive: timing reifyNode:node_modul
+⸨##################⸩ ⠙ reify:webpack-node-externals: http fetch GET 200 https:/
+⸨##################⸩ ⠇ reify:v8-to-istanbul: timing reifyNode:node_modules/watc
+⸨##################⸩ ⠸ reify:tree-kill: http fetch GET 200 https://registry.npm
+⸨##################⸩ ⠸ reify:tmp: http fetch GET 200 https://registry.npmjs.org
+⸨##################⸩ ⠋ reify:terminal-link: http fetch GET 200 https://registry
+⸨##################⸩ ⠼ reify:supports-hyperlinks: http fetch GET 200 https://re
+⸨##################⸩ ⠋ reify:string-length: http fetch GET 200 https://registry
+⸨##################⸩ ⠦ reify:slash: http fetch GET 200 https://registry.npmjs.o
+
+npm WARN deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+⸨##################⸩ ⠴ reify:setprototypeof: http fetch GET 200 https://registr
+⸨##################⸩ ⠋ reify:serve-static: http fetch GET 200 https://registry.
+⸨##################⸩ ⠹ reify:resolve-cwd: http fetch GET 200 https://registry.n
+⸨##################⸩ ⠸ reify:raw-body: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠇ reify:randombytes: http fetch GET 200 https://registry.n
+⸨##################⸩ ⠋ reify:process-nextick-args: http fetch GET 200 https://r
+⸨##################⸩ ⠸ reify:pause: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠧ reify:path-exists: http fetch GET 200 https://registry.n
+⸨##################⸩ ⠦ reify:parse5-htmlparser2-tree-adapter: http fetch GET 20
+⸨##################⸩ ⠴ reify:onetime: http fetch GET 200 https://registry.npmjs
+⸨##################⸩ ⠸ reify:npmlog: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠧ reify:optional: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠏ reify:minizlib: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠹ reify:minipass: http fetch GET 200 https://registry.npmj
+
+npm WARN deprecated multer@1.4.3: Multer 1.x is affected by CVE-2022-24434. This is fixed in v1.4.4-lts.1 which drops support for versions of Node.js before 6. Please upgrade to at least Node.js 6 and version 1.4.4-lts.1 of Multer. If you need support for older versions of Node.js, we are open to accepting patches that would fix the CVE on the main 1.x release line, whilst maintaining compatibility with Node.js 0.10.
+⸨##################⸩ ⠸ reify:memory-pager: http fetch GET 200 https://registry.
+⸨##################⸩ ⠙ reify:lodash.once: http fetch GET 200 https://registry.n
+⸨##################⸩ ⠼ reify:loader-runner: http fetch GET 200 https://registry
+⸨##################⸩ ⠴ reify:json-parse-even-better-errors: http fetch GET 200
+⸨##################⸩ ⠧ reify:jest-serializer: http fetch GET 200 https://regist
+⸨##################⸩ ⠸ reify:jest-get-type: http fetch GET 200 https://registry
+⸨##################⸩ ⠹ reify:istanbul-lib-coverage: http fetch GET 200 https://
+⸨##################⸩ ⠼ reify:is-weakmap: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠼ reify:is-regex: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:is-interactive: http fetch GET 200 https://registr
+⸨##################⸩ ⠋ reify:is-ci: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠸ reify:ip: http fetch GET 200 https://registry.npmjs.org/
+⸨##################⸩ ⠙ reify:import-local: http fetch GET 200 https://registry.
+⸨##################⸩ ⠇ reify:http-proxy-agent: http fetch GET 200 https://regis
+⸨##################⸩ ⠧ reify:has-property-descriptors: http fetch GET 200 https
+⸨##################⸩ ⠋ reify:has-bigints: http fetch GET 200 https://registry.n
+⸨##################⸩ ⠧ reify:globals: http fetch GET 200 https://registry.npmjs
+⸨##################⸩ ⠸ reify:gensync: http fetch GET 200 https://registry.npmjs
+⸨##################⸩ ⠼ reify:figures: http fetch GET 200 https://registry.npmjs
+⸨##################⸩ ⠋ reify:file-entry-cache: http fetch GET 200 https://regis
+⸨##################⸩ ⠹ reify:fast-diff: http fetch GET 200 https://registry.npm
+⸨##################⸩ ⠧ reify:eslint-visitor-keys: http fetch GET 200 https://re
+
+npm WARN deprecated subscriptions-transport-ws@0.11.0: The `subscriptions-transport-ws` package is no longer maintained. We recommend you use `graphql-ws` instead. For help migrating Apollo software to `graphql-ws`, see https://www.apollographql.com/docs/apollo-server/data/subscriptions/#switching-from-subscriptions-transport-ws    For general help using `graphql-ws`, see https://github.com/enisdenjo/graphql-ws/blob/master/README.md
+⸨##################⸩ ⠏ reify:error-ex: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠹ reify:detect-newline: http fetch GET 200 https://registr
+⸨##################⸩ ⠙ reify:decamelize: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠼ reify:create-require: http fetch GET 200 https://registr
+⸨##################⸩ ⠏ reify:content-type: http fetch GET 200 https://registry.
+⸨##################⸩ ⠼ reify:color-support: http fetch GET 200 https://registry
+⸨##################⸩ ⠸ reify:cli-spinners: http fetch GET 200 https://registry.
+⸨##################⸩ ⠏ reify:chownr: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠇ reify:callsites: http fetch GET 200 https://registry.npm
+⸨##################⸩ ⠋ reify:buffer-equal-constant-time: http fetch GET 200 htt
+⸨##################⸩ ⠼ reify:babel-preset-jest: http fetch GET 200 https://regi
+
+npm WARN deprecated formidable@1.2.2: Please upgrade to latest, formidable@v2 or formidable@v3! Check these notes: https://bit.ly/2ZEqIau
+⸨##################⸩ ⠧ reify:babel-plugin-jest-hoist: http fetch GET 200 https:
+⸨##################⸩ ⠏ reify:ansi-styles: http fetch GET 200 https://registry.n
+⸨##################⸩ ⠸ reify:acorn-jsx: http fetch GET 200 https://registry.npm
+⸨##################⸩ ⠋ reify:acorn-globals: http fetch GET 200 https://registry
+⸨##################⸩ ⠧ reify:@xtuc/ieee754: http fetch GET 200 https://registry
+⸨##################⸩ ⠋ reify:@webassemblyjs/floating-point-hex-parser: http fet
+⸨##################⸩ ⠇ reify:@types/supertest: http fetch GET 200 https://regis
+⸨##################⸩ ⠧ reify:@types/passport: http fetch GET 200 https://regist
+⸨##################⸩ ⠹ reify:@types/istanbul-reports: http fetch GET 200 https:
+⸨##################⸩ ⠸ reify:@tsconfig/node14: http fetch GET 200 https://regis
+⸨##################⸩ ⠙ reify:@tsconfig/node10: http fetch GET 200 https://regis
+⸨##################⸩ ⠦ reify:@protobufjs/codegen: http fetch GET 200 https://re
+⸨##################⸩ ⠧ reify:@nuxtjs/opencollective: http fetch GET 200 https:/
+⸨##################⸩ ⠴ reify:fast-xml-parser: http fetch GET 200 https://regist
+⸨##################⸩ ⠼ reify:@jest/source-map: http fetch GET 200 https://regis
+⸨##################⸩ ⠼ reify:expect: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠸ reify:@jest/fake-timers: http fetch GET 200 https://regi
+⸨##################⸩ ⠧ reify:@webassemblyjs/wasm-parser: http fetch GET 200 htt
+⸨##################⸩ ⠴ reify:@cspotcode/source-map-support: http fetch GET 200
+
+npm WARN deprecated superagent@6.1.0: Please upgrade to v7.0.2+ of superagent.  We have fixed numerous issues with streams, form-data, attach(), filesystem errors not bubbling up (ENOENT on attach()), and all tests are now passing.  See the releases tab for more information at <https://github.com/visionmedia/superagent/releases>.
+⸨##################⸩ ⠏ reify:@babel/plugin-syntax-top-level-await: http fetch G
+⸨##################⸩ ⠸ reify:@babel/plugin-syntax-import-meta: http fetch GET 2
+⸨##################⸩ ⠼ reify:@babel/helper-replace-supers: http fetch GET 200 h
+⸨##################⸩ ⠼ reify:@babel/helper-function-name: http fetch GET 200 ht
+⸨##################⸩ ⠙ reify:@babel/code-frame: http fetch GET 200 https://regi
+⸨##################⸩ ⠏ reify:@aws-sdk/util-locate-window: http fetch GET 200 ht
+⸨##################⸩ ⠹ reify:@aws-sdk/url-parser: http fetch GET 200 https://re
+⸨##################⸩ ⠼ reify:@aws-sdk/util-body-length-node: timing reifyNode:n
+⸨##################⸩ ⠴ reify:@aws-sdk/service-error-classification: timing reif
+⸨##################⸩ ⠧ reify:@aws-sdk/middleware-recursion-detection: http fetc
+⸨##################⸩ ⠦ reify:@aws-sdk/middleware-content-length: http fetch GET
+⸨##################⸩ ⠸ reify:@aws-sdk/is-array-buffer: timing reifyNode:node_mo
+⸨##################⸩ ⠼ reify:@aws-sdk/querystring-builder: http fetch GET 200 h
+⸨##################⸩ ⠼ reify:@apollo/utils.sortast: http fetch GET 200 https://
+⸨##################⸩ ⠸ reify:@aws-crypto/supports-web-crypto: timing reifyNode:
+⸨##################⸩ ⠦ reify:@aws-sdk/credential-provider-web-identity: timing 
+⸨##################⸩ ⠦ reify:string-width: http fetch GET 200 https://registry.
+⸨##################⸩ ⠧ reify:escape-string-regexp: http fetch GET 200 https://r
+⸨##################⸩ ⠦ reify:supports-color: http fetch GET 200 https://registr
+⸨##################⸩ ⠦ reify:supports-color: http fetch GET 200 https://registr
+⸨##################⸩ ⠼ reify:chalk: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠦ reify:acorn-walk: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠴ reify:json-schema-traverse: http fetch GET 200 https://r
+⸨##################⸩ ⠧ reify:safe-buffer: http fetch GET 200 https://registry.n
+⸨##################⸩ ⠇ reify:strip-ansi: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠹ reify:json-schema-traverse: timing reifyNode:node_module
+⸨##################⸩ ⠏ reify:resolve-from: http fetch GET 200 https://registry.
+⸨##################⸩ ⠧ reify:p-locate: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠴ reify:string_decoder: http fetch GET 200 https://registr
+⸨##################⸩ ⠧ reify:http-proxy-agent: http fetch GET 200 https://regis
+⸨##################⸩ ⠦ reify:supports-color: http fetch GET 200 https://registr
+⸨##################⸩ ⠇ reify:chalk: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠹ reify:@babel/code-frame: http fetch GET 200 https://regi
+⸨##################⸩ ⠙ reify:ansi-styles: http fetch GET 200 https://registry.n
+⸨##################⸩ ⠸ reify:jest-get-type: http fetch GET 200 https://registry
+⸨##################⸩ ⠸ reify:string-width: http fetch GET 200 https://registry.
+⸨##################⸩ ⠏ reify:ansi-regex: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠇ reify:path-to-regexp: http fetch GET 200 https://registr
+⸨##################⸩ ⠹ reify:json-schema-traverse: timing reifyNode:node_module
+⸨##################⸩ ⠸ reify:ignore: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠴ reify:estraverse: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠦ reify:isarray: http fetch GET 200 https://registry.npmjs
+⸨##################⸩ ⠼ reify:brace-expansion: http fetch GET 200 https://regist
+⸨##################⸩ ⠏ reify:form-data: http fetch GET 200 https://registry.npm
+⸨##################⸩ ⠧ reify:chalk: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠙ reify:acorn: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠹ reify:chalk: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠋ reify:chalk: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠋ reify:@babel/code-frame: http fetch GET 200 https://regi
+⸨##################⸩ ⠙ reify:raw-body: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠋ reify:destroy: http fetch GET 200 https://registry.npmjs
+⸨##################⸩ ⠴ reify:@apollo/utils.isnodelike: http fetch GET 200 https
+⸨##################⸩ ⠇ reify:tslib: timing reifyNode:node_modules/split2/node_m
+⸨##################⸩ ⠏ reify:body-parser: timing reifyNode:node_modules/jest-ma
+⸨##################⸩ ⠹ reify:semver: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠙ reify:lru-cache: http fetch GET 200 https://registry.npm
+⸨##################⸩ ⠋ reify:@jest/core: timing reifyNode:node_modules/@aws-sdk
+⸨##################⸩ ⠏ reify:@typescript-eslint/types: http fetch GET 200 https
+⸨##################⸩ ⠋ reify:@graphql-tools/schema: timing reifyNode:node_modul
+⸨##################⸩ ⠋ reify:@aws-sdk/credential-provider-imds: timing metavuln
+⸨##################⸩ ⠏ reify:acorn: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠸ reify:@aws-sdk/smithy-client: http fetch GET 200 https:/
+⸨##################⸩ ⠸ reify:iconv-lite: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠦ reify:inquirer: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠹ reify:@apollo/query-graphs: http fetch GET 200 https://r
+⸨##################⸩ ⠹ reify:@apollo/query-graphs: http fetch GET 200 https://r
+⸨##################⸩ ⠹ reify:source-map: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠋ reify:source-map: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠇ reify:validator: http fetch GET 200 https://registry.npm
+⸨##################⸩ ⠦ reify:@aws-sdk/types: http fetch GET 200 https://registr
+⸨##################⸩ ⠸ reify:@apollo/composition: http fetch GET 200 https://re
+⸨##################⸩ ⠧ reify:uuid: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠸ reify:uuid: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠸ reify:uuid: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠸ reify:@aws-sdk/client-sts: timing reify:audit Completed
+⸨##################⸩ ⠧ reify:@typescript-eslint/typescript-estree: http fetch G
+⸨##################⸩ ⠇ reify:@typescript-eslint/typescript-estree: http fetch G
+⸨##################⸩ ⠹ reify:@apollo/query-planner: http fetch GET 200 https://
+⸨##################⸩ ⠏ reify:@babel/types: timing reifyNode:node_modules/schema
+⸨##################⸩ ⠸ reify:ajv: http fetch GET 200 https://registry.npmjs.org
+⸨##################⸩ ⠴ reify:ajv: http fetch GET 200 https://registry.npmjs.org
+⸨##################⸩ ⠙ reify:fork-ts-checker-webpack-plugin: timing reifyNode:n
+⸨##################⸩ ⠴ reify:@angular-devkit/core: http fetch GET 200 https://r
+⸨##################⸩ ⠧ reify:@aws-sdk/util-endpoints: http fetch GET 200 https:
+⸨##################⸩ ⠧ reify:@aws-sdk/util-endpoints: http fetch GET 200 https:
+⸨##################⸩ ⠏ reify:@graphql-tools/utils: http fetch GET 200 https://r
+⸨##################⸩ ⠸ reify:bson: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠴ reify:@aws-sdk/client-cognito-identity: http fetch GET 2
+⸨##################⸩ ⠧ reify:class-transformer: http fetch GET 200 https://regi
+⸨##################⸩ ⠏ reify:@nestjs/core: http fetch GET 200 https://registry.
+⸨##################⸩ ⠏ reify:@nestjs/core: http fetch GET 200 https://registry.
+⸨##################⸩ ⠏ reify:@nestjs/core: http fetch GET 200 https://registry.
+⸨##################⸩ ⠹ reify:@neo4j/cypher-builder: http fetch GET 200 https://
+⸨##################⸩ ⠙ reify:@typescript-eslint/experimental-utils: timing reif
+⸨##################⸩ ⠙ reify:@typescript-eslint/experimental-utils: timing reif
+⸨##################⸩ ⠹ reify:@typescript-eslint/experimental-utils: timing reif
+⸨##################⸩ ⠴ reify:@apollo/federation-internals: http fetch GET 200 h
+⸨##################⸩ ⠧ reify:@apollo/protobufjs: http fetch GET 200 https://reg
+⸨##################⸩ ⠇ reify:@apollo/protobufjs: http fetch GET 200 https://reg
+⸨##################⸩ ⠏ reify:@nestjs/common: http fetch GET 200 https://registr
+⸨##################⸩ ⠙ reify:mongoose: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠙ reify:mongoose: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠸ reify:graphql: http fetch GET 200 https://registry.npmjs
+⸨##################⸩ ⠴ reify:highlight.js: http fetch GET 200 https://registry.
+⸨##################⸩ ⠴ reify:highlight.js: http fetch GET 200 https://registry.
+⸨##################⸩ ⠧ reify:@typescript-eslint/scope-manager: http fetch GET 2
+⸨##################⸩ ⠧ reify:@typescript-eslint/scope-manager: http fetch GET 2
+⸨##################⸩ ⠏ reify:@nestjs/schematics: http fetch GET 200 https://reg
+⸨##################⸩ ⠙ reify:@nestjs/schematics: http fetch GET 200 https://reg
+⸨##################⸩ ⠧ reify:ajv: http fetch GET 200 https://registry.npmjs.org
+⸨##################⸩ ⠏ reify:@nestjs/graphql: http fetch GET 200 https://regist
+⸨##################⸩ ⠏ reify:@nestjs/graphql: http fetch GET 200 https://regist
+⸨##################⸩ ⠙ reify:mongodb: http fetch GET 200 https://registry.npmjs
+⸨##################⸩ ⠴ reify:eslint: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠴ reify:eslint: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠴ reify:eslint: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠴ reify:eslint: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠴ reify:eslint: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠧ reify:ajv: http fetch GET 200 https://registry.npmjs.org
+⸨##################⸩ ⠏ reify:@apollo/server: http fetch GET 200 https://registr
+⸨##################⸩ ⠏ reify:@apollo/server: http fetch GET 200 https://registr
+⸨##################⸩ ⠙ reify:jsdom: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠙ reify:jsdom: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠙ reify:jsdom: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠙ reify:jsdom: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠙ reify:jsdom: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠙ reify:jsdom: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠸ reify:caniuse-lite: http fetch GET 200 https://registry.
+⸨##################⸩ ⠸ reify:caniuse-lite: http fetch GET 200 https://registry.
+⸨##################⸩ ⠸ reify:caniuse-lite: http fetch GET 200 https://registry.
+⸨##################⸩ ⠸ reify:caniuse-lite: http fetch GET 200 https://registry.
+⸨##################⸩ ⠴ reify:lodash: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠧ reify:webpack: http fetch GET 200 https://registry.npmjs
+⸨##################⸩ ⠏ reify:libphonenumber-js: http fetch GET 200 https://regi
+⸨##################⸩ ⠏ reify:libphonenumber-js: http fetch GET 200 https://regi
+⸨##################⸩ ⠙ reify:figlet: http fetch GET 200 https://registry.npmjs.
+⸨##################⸩ ⠴ reify:@neo4j/graphql: http fetch GET 200 https://registr
+⸨##################⸩ ⠴ reify:@neo4j/graphql: http fetch GET 200 https://registr
+⸨##################⸩ ⠴ reify:@neo4j/graphql: http fetch GET 200 https://registr
+⸨##################⸩ ⠴ reify:@neo4j/graphql: http fetch GET 200 https://registr
+⸨##################⸩ ⠴ reify:@neo4j/graphql: http fetch GET 200 https://registr
+⸨##################⸩ ⠴ reify:@neo4j/graphql: http fetch GET 200 https://registr
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠧ reify:prettier: http fetch GET 200 https://registry.npmj
+⸨##################⸩ ⠏ reify:faker: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠏ reify:faker: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠏ reify:faker: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠏ reify:faker: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠏ reify:faker: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠏ reify:faker: http fetch GET 200 https://registry.npmjs.o
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠙ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠸ reify:rxjs: http fetch GET 200 https://registry.npmjs.or
+⸨##################⸩ ⠋ reify:typeorm: timing reifyNode:node_modules/@nestjs/sch
+⸨##################⸩ ⠏ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠋ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠋ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠋ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠋ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠋ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠋ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠋ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠴ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠧ reify:typescript: http fetch GET 200 https://registry.np
+⸨##################⸩ ⠼ reify:typescript: http fetch GET 200 https://registry.np
+
+
+added 1251 packages, and audited 1252 packages in 32s
+
+129 packages are looking for funding
+  run `npm fund` for details
+
+17 vulnerabilities (2 moderate, 11 high, 4 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.

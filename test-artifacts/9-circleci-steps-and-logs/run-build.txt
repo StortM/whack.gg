@@ -1,0 +1,7 @@
+
+> template-backend-nestjs@0.0.1 prebuild
+> rimraf dist
+
+
+> template-backend-nestjs@0.0.1 build
+> nest build

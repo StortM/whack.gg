@@ -1,0 +1,34 @@
+Build-agent version 1.0.151433-c4470816 (2022-12-20T13:49:54+0000)
+System information:
+ Server Version: 20.10.18
+ Storage Driver: overlay2
+  Backing Filesystem: xfs
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Kernel Version: 5.15.0-1021-aws
+ Operating System: Ubuntu 20.04.5 LTS
+ OSType: linux
+ Architecture: x86_64
+
+Starting container cimg/node:16.10
+cimg/node:16.10:
+  using image cimg/node@sha256:4647574f341189fdb7d85cfb10ac70d464f6ccb5c7c38731c8e3e28c2bd80941
+  pull stats: Image was already available so the image was not pulled
+  time to create container: 8ms
+Starting container circleci/postgres:13
+circleci/postgres:13:
+  using image circleci/postgres@sha256:84aa7aa3de7651b5cd560e9e1832da2f0fc2b52d3ee9b1cedd00473c4ff65b65
+  pull stats: Image was already available so the image was not pulled
+  time to create container: 9ms
+Warning: No authentication provided, using CircleCI credentials for pulls from Docker Hub.
+  image is cached as cimg/node:16.10, but refreshing...
+16.10: Pulling from cimg/node
+Digest: sha256:4647574f341189fdb7d85cfb10ac70d464f6ccb5c7c38731c8e3e28c2bd80941
+Status: Image is up to date for cimg/node:16.10
+Warning: No authentication provided, using CircleCI credentials for pulls from Docker Hub.
+  image is cached as circleci/postgres:13, but refreshing...
+13: Pulling from circleci/postgres
+Digest: sha256:84aa7aa3de7651b5cd560e9e1832da2f0fc2b52d3ee9b1cedd00473c4ff65b65
+Status: Image is up to date for circleci/postgres:13
+Time to upload agent and config: 492.340654ms
+Time to start containers: 537.723352ms
