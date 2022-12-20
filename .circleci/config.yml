@@ -57,7 +57,11 @@ jobs:
           command: npm run build
 
       - run:
-          name: Run migration
+          name: Sync DB schema
+          command: npm run schema:sync
+
+      - run:
+          name: Run migrations
           command: npm run migration:run
 
       - run:
@@ -67,10 +71,7 @@ jobs:
       - run:
           name: integration tests
           command: npm run test:integration
-      
-      - run:
-          name: Docker up
-          command: npm test
+
 
 
 workflows:
