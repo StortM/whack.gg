@@ -53,6 +53,10 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
 
       - run:
+          name: Run build
+          command: npm run build
+
+      - run:
           name: unit tests
           command: npm run test
 
