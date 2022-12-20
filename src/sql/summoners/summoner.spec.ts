@@ -2,16 +2,37 @@ import { INestApplication } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
 import { getRepositoryToken } from '@nestjs/typeorm'
 import { AppModule } from 'src/app.module'
+import { CryptService } from 'src/crypt/crypt.service'
 import { UpdateResourceId } from 'src/utils/UpdateResourceId'
-import { Connection, Repository } from 'typeorm'
+import {
+  Connection,
+  createConnection,
+  getConnection,
+  getRepository,
+  Repository
+} from 'typeorm'
 import { factory, useSeeding } from 'typeorm-seeding'
+import { AuthModule } from '../auth/auth.module'
+import { DivisionsModule } from '../divisions/divisions.module'
 import { Division } from '../divisions/entities/division.entity'
 import { GameMode } from '../game-modes/entities/game-mode.entity'
+import { GameModesModule } from '../game-modes/game-modes.module'
+import { Mastery } from '../masteries/entities/mastery.entity'
+import { MasteriesModule } from '../masteries/masteries.module'
+import { Participant } from '../participants/entities/participant.entity'
+import { ParticipantsModule } from '../participants/participants.module'
+import { PositionsModule } from '../positions/positions.module'
 import { Rank } from '../ranks/entities/rank.entity'
+import { RanksModule } from '../ranks/ranks.module'
 import { Region } from '../regions/entities/region.entity'
+import { RegionsModule } from '../regions/regions.module'
+import { RegionsService } from '../regions/regions.service'
+import { TeamsModule } from '../teams/teams.module'
 import { Tier } from '../tiers/entities/tier.entity'
+import { TiersModule } from '../tiers/tiers.module'
 import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { Summoner } from './entities/summoner.entity'
+import { SummonerModule } from './summoner.module'
 import { SummonerService } from './summoner.service'
 
 describe('Summoner service', () => {
@@ -26,26 +47,138 @@ describe('Summoner service', () => {
   let testGameMode: GameMode
   let testRegion: Region
   let testRank: Rank
+  let cryptService: CryptService
+  let regionService: RegionsService
 
+  const testConnectionName = 'testConnection'
+  let connection: Connection
   beforeAll(async () => {
-    module = await Test.createTestingModule({
+    /*     module = await Test.createTestingModule({
       imports: [AppModule]
     }).compile()
-
-    summonerService = module.get<SummonerService>(SummonerService)
-    summonerRepository = module.get(getRepositoryToken(Summoner))
-
-    app = module.createNestApplication()
-
-    await app.init()
-    await useSeeding()
+ */
   })
 
   beforeEach(async () => {
-    const connection = app.get(Connection)
+    connection = await createConnection({
+      type: 'sqlite',
+      database: ':memory:',
+      dropSchema: true,
+      entities: [
+        Summoner,
+        Rank,
+        Tier,
+        Division,
+        GameMode,
+        Region,
+        Participant,
+        Mastery
+      ],
+      synchronize: true,
+      logging: false,
+      name: testConnectionName
+    })
+
+    module = await Test.createTestingModule({
+      /*       imports: [
+        //AuthModule,
+        SummonerModule,
+        RanksModule
+        // TiersModule,
+        // DivisionsModule,
+        // GameModesModule,
+        // RegionsModule,
+        // PositionsModule,
+        // ParticipantsModule,
+        // TeamsModule,
+        // MasteriesModule
+      ] */
+      providers: [
+        SummonerService,
+        CryptService,
+        RegionsService,
+        {
+          provide: getRepositoryToken(Summoner),
+          useClass: Repository
+        },
+        {
+          provide: getRepositoryToken(Rank),
+          useClass: Repository
+        },
+        {
+          provide: getRepositoryToken(Tier),
+          useClass: Repository
+        },
+        {
+          provide: getRepositoryToken(Division),
+          useClass: Repository
+        },
+        {
+          provide: getRepositoryToken(GameMode),
+          useClass: Repository
+        },
+        {
+          provide: getRepositoryToken(Participant),
+          useClass: Repository
+        },
+        {
+          provide: getRepositoryToken(Region),
+          useClass: Repository
+        }
+      ]
+    }).compile()
+
+    cryptService = module.get(CryptService)
+    regionService = module.get(RegionsService)
+    summonerRepository = getRepository(Summoner, testConnectionName)
+
+    summonerService = new SummonerService(
+      summonerRepository,
+      cryptService,
+      regionService
+    )
+
+    /*  defaultSummonerDto = {
+      summonerName: 'John Doe',
+      password: 'Password!234',
+      icon: 1000,
+      level: 300,
+      isAdmin: false,
+      regionName: 'EUW'
+    } as CreateSummonerDto
+
+    await useSeeding()
+
+    // test data to be used in tests
+    testTier = await factory(Tier)().create()
+    testDivision = await factory(Division)().create()
+    testGameMode = await factory(GameMode)().create()
+    testRegion = await factory(Region)({ name: 'EUW' }).create()
+    testRank = await factory(Rank)({
+      tierId: testTier.id,
+      divisionId: testDivision.id,
+      gameModeId: testGameMode.id
+    }).create() */
+    return connection
+  })
+
+  beforeEach(async () => {
+    //summonerService = module.get<SummonerService>(SummonerService)
+    //summonerRepository = module.get(getRepositoryToken(Summoner))
+    cryptService = module.get(CryptService)
+    regionService = module.get(RegionsService)
+    summonerRepository = getRepository(Summoner, testConnectionName)
+
+    summonerService = new SummonerService(
+      summonerRepository,
+      cryptService,
+      regionService
+    )
+
+    /*     const connection = app.get(Connection)
     await connection.dropDatabase()
     await connection.synchronize(true)
-
+ */
     defaultSummonerDto = {
       summonerName: 'John Doe',
       password: 'Password!234',
@@ -67,12 +200,16 @@ describe('Summoner service', () => {
     }).create()
   })
 
+  afterEach(async () => {
+    await getConnection(testConnectionName).close()
+  })
+
   afterAll(async () => {
-    const connection = app.get(Connection)
+    /*     const connection = app.get(Connection)
     await connection.dropDatabase()
     await connection.synchronize(true)
-
-    module.close()
+ */
+    //module.close()
   })
 
   const summonerNameTestValues = [
