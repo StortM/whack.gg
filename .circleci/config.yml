@@ -65,13 +65,12 @@ jobs:
           command: npm run migration:run
 
       - run:
-          name: unit tests
+          name: Run Unit tests
           command: npm run test
 
       - run:
-          name: integration tests
+          name: Run Integration tests
           command: npm run test:integration
-
 
 
 workflows:
