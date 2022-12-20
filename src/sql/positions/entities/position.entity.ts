@@ -10,5 +10,5 @@ export class Position {
   name!: string
 
   @OneToMany(() => Participant, (participant) => participant.position)
-  participants!: Participant
+  participants?: Participant[]
 }

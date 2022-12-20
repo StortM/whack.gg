@@ -13,8 +13,8 @@ export class GameMode {
   name!: string
 
   @OneToMany(() => Rank, (rank) => rank.gameMode)
-  ranks!: Rank[]
+  ranks?: Rank[]
 
   @OneToMany(() => Match, (match) => match.gameMode)
-  match!: Match
+  match?: Match
 }

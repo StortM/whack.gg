@@ -4,9 +4,10 @@ import { PassportStrategy } from '@nestjs/passport'
 import { ExtractJwt, Strategy } from 'passport-jwt'
 import { SummonerOmittingPasswordHash } from 'src/sql/summoners/entities/summoner.entity'
 import { SummonerService } from 'src/sql/summoners/summoner.service'
+import { Request } from 'express'
 
 export type JwtAuthenticatedRequest = Request & {
-  summoner: SummonerOmittingPasswordHash
+  user: SummonerOmittingPasswordHash
 }
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -25,6 +26,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     sub: string
     summonerName: string
   }): Promise<SummonerOmittingPasswordHash | undefined> {
-    return await this.summonerService.findOne(parseInt(payload.sub))
+    return await this.summonerService.findOne({ id: parseInt(payload.sub) })
   }
 }

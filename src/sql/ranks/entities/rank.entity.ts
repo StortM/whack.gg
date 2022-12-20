@@ -22,30 +22,32 @@ export class Rank {
   lp!: number
 
   @Column()
-  gameModeId!: number
+  gameModeId?: number
 
-  @ManyToOne(() => GameMode, (gameMode) => gameMode.ranks)
+  @ManyToOne(() => GameMode, (gameMode) => gameMode.ranks, {
+    cascade: true
+  })
   @JoinColumn({ name: 'gameModeId' })
-  gameMode!: GameMode
+  gameMode?: GameMode
 
   @Column()
-  divisionId!: number
+  divisionId?: number
 
   @ManyToOne(() => Division, (division) => division.ranks, {
     cascade: true
   })
   @JoinColumn({ name: 'divisionId' })
-  division!: Division
+  division?: Division
 
   @Column()
-  tierId!: number
+  tierId?: number
 
   @ManyToOne(() => Tier, (tier) => tier.ranks, {
     cascade: true
   })
   @JoinColumn({ name: 'tierId' })
-  tier!: Tier
+  tier?: Tier
 
   @OneToMany(() => Summoner, (summoner) => summoner.rank)
-  summoners!: Summoner[]
+  summoners?: Summoner[]
 }
