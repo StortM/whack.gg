@@ -15,6 +15,7 @@ import { ParticipantsModule as SqlParticipantsModule } from './sql/participants/
 import { PositionsModule as SqlPositionsModule } from './sql/positions/positions.module'
 import { RanksModule as SqlRanksModule } from './sql/ranks/ranks.module'
 import { RegionsModule as SqlRegionsModule } from './sql/regions/regions.module'
+import { RiotModule } from './sql/riot/riot.module'
 import { SummonerModule as SqlSummonerModule } from './sql/summoners/summoner.module'
 import { TeamsModule as SqlTeamsModule } from './sql/teams/teams.module'
 import { TiersModule as SqlTiersModule } from './sql/tiers/tiers.module'
@@ -79,7 +80,8 @@ const validation = {
     SqlPositionsModule,
     SqlParticipantsModule,
     SqlTeamsModule,
-    SqlMasteriesModule
+    SqlMasteriesModule,
+    RiotModule
   ],
   controllers: [AppController],
   providers: [AppService]
