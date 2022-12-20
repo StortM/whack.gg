@@ -88,7 +88,15 @@ export class SummonerService {
   }
 
   async findAll(): Promise<SummonerOmittingPasswordHash[]> {
-    const summoners = await this.summonerRepository.find()
+    const summoners = await this.summonerRepository.find({
+      relations: [
+        'region',
+        'rank',
+        'rank.tier',
+        'rank.division',
+        'rank.gameMode'
+      ]
+    })
 
     // strip password hashes
     return summoners.map((summoner) => {

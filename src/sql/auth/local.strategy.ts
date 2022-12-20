@@ -11,7 +11,7 @@ import { AuthService } from './auth.service'
 export type AuthenticatedRequest = Request & { user: Summoner }
 
 @Injectable()
-export class LocalStrategy extends PassportStrategy(Strategy) {
+export class LocalStrategy extends PassportStrategy(Strategy, 'sql-local') {
   constructor(private authService: AuthService) {
     super({ usernameField: 'summonerName' })
   }

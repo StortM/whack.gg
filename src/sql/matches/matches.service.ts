@@ -30,6 +30,19 @@ export class MatchesService {
     return await this.matchRepository.findOne(id)
   }
 
+  async findMatchWithTeams(id: string): Promise<Match | undefined> {
+    return await this.matchRepository.findOne(id, {
+      relations: [
+        'gameMode',
+        'teams',
+        'teams.participants',
+        'teams.participants.summoner',
+        'teams.participants.champion',
+        'teams.participants.position'
+      ]
+    })
+  }
+
   async update(
     id: string,
     updateMatchDto: UpdateMatchDto

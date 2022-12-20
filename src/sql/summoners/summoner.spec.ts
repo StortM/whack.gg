@@ -33,7 +33,6 @@ describe('Summoner service', () => {
 
     summonerService = module.get<SummonerService>(SummonerService)
     summonerRepository = module.get(getRepositoryToken(Summoner))
-
     app = module.createNestApplication()
 
     await app.init()
@@ -460,6 +459,7 @@ describe('Summoner service', () => {
         // insert a summoner with ID value.id
         const summ = await factory(Summoner)({ id: value.id }).create()
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const findOne = await summonerRepository.findOne({
           where: { summonerName: summ.summonerName }
         })
@@ -468,14 +468,6 @@ describe('Summoner service', () => {
           ...defaultSummonerDto,
           id: value.id
         }
-        // TODO: I cant insert a summoner with a specific ID, so I cant test this
-        // Even creating a transaction and inserting the summoner with the ID I want, it still inserts with a different ID
-        /*       const res = await summonerService.update(
-        { id: value.id },
-        updateSummonerDto
-      )
-
-      expect(res?.id).toEqual(value.expected) */
       })
     }
   )
@@ -652,4 +644,29 @@ describe('Summoner service', () => {
       })
     }
   )
+
+  const findAllValues = [
+    {
+      amount: 10,
+      expected: 10
+    },
+    {
+      amount: 1,
+      expected: 1
+    },
+    {
+      amount: 0,
+      expected: 0
+    }
+  ]
+
+  describe.each(findAllValues)('findAll()', (value) => {
+    it(`Will return correct amount of summoners for findAll()`, async () => {
+      await factory(Summoner)({ regionName: 'EUW' }).createMany(value.amount)
+
+      const summoners = await summonerService.findAll()
+
+      expect(summoners.length).toEqual(value.expected)
+    })
+  })
 })

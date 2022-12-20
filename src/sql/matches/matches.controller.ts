@@ -42,6 +42,12 @@ export class MatchesController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Get('/teams/:id')
+  findMatchWithTeams(@Param('id') id: string): Promise<Match | undefined> {
+    return this.matchesService.findMatchWithTeams(id)
+  }
+
+  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
   @Patch(':id')
   update(
