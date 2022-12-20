@@ -132,9 +132,13 @@ describe('Summoner service', () => {
 
   describe.each(summonerNameTestValues)('create - SummonerName', (value) => {
     it(`will return correct value for ${value.summonerName}`, async () => {
+      // Arrange
       defaultSummonerDto.summonerName = value.summonerName as unknown as string
 
+      // Act
       const res = await summonerService.create(defaultSummonerDto)
+
+      // Assert
       expect(res?.summonerName).toEqual(value.expected)
     })
   })
