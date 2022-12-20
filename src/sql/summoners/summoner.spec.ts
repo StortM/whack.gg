@@ -26,7 +26,6 @@ describe('Summoner service', () => {
   let testGameMode: GameMode
   let testRegion: Region
   let testRank: Rank
-  let testSummoner: Summoner
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
@@ -65,12 +64,6 @@ describe('Summoner service', () => {
       tierId: testTier.id,
       divisionId: testDivision.id,
       gameModeId: testGameMode.id
-    }).create()
-
-    testSummoner = await factory(Summoner)({
-      summonerName: 'testSummoner',
-      rankId: testRank.id,
-      regionId: testRegion.id
     }).create()
   })
 
@@ -473,9 +466,11 @@ describe('Summoner service', () => {
           .execute()
       }) */
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const findOne = await summonerRepository.findOne({
           where: { summonerName: summ.summonerName }
         })
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const updateSummonerDto = {
           ...defaultSummonerDto,
           id: value.id
@@ -618,7 +613,7 @@ describe('Summoner service', () => {
     it(`will return correct value for ${value.id}`, async () => {
       await factory(Summoner)().create()
 
-      const res = await summonerService.findOne({
+      await summonerService.findOne({
         id: value.id as unknown as number
       })
 
