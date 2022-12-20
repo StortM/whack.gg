@@ -20,7 +20,6 @@ describe('Summoner service', () => {
   let module: TestingModule
   let defaultSummonerDto: CreateSummonerDto
   let app: INestApplication
-
   let testTier: Tier
   let testDivision: Division
   let testGameMode: GameMode
@@ -133,9 +132,13 @@ describe('Summoner service', () => {
 
   describe.each(summonerNameTestValues)('create - SummonerName', (value) => {
     it(`will return correct value for ${value.summonerName}`, async () => {
+      // Arrange
       defaultSummonerDto.summonerName = value.summonerName as unknown as string
 
+      // Act
       const res = await summonerService.create(defaultSummonerDto)
+
+      // Assert
       expect(res?.summonerName).toEqual(value.expected)
     })
   })
@@ -457,16 +460,6 @@ describe('Summoner service', () => {
         // insert a summoner with ID value.id
         const summ = await factory(Summoner)({ id: value.id }).create()
 
-        /*     await app.get(Connection).transaction(async (transactionalManager) => {
-        transactionalManager
-          .createQueryBuilder()
-          .insert()
-          .into(Summoner)
-          .values(summ)
-          .execute()
-      }) */
-
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const findOne = await summonerRepository.findOne({
           where: { summonerName: summ.summonerName }
         })
