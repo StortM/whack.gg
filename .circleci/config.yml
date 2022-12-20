@@ -57,17 +57,20 @@ jobs:
           command: npm run build
 
       - run:
+          name: Run migration
+          command: npm run migration:run
+
+      - run:
           name: unit tests
           command: npm run test
 
       - run:
           name: integration tests
           command: npm run test:integration
-
+      
       - run:
-          name: Run tests
+          name: Docker up
           command: npm test
-     
 
 
 workflows:
