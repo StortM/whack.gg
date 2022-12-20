@@ -1,0 +1,107 @@
+
+> template-backend-nestjs@0.0.1 migration:run
+> typeorm migration:run
+
+query: SELECT * FROM current_schema()
+query: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'migrations'
+query: CREATE TABLE "migrations" ("id" SERIAL NOT NULL, "timestamp" bigint NOT NULL, "name" character varying NOT NULL, CONSTRAINT "PK_8c82d7f526340ab734260ea46be" PRIMARY KEY ("id"))
+query: SELECT * FROM "migrations" "migrations" ORDER BY "id" DESC
+0 migrations are already loaded in the database.
+7 migrations were found in the source code.
+7 migrations are new migrations that needs to be executed.
+query: START TRANSACTION
+query: 
+    create or replace function GetFullSummonerRank(tier varchar(50), division varchar(20))
+    returns varchar(10)
+    language plpgsql
+    as $$
+    declare
+      summonerRank varchar;
+    Begin
+      SELECT tier ||' '|| division
+      INTO summonerRank;
+      
+      return summonerRank;
+    end; $$
+      
+query: INSERT INTO "migrations"("timestamp", "name") VALUES ($1, $2) -- PARAMETERS: [1669843047590,"test1669843047590"]
+Migration test1669843047590 has been executed successfully.
+query: 
+    CREATE OR REPLACE FUNCTION getFullSummonerRankByName(
+        srName VARCHAR(255)
+     )
+     RETURNS TABLE (summonerName varchar, rank varchar, lp int)
+     LANGUAGE plpgsql    
+     AS $$
+     BEGIN		 
+		RETURN QUERY SELECT summoner."summonerName", 
+    GetFullSummonerRank(division.name, tier.value), rank.lp
+		    FROM summoner
+			JOIN rank on summoner."rankId" = rank.id
+            JOIN tier on rank."tierId" = tier.Id
+            JOIN division on rank."divisionId" = division.Id
+            WHERE summoner."summonerName" = srName;
+     END;$$
+    
+query: INSERT INTO "migrations"("timestamp", "name") VALUES ($1, $2) -- PARAMETERS: [1669843613493,"getSummonerFullRank1669843613493"]
+Migration getSummonerFullRank1669843613493 has been executed successfully.
+query: 
+        CREATE OR REPLACE VIEW ChampionBanRate as
+        SELECT c.name, COUNT(*) as ban_amount
+        FROM teams_bans_champions
+        JOIN champion c ON teams_bans_champions."championId" = c.id
+        GROUP BY c.name
+        ORDER BY ban_amount DESC
+        
+query: INSERT INTO "migrations"("timestamp", "name") VALUES ($1, $2) -- PARAMETERS: [1669857530754,"getTeamCountMatch1669857530754"]
+Migration getTeamCountMatch1669857530754 has been executed successfully.
+query: 
+    CREATE OR REPLACE FUNCTION checkTeamCount() 
+    RETURNS trigger 
+    LANGUAGE plpgsql
+    AS $$
+        DECLARE
+        team_count int;
+        BEGIN
+        team_count := (SELECT COUNT(*) FROM team WHERE team."matchId" = NEW."matchId");
+        IF team_count > 2 THEN
+        RAISE EXCEPTION 'YOU CAN ONLY ASSIGN TWO TEAMS PER MATCH!';
+        RETURN null;
+        END IF;
+        RETURN NEW;
+        END;
+    $$
+query: INSERT INTO "migrations"("timestamp", "name") VALUES ($1, $2) -- PARAMETERS: [1669863122867,"checkTeamCountFunction1669863122867"]
+Migration checkTeamCountFunction1669863122867 has been executed successfully.
+query: 
+    CREATE TRIGGER EnsureOnlyTwoTeamPrMatch
+    AFTER INSERT ON team
+    FOR EACH ROW
+    EXECUTE FUNCTION checkTeamCount()
+query: INSERT INTO "migrations"("timestamp", "name") VALUES ($1, $2) -- PARAMETERS: [1669863332490,"EnsureOnlyTwoTeamPrMatch1669863332490"]
+Migration EnsureOnlyTwoTeamPrMatch1669863332490 has been executed successfully.
+query: 
+        CREATE TABLE IF NOT EXISTS audit_matches(
+            id INT PRIMARY KEY NOT NULL,
+            matches_played int NOT NULL,
+            day VARCHAR(15)
+        )
+      
+query: INSERT INTO "migrations"("timestamp", "name") VALUES ($1, $2) -- PARAMETERS: [1669898082511,"createAuditTable1669898082511"]
+Migration createAuditTable1669898082511 has been executed successfully.
+query: 
+        CREATE OR REPLACE PROCEDURE insert_daily_match_count()
+        LANGUAGE plpgsql
+        AS $$
+        DECLARE
+            matches_played int;
+        BEGIN
+            matches_played := (SELECT COUNT(*) FROM match WHERE 
+            to_timestamp(match."gameCreation" / 1000)::date = now());
+            INSERT INTO audit_matches VALUES(0, matches_played, now()::date);
+            COMMIT;
+        END;$$
+      
+query: INSERT INTO "migrations"("timestamp", "name") VALUES ($1, $2) -- PARAMETERS: [1669899511813,"eventDailyMatches1669899511813"]
+Migration eventDailyMatches1669899511813 has been executed successfully.
+query: COMMIT

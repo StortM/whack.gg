@@ -27,7 +27,7 @@ export class PositionsController {
     return this.positionsService.create(createPositionDto)
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   findAll(): Promise<Position[] | undefined> {
     return this.positionsService.findAll()

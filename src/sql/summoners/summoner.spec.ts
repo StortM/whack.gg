@@ -20,7 +20,6 @@ describe('Summoner service', () => {
   let module: TestingModule
   let defaultSummonerDto: CreateSummonerDto
   let app: INestApplication
-
   let testTier: Tier
   let testDivision: Division
   let testGameMode: GameMode

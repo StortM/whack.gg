@@ -1,0 +1,45 @@
+
+> template-backend-nestjs@0.0.1 lint
+> eslint "{src,apps,libs,test}/**/*.ts"
+
+
+/home/circleci/project/src/mongo/auth/local.strategy.ts
+  6:3  warning  'Summoner' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/circleci/project/src/mongo/masteries/masteries.controller.ts
+  29:36  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  32:11  warning  'newMastery' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/circleci/project/src/mongo/masteries/schemas/masteries.schema.ts
+  2:28  warning  'ObjectId' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/circleci/project/src/mongo/matches/schema/matches.schema.ts
+  2:37  warning  'Max' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/circleci/project/src/mongo/summoner/summoners.controller.ts
+  12:3   warning  'Put' is defined but never used                @typescript-eslint/no-unused-vars
+  14:10  warning  'createSummonerDto' is defined but never used  @typescript-eslint/no-unused-vars
+  23:10  warning  'Mastery' is defined but never used            @typescript-eslint/no-unused-vars
+
+/home/circleci/project/src/mongo/tiers/tiers.controller.ts
+  9:3  warning  'UseGuards' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/circleci/project/src/sql/masteries/dto/create-mastery.dto.ts
+  1:10  warning  'IsNumber' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/circleci/project/src/sql/masteries/dto/update-mastery.dto.ts
+  1:10  warning  'PartialType' is defined but never used       @typescript-eslint/no-unused-vars
+  2:10  warning  'IsNumber' is defined but never used          @typescript-eslint/no-unused-vars
+  2:20  warning  'Max' is defined but never used               @typescript-eslint/no-unused-vars
+  2:25  warning  'Min' is defined but never used               @typescript-eslint/no-unused-vars
+  3:10  warning  'CreateMasteryDto' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/circleci/project/src/sql/masteries/entities/seed/create-masteries.seed.ts
+  1:10  warning  'Champion' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/circleci/project/test/summoner.integration-spec.ts
+  353:15  warning  'masteries' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  353:26  warning  'participants' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  353:40  warning  'passwordHash' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 19 problems (0 errors, 19 warnings)

@@ -1,0 +1,117 @@
+
+> template-backend-nestjs@0.0.1 test
+> jest --runInBand
+
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/ormconfig.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/champions/entities/champion.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/masteries/entities/mastery.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/summoners/entities/summoner.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/participants/entities/participant.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/positions/entities/position.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/teams/entities/team.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/matches/entities/match.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/game-modes/entities/game-mode.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/ranks/entities/rank.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/divisions/entities/division.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/tiers/entities/tier.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/teams_bans_champions/entities/teams_bans_champions.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/regions/entities/region.entity.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/migrations/1669843047590-test.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/migrations/1669843613493-getSummonerFullRank.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/migrations/1669857530754-getTeamCountMatch.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/migrations/1669863122867-checkTeamCountFunction.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/migrations/1669863332490-ensureOnlyTwoTeamPrMatch.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/migrations/1669898082511-createAuditTable.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/migrations/1669899511813-event-dailyMatches.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/divisions/divisions.factory.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/game-modes/game-modes.factory.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/positions/positions.factory.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/ranks/ranks.factory.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/regions/region.factory.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/riot/dto/fetch-summoner.dto.factory.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/riot/dto/fetch-summoner.dto.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/validators/AlphanumericAllowSpaces.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/validators/emoji.validator.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/summoners/dto/create-summoner.dto.factory.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/summoners/dto/create-summoner.dto.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/ranks/dto/create-rank.dto.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/summoners/summoner.factory.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ts-jest[ts-jest-transformer] (WARN) Got a `.js` file to compile while `allowJs` option is not set to `true` (file: /home/circleci/project/dist/sql/tiers/tiers.factory.js). To fix this:
+  - if you want TypeScript to process JS files, set `allowJs` to `true` in your TypeScript config (usually tsconfig.json)
+  - if you do not want TypeScript to process your `.js` files, in your Jest config change the `transform` key which value is `ts-jest` so that it does not match `.js` files anymore
+ PASS  src/sql/summoners/summoner.spec.ts (17.815 s)
+ PASS  src/sql/riot/riot.spec.ts
+
+Test Suites: 2 passed, 2 total
+Tests:       135 passed, 135 total
+Snapshots:   0 total
+Time:        20.476 s
+Ran all test suites.
