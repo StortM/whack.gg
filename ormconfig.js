@@ -22,8 +22,8 @@ module.exports = {
   port: process.env['POSTGRES_PORT'],
   username: process.env['POSTGRES_USER'],
   password: process.env['POSTGRES_PASSWORD'],
-  factories: ['dist/src/sql/**/*.factory.{ts,js}'],
-  logging: 'all',
+  factories: ['dist/sql/**/*.factory.{ts,js}'],
+  logging: false,
   database: process.env['POSTGRES_DB'],
   cli: { migrationsDir: './src/migrations' }
 }

@@ -12,6 +12,7 @@ New environment variables must be added to `.env.ci` and `.env.example`.
 # Server
 TOKEN_SECRET=someSecret
 PORT=3001
+RIOT_API_KEY=RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 # Postgres
 POSTGRES_HOST=postgres

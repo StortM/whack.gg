@@ -1,5 +1,7 @@
 import { INestApplication } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
+import { RiotService } from 'src/sql/riot/riot.service'
+import { MockRiotService } from 'src/sql/riot/riot.services.mock'
 import { Summoner } from 'src/sql/summoners/entities/summoner.entity'
 import { Connection } from 'typeorm'
 import { AppModule } from '../../src/app.module'
@@ -25,9 +27,13 @@ async function getTestApplication(): Promise<INestApplication> {
 }
 
 async function createTestingModule(): Promise<INestApplication> {
+  const mockRiotService = new MockRiotService()
+
   const moduleBuilder = await Test.createTestingModule({
     imports: [AppModule]
   })
+    .overrideProvider(RiotService)
+    .useValue(mockRiotService)
 
   const moduleFixture = await moduleBuilder.compile()
   const app = moduleFixture.createNestApplication()
