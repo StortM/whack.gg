@@ -20,8 +20,6 @@ export class LocalStrategy extends PassportStrategy(Strategy, 'sql-local') {
     summonerName: string,
     password: string
   ): Promise<SummonerOmittingPasswordHash> {
-    console.log(summonerName, password)
-
     const summoner = await this.authService.validateUser(summonerName, password)
     if (!summoner) {
       throw new UnauthorizedException('Wrong summonerName or password')
