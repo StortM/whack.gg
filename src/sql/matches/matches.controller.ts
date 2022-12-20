@@ -29,18 +29,19 @@ export class MatchesController {
     return this.matchesService.create(createMatchDto)
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll(): Promise<Match[] | undefined> {
     return this.matchesService.findAll()
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Match | undefined> {
     return this.matchesService.findOne(id)
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('/teams/:id')
   findMatchWithTeams(@Param('id') id: string): Promise<Match | undefined> {
     return this.matchesService.findMatchWithTeams(id)

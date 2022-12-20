@@ -39,7 +39,7 @@ export class TeamsController {
     return this.teamsService.findAll()
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Team | undefined> {
     return this.teamsService.findOne(id)

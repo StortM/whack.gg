@@ -59,7 +59,7 @@ export class SummonerController {
     return res
   }
 
-  //@UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(): Promise<SummonerOmittingPasswordHash[] | undefined> {
     return await this.summonerService.findAll()
