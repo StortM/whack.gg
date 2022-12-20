@@ -30,6 +30,7 @@ import { ParticipantsModule as SqlParticipantsModule } from './sql/participants/
 import { PositionsModule as SqlPositionsModule } from './sql/positions/positions.module'
 import { RanksModule as SqlRanksModule } from './sql/ranks/ranks.module'
 import { RegionsModule as SqlRegionsModule } from './sql/regions/regions.module'
+import { RiotModule } from './sql/riot/riot.module'
 import { SummonerModule as SqlSummonerModule } from './sql/summoners/summoner.module'
 import { TeamsModule as SqlTeamsModule } from './sql/teams/teams.module'
 import { TiersModule as SqlTiersModule } from './sql/tiers/tiers.module'
@@ -58,7 +59,8 @@ const validation = {
     NEO4J_URI: Joi.string().required(),
     NEO4J_SCHEME: Joi.string().required(),
     NEO4J_PORT: Joi.number().required(),
-    NEO4J_HOST: Joi.string().required()
+    NEO4J_HOST: Joi.string().required(),
+    RIOT_API_KEY: Joi.string().required()
   })
 }
 
@@ -128,7 +130,8 @@ const validation = {
     MongoAuthModule,
     GraphSummonerModule,
     GraphParticipantsModule,
-    GraphAuthModule
+    GraphAuthModule,
+    RiotModule
   ],
   controllers: [AppController],
   providers: [AppService]

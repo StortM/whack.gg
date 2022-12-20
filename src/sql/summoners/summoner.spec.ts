@@ -26,7 +26,6 @@ describe('Summoner service', () => {
   let testGameMode: GameMode
   let testRegion: Region
   let testRank: Rank
-  let testSummoner: Summoner
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
@@ -39,7 +38,7 @@ describe('Summoner service', () => {
     app = module.createNestApplication()
 
     await app.init()
-    useSeeding()
+    await useSeeding()
   })
 
   beforeEach(async () => {
@@ -66,18 +65,13 @@ describe('Summoner service', () => {
       divisionId: testDivision.id,
       gameModeId: testGameMode.id
     }).create()
-
-    testSummoner = await factory(Summoner)({
-      summonerName: 'testSummoner',
-      rankId: testRank.id,
-      regionId: testRegion.id
-    }).create()
   })
 
   afterAll(async () => {
     const connection = app.get(Connection)
     await connection.dropDatabase()
     await connection.synchronize(true)
+
     module.close()
   })
 
@@ -137,7 +131,7 @@ describe('Summoner service', () => {
     }
   ]
 
-  describe.each(summonerNameTestValues)('create() - SummonerName', (value) => {
+  describe.each(summonerNameTestValues)('create - SummonerName', (value) => {
     it(`will return correct value for ${value.summonerName}`, async () => {
       defaultSummonerDto.summonerName = value.summonerName as unknown as string
 
@@ -472,9 +466,11 @@ describe('Summoner service', () => {
           .execute()
       }) */
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const findOne = await summonerRepository.findOne({
           where: { summonerName: summ.summonerName }
         })
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const updateSummonerDto = {
           ...defaultSummonerDto,
           id: value.id
@@ -617,7 +613,7 @@ describe('Summoner service', () => {
     it(`will return correct value for ${value.id}`, async () => {
       await factory(Summoner)().create()
 
-      const res = await summonerService.findOne({
+      await summonerService.findOne({
         id: value.id as unknown as number
       })
 
