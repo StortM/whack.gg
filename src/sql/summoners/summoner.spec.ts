@@ -115,7 +115,7 @@ describe('Summoner service', () => {
     },
     {
       summonerName: false,
-      expected: undefined
+      expected: 'kjshad'
     },
     {
       summonerName: 0,
