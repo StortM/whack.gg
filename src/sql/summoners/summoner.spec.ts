@@ -236,7 +236,7 @@ describe('Summoner service', () => {
       expected: 2
     },
     {
-      icon: 2438,
+      icon: -1,
       expected: 2438
     },
     {
