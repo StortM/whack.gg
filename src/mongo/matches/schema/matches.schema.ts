@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import { IsArray, IsNumber, Length, Max } from 'class-validator'
+import { IsArray, IsNumber, Length } from 'class-validator'
 import { HydratedDocument } from 'mongoose'
 
 export type MatchDocument = HydratedDocument<Match>
