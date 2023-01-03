@@ -16,7 +16,9 @@ import { Champion, ChampionBans } from './entities/champion.entity'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
 import { ChampionsService } from './champions.service'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('SQL Champions')
 @Controller('champions')
 export class ChampionsController {
   constructor(private readonly championsService: ChampionsService) {}

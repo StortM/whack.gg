@@ -1,4 +1,5 @@
 import { Controller, Post, Request, UseGuards } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
 import { SummonerOmittingPasswordHash } from './../summoner/schemas/summoners.schema'
 import { LocalAuthGuard } from './auth-local.guard'
 import { AuthService } from './auth.service'
@@ -9,6 +10,7 @@ export interface LoginResponse {
   summoner: SummonerOmittingPasswordHash
 }
 
+@ApiTags('MongoDB Auth')
 @Controller('mongo-auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

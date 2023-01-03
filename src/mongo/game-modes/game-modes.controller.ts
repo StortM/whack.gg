@@ -14,7 +14,9 @@ import { UpdateGameModeDto } from './dto/update-game-mode.dto'
 import { GameMode } from './schemas/game-modes.schema'
 import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { AdminGuard } from './../auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('MongoDB Game Modes')
 @Controller('mongo-game-modes')
 export class GameModesController {
   constructor(private readonly gameModesService: GameModesService) {}

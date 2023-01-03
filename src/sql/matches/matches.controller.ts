@@ -15,7 +15,9 @@ import { UpdateMatchDto } from './dto/update-match.dto'
 import { Match } from './entities/match.entity'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('SQL Matches')
 @Controller('matches')
 export class MatchesController {
   constructor(private readonly matchesService: MatchesService) {}

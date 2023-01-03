@@ -24,7 +24,9 @@ import { Mastery } from '../masteries/schemas/masteries.schema'
 
 import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { AdminGuard } from './../auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('MongoDB Summoners')
 @Controller('mongo-summoners')
 export class SummonerController {
   constructor(

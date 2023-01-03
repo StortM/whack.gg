@@ -1,4 +1,5 @@
 import { Controller, Post, Request, UseGuards } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger/dist'
 import { SummonerOmittingPasswordHash } from 'src/sql/summoners/entities/summoner.entity'
 import { LocalAuthGuard } from './auth-local.guard'
 import { AuthService } from './auth.service'
@@ -9,6 +10,7 @@ export interface LoginResponse {
   user: SummonerOmittingPasswordHash
 }
 
+@ApiTags('SQL Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

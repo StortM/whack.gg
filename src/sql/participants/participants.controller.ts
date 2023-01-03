@@ -14,7 +14,9 @@ import { UpdateParticipantDto } from './dto/update-participant.dto'
 import { Participant } from './entities/participant.entity'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('SQL Participants')
 @Controller('participants')
 export class ParticipantsController {
   constructor(private readonly participantsService: ParticipantsService) {}
