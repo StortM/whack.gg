@@ -46,6 +46,7 @@
     "@nestjs/mongoose": "^9.2.1",
     "@nestjs/passport": "^8.0.1",
     "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/swagger": "^5.2.1",
     "@nestjs/typeorm": "^8.0.2",
     "bcrypt": "^5.1.0",
     "class-transformer": "^0.4.0",
@@ -60,6 +61,7 @@
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
+    "swagger-ui-express": "^4.6.0",
     "typeorm": "^0.2.37",
     "typeorm-seeding": "^1.6.1"
   },

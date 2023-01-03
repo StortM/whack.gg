@@ -11,7 +11,9 @@ import { MasteriesService } from './masteries.service'
 import { CreateMasteryDto } from './dto/create-mastery.dto'
 import { UpdateMasteryDto } from './dto/update-mastery.dto'
 import { Mastery } from './entities/mastery.entity'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('SQL Masteries')
 @Controller('masteries')
 export class MasteriesController {
   constructor(private readonly masteriesService: MasteriesService) {}

@@ -7,11 +7,13 @@ import {
   Patch,
   Post
 } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
 import { CreateParticipantDto } from './dto/create-participant.dto'
 import { UpdateParticipantDto } from './dto/update-participant.dto'
 import { Participant } from './entities/participant.entity'
 import { ParticipantsService } from './participants.service'
 
+@ApiTags('Graph Participants')
 @Controller('/graph/participants')
 export class ParticipantsController {
   constructor(private readonly participantsService: ParticipantsService) {}

@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger'
 import {
   IsNotEmpty,
   IsString,
@@ -9,6 +10,7 @@ import { AlphanumericAllowSpaces } from 'src/validators/AlphanumericAllowSpaces'
 import { ContainsNoEmoji } from 'src/validators/emoji.validator'
 
 export class FetchSummonerDto {
+  @ApiProperty()
   @IsString()
   @MinLength(3)
   @MaxLength(16)
@@ -17,10 +19,12 @@ export class FetchSummonerDto {
   @Validate(AlphanumericAllowSpaces)
   summonerName!: string
 
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   regionName!: string
 
+  @ApiProperty()
   @IsString()
   @MinLength(6)
   @MaxLength(45)

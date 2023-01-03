@@ -15,7 +15,9 @@ import { Match } from './schema/matches.schema'
 
 import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { AdminGuard } from './../auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('MongoDB Matches')
 @Controller('mongo-matches')
 export class MatchesController {
   constructor(private readonly matchesService: MatchesService) {}

@@ -14,7 +14,9 @@ import { UpdateChampionDto } from './dto/update-champion.dto'
 import { Champion } from './schemas/champions.schema'
 import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { AdminGuard } from './../auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger'
 
+@ApiTags('MongoDB Champions')
 @Controller('mongo-champions')
 export class ChampionsController {
   constructor(private readonly championsService: ChampionsService) {}

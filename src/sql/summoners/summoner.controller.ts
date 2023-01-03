@@ -14,6 +14,7 @@ import {
   UseGuards,
   ValidationPipe
 } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger/dist'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { JwtAuthenticatedRequest } from 'src/sql/auth/jwt.strategy'
 import { AuthService } from '../auth/auth.service'
@@ -25,6 +26,7 @@ import {
 } from './entities/summoner.entity'
 import { SummonerService } from './summoner.service'
 
+@ApiTags('SQL Summoners')
 @Controller('sql/summoner')
 export class SummonerController {
   constructor(

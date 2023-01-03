@@ -14,7 +14,9 @@ import { UpdateRankDto } from './dto/update-rank.dto'
 import { Rank } from './entities/rank.entity'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger'
 
+@ApiTags('SQL Ranks')
 @Controller('ranks')
 export class RanksController {
   constructor(private readonly ranksService: RanksService) {}
