@@ -35,6 +35,7 @@ import { RiotModule } from './sql/riot/riot.module'
 import { SummonerModule as SqlSummonerModule } from './sql/summoners/summoner.module'
 import { TeamsModule as SqlTeamsModule } from './sql/teams/teams.module'
 import { TiersModule as SqlTiersModule } from './sql/tiers/tiers.module'
+import { ScheduleModule } from '@nestjs/schedule'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.
@@ -67,6 +68,7 @@ const validation = {
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     ConfigModule.forRoot({ ...validation, isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

@@ -1,30 +1,28 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Headers,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Headers,
+  HttpException,
+  Param,
+  Patch,
+  Post,
   UseGuards,
-  ValidationPipe,
-  Put
+  ValidationPipe
 } from '@nestjs/common'
+import { AuthService } from '../auth/auth.service'
 import { createSummonerDto } from './dto/create-summoner.dto'
-import { SummonersService } from './summoners.service'
+import { updateSummonerDto } from './dto/update-summoner.dto'
 import {
   Summoner,
   SummonerOmittingPasswordHash
 } from './schemas/summoners.schema'
-import { updateSummonerDto } from './dto/update-summoner.dto'
-import { AuthService } from '../auth/auth.service'
-import { HttpException } from '@nestjs/common'
-import { Mastery } from '../masteries/schemas/masteries.schema'
+import { SummonersService } from './summoners.service'
 
-import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { AdminGuard } from './../auth/admin.guard'
 import { ApiTags } from '@nestjs/swagger/dist'
+import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 
 @ApiTags('MongoDB Summoners')
 @Controller('mongo-summoners')
