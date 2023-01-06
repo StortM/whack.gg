@@ -25,6 +25,7 @@ export class MasteriesService {
   }
 
   async findAll(): Promise<Mastery[]> {
+    await this.masteryRepository.query('')
     return await this.masteryRepository.find({
       order: {
         id: 'ASC'
