@@ -13,6 +13,4 @@ export class CronService {
   insertDailyMatch() {
     this.connection.createQueryRunner().query('CALL insert_daily_match_count()')
   }
-  @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
-  generatePostgressBackup() {}
 }
