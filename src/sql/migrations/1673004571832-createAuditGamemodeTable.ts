@@ -5,12 +5,13 @@ export class createAuditGamemodeTable1673004571832
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-    CREATE TABLE IF NOT EXISTS AUDIT_GAMEMODE(
-        OP CHAR(1) NOT NULL,
-        STAMP TIMESTAMP NOT NULL,
-        USER_ID CHAR(20) NOT NULL,
-        NAME VARCHAR(25)
-    );
+      CREATE TABLE IF NOT EXISTS AUDIT_GAMEMODE(
+          OP CHAR(1) NOT NULL,
+          STAMP TIMESTAMP NOT NULL,
+          USER_ID CHAR(20) NOT NULL,
+          NAME VARCHAR(25)
+      );
+      CREATE INDEX IF NOT EXISTS AUDIT_GAMEMODE_STAMP ON AUDIT_GAMEMODE(STAMP);
     `)
   }
 
