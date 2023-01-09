@@ -21,8 +21,8 @@ import { ApiTags } from '@nestjs/swagger'
 export class ChampionsController {
   constructor(private readonly championsService: ChampionsService) {}
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(
     @Body() createChampionDto: CreateChampionDto
@@ -42,8 +42,8 @@ export class ChampionsController {
     return this.championsService.findOne(id)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -52,8 +52,8 @@ export class ChampionsController {
     return this.championsService.update(id, updateChampionDto)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.championsService.remove(id)

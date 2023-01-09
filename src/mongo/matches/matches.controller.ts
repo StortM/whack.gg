@@ -22,8 +22,8 @@ import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 export class MatchesController {
   constructor(private readonly matchesService: MatchesService) {}
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(
     @Body() createPositionDto: CreateMatchDto
@@ -43,8 +43,8 @@ export class MatchesController {
     return this.matchesService.findOne(id)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -53,8 +53,8 @@ export class MatchesController {
     return this.matchesService.update(id, updatePositionDto)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.matchesService.remove(id)

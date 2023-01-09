@@ -23,8 +23,8 @@ import { Mastery } from './schemas/masteries.schema'
 export class MasteriesController {
   constructor(private readonly masteriesService: MasteriesService) {}
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   async create(
     @Body() createMasteryDto: CreateMasteryDto
@@ -55,8 +55,8 @@ export class MasteriesController {
     return res
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -65,8 +65,8 @@ export class MasteriesController {
     return this.masteriesService.update(id, updateMasteryDto)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<Mastery | null> {
     return this.masteriesService.remove(id)

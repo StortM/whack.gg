@@ -21,8 +21,8 @@ import { ApiTags } from '@nestjs/swagger/dist'
 export class GameModesController {
   constructor(private readonly gameModesService: GameModesService) {}
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(
     @Body() createGameModeDto: CreateGameModeDto
@@ -42,8 +42,8 @@ export class GameModesController {
     return this.gameModesService.findOne(id)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -52,8 +52,8 @@ export class GameModesController {
     return this.gameModesService.update(id, updateGameModeDto)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.gameModesService.remove(id)

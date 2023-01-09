@@ -21,8 +21,8 @@ import { ApiTags } from '@nestjs/swagger'
 export class DivisionsController {
   constructor(private readonly divisionsService: DivisionsService) {}
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(
     @Body() createDivisionDto: CreateDivisionDto
@@ -42,8 +42,8 @@ export class DivisionsController {
     return this.divisionsService.findOne(id)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -52,8 +52,8 @@ export class DivisionsController {
     return this.divisionsService.update(id, updateDivisionDto)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.divisionsService.remove(id)

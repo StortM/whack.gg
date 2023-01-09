@@ -69,8 +69,8 @@ export class SummonerController {
     return this.summonersService.findOne(id)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -79,8 +79,8 @@ export class SummonerController {
     return this.summonersService.update(id, updateRegionDto)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.summonersService.remove(id)

@@ -21,8 +21,8 @@ import { Position } from './schemas/positions.schema'
 export class PositionsController {
   constructor(private readonly positionsService: PositionsService) {}
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(
     @Body() createPositionDto: CreatePositionDto
@@ -42,8 +42,8 @@ export class PositionsController {
     return this.positionsService.findOne(id)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -52,8 +52,8 @@ export class PositionsController {
     return this.positionsService.update(id, updatePositionDto)
   }
 
-  @UseGuards(JwtAuthGuard)
   @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.positionsService.remove(id)
