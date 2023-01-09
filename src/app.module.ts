@@ -87,6 +87,18 @@ const validation = {
         ),
       inject: [ConfigService]
     }),
+    Neo4jModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService): Neo4jConfig => ({
+        scheme: configService.get('NEO4J_SCHEME')!,
+        host: configService.get('NEO4J_HOST')!,
+        port: configService.get('NEO4J_PORT')!,
+        username: configService.get('NEO4J_USERNAME')!,
+        password: configService.get('NEO4J_PASSWORD')!,
+        database: configService.get('NEO4J_DATABASE')
+      })
+    }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -120,7 +132,10 @@ const validation = {
     MongoPositionsModule,
     MongoSummonerModule,
     MongoMatchModule,
-    MongoAuthModule
+    MongoAuthModule,
+    GraphSummonerModule,
+    GraphParticipantsModule,
+    GraphAuthModule
   ],
   controllers: [AppController],
   providers: [AppService]
