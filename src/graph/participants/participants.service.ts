@@ -32,7 +32,7 @@ export class ParticipantsService {
         })
         RETURN p
       `,
-        { ...createParticipantDto }
+        createParticipantDto
       )
       .then((result) => new ParticipantNode(result.records[0].get('p')))
 

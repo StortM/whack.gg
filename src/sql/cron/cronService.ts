@@ -6,8 +6,11 @@ import { Connection } from 'typeorm'
 export class CronService {
   constructor(private readonly connection: Connection) {}
   @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
-  syncSomething() {
-    console.log('Calling Procedure')
+  /* 
+    Function gets called by runtime every day at midnight.
+    */
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  insertDailyMatch() {
     this.connection.createQueryRunner().query('CALL insert_daily_match_count()')
   }
 }

@@ -25,5 +25,5 @@ module.exports = {
   factories: ['dist/sql/**/*.factory.{ts,js}'],
   logging: false,
   database: process.env['POSTGRES_DB'],
-  cli: { migrationsDir: './src/migrations' }
+  cli: { migrationsDir: './src/sql/migrations' }
 }
