@@ -33,7 +33,7 @@ export class Summoner {
   isAdmin!: boolean
 
   @Prop(Number)
-  level!: number
+  level?: number
 
   @Prop(Number)
   icon?: number
