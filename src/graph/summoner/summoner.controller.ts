@@ -8,6 +8,7 @@ import {
   Patch,
   Post
 } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
 import { CreateSummonerDto } from './dto/create-sumoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
 import {
@@ -16,6 +17,7 @@ import {
 } from './entities/summoner.entity'
 import { SummonerService } from './summoner.service'
 
+@ApiTags('Graph Summoners')
 @Controller('graph/summoners')
 export class SummonerController {
   constructor(private readonly summonerService: SummonerService) {}

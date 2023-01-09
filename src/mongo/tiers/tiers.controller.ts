@@ -12,9 +12,11 @@ import { TiersService } from './tiers.service'
 import { CreateTierDto } from './dto/create-tier.dto'
 import { UpdateTierDto } from './dto/update-tier.dto'
 import { Tier } from './schemas/tiers.schema'
+import { ApiTags } from '@nestjs/swagger/dist'
 // import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
 // import { AdminGuard } from 'src/auth/admin.guard'
 
+@ApiTags('MongoDB Tiers')
 @Controller('mongo-tiers')
 export class TiersController {
   constructor(private readonly tiersService: TiersService) {}

@@ -8,6 +8,7 @@ import {
   Delete,
   UseGuards
 } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { DivisionsService } from './divisions.service'
@@ -15,6 +16,7 @@ import { CreateDivisionDto } from './dto/create-division.dto'
 import { UpdateDivisionDto } from './dto/update-division.dto'
 import { Division } from './entities/division.entity'
 
+@ApiTags('SQL Divisions')
 @Controller('divisions')
 export class DivisionsController {
   constructor(private readonly divisionsService: DivisionsService) {}

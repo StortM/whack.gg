@@ -14,7 +14,9 @@ import { UpdateTierDto } from './dto/update-tier.dto'
 import { Tier } from './entities/tier.entity'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('SQL Tiers')
 @Controller('tiers')
 export class TiersController {
   constructor(private readonly tiersService: TiersService) {}

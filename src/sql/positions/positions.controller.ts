@@ -14,7 +14,9 @@ import { UpdatePositionDto } from './dto/update-position.dto'
 import { Position } from './entities/position.entity'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('SQL Positions')
 @Controller('positions')
 export class PositionsController {
   constructor(private readonly positionsService: PositionsService) {}

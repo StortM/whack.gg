@@ -14,7 +14,9 @@ import { UpdateRegionDto } from './dto/update-region.dto'
 import { Region } from './entities/region.entity'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger'
 
+@ApiTags('SQL Regions')
 @Controller('regions')
 export class RegionsController {
   constructor(private readonly regionsService: RegionsService) {}

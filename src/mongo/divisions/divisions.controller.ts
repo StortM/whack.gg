@@ -14,7 +14,9 @@ import { UpdateDivisionDto } from './dto/update-division.dto'
 import { Division } from './schemas/divisions.schema'
 import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { AdminGuard } from './../auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger'
 
+@ApiTags('MongoDB Divisions')
 @Controller('mongo-divisions')
 export class DivisionsController {
   constructor(private readonly divisionsService: DivisionsService) {}

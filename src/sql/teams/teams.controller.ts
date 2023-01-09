@@ -16,7 +16,9 @@ import { UpdateTeamDto } from './dto/update-team.dto'
 import { Team } from './entities/team.entity'
 import { AdminGuard } from 'src/sql/auth/admin.guard'
 import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('SQL Teams')
 @Controller('teams')
 export class TeamsController {
   constructor(private readonly teamsService: TeamsService) {}

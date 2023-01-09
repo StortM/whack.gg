@@ -14,7 +14,9 @@ import { UpdateRegionDto } from './dto/update-region.dto'
 import { Region } from './schemas/regions.schema'
 import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { AdminGuard } from './../auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger'
 
+@ApiTags('MongoDB Regions')
 @Controller('mongo-regions')
 export class RegionsController {
   constructor(private readonly regionsService: RegionsService) {}

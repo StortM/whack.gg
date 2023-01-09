@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger'
 import { Type } from 'class-transformer'
 import {
   IsBoolean,
@@ -18,6 +19,7 @@ import { AlphanumericAllowSpaces } from 'src/validators/AlphanumericAllowSpaces'
 import { ContainsNoEmoji } from 'src/validators/emoji.validator'
 
 export class CreateSummonerDto {
+  @ApiProperty()
   @IsString()
   @MinLength(3)
   @MaxLength(16)
@@ -26,6 +28,7 @@ export class CreateSummonerDto {
   @Validate(AlphanumericAllowSpaces)
   summonerName!: string
 
+  @ApiProperty()
   @IsString()
   @MinLength(6)
   @MaxLength(45)
@@ -33,6 +36,7 @@ export class CreateSummonerDto {
   @Validate(ContainsNoEmoji)
   password!: string
 
+  @ApiProperty()
   @IsNumber()
   @IsNotEmpty()
   @IsPositive()
@@ -40,6 +44,7 @@ export class CreateSummonerDto {
   @Max(2147483647)
   level!: number
 
+  @ApiProperty()
   @IsNumber()
   @IsNotEmpty()
   @IsInt()
@@ -47,14 +52,17 @@ export class CreateSummonerDto {
   @Max(2438)
   icon!: number
 
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   regionName!: string
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsBoolean()
   isAdmin!: boolean
 
+  @ApiProperty()
   @IsOptional()
   @Type(() => CreateRankDto)
   rank?: Rank

@@ -14,7 +14,9 @@ import { UpdatePositionDto } from './dto/update-position.dto'
 import { Position } from './schemas/positions.schema'
 import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { AdminGuard } from './../auth/admin.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('MongoDB Positions')
 @Controller('mongo-positions')
 export class PositionsController {
   constructor(private readonly positionsService: PositionsService) {}

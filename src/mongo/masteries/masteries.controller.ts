@@ -16,7 +16,9 @@ import { AdminGuard } from './../auth/admin.guard'
 import { MasteriesService } from './masteries.service'
 import { CreateMasteryDto } from './dto/create-mastery.dto'
 import { UpdateMasteryDto } from './dto/update-mastery.dto'
+import { ApiTags } from '@nestjs/swagger/dist'
 
+@ApiTags('MongoDB Masteries')
 @Controller('mongo-masteries')
 export class MasteriesController {
   constructor(private readonly masteriesService: MasteriesService) {}
