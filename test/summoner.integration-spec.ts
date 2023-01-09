@@ -13,7 +13,7 @@ import * as request from 'supertest'
 import { factory, useSeeding } from 'typeorm-seeding'
 import getTestApplication, { resetDatabase } from './utils/testApplication'
 
-describe('/summoner', () => {
+describe('/sql/summoner', () => {
   let app: INestApplication
   let endpoint: string
   let summonerService: SummonerService
@@ -350,6 +350,7 @@ describe('/summoner', () => {
     it('Can GET a summoner by id', async () => {
       // Arrange
       const summoner = await factory(Summoner)({ id: 3 }).create()
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { masteries, participants, passwordHash, ...rest } = summoner
 
       // Act

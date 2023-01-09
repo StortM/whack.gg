@@ -11,7 +11,7 @@ export interface LoginResponse {
 }
 
 @ApiTags('MongoDB Auth')
-@Controller('mongo-auth')
+@Controller('mongo/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 

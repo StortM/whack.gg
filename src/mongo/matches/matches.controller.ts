@@ -1,11 +1,11 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
   UseGuards
 } from '@nestjs/common'
 import { CreateMatchDto } from './dto/create-match.dto'
@@ -13,12 +13,12 @@ import { UpdateMatchDto } from './dto/update-match.dto'
 import { MatchesService } from './matches.service'
 import { Match } from './schema/matches.schema'
 
-import { JwtAuthGuard } from './../auth/jwt-auth.guard'
-import { AdminGuard } from './../auth/admin.guard'
 import { ApiTags } from '@nestjs/swagger/dist'
+import { AdminGuard } from './../auth/admin.guard'
+import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 
 @ApiTags('MongoDB Matches')
-@Controller('mongo-matches')
+@Controller('mongo/matches')
 export class MatchesController {
   constructor(private readonly matchesService: MatchesService) {}
 

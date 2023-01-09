@@ -17,7 +17,7 @@ import { AdminGuard } from 'src/sql/auth/admin.guard'
 import { ApiTags } from '@nestjs/swagger'
 
 @ApiTags('SQL Regions')
-@Controller('regions')
+@Controller('sql/regions')
 export class RegionsController {
   constructor(private readonly regionsService: RegionsService) {}
 

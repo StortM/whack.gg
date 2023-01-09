@@ -1,23 +1,23 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
   UseGuards
 } from '@nestjs/common'
-import { RegionsService } from './regions.service'
+import { ApiTags } from '@nestjs/swagger'
+import { AdminGuard } from './../auth/admin.guard'
+import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { CreateRegionDto } from './dto/create-region.dto'
 import { UpdateRegionDto } from './dto/update-region.dto'
+import { RegionsService } from './regions.service'
 import { Region } from './schemas/regions.schema'
-import { JwtAuthGuard } from './../auth/jwt-auth.guard'
-import { AdminGuard } from './../auth/admin.guard'
-import { ApiTags } from '@nestjs/swagger'
 
 @ApiTags('MongoDB Regions')
-@Controller('mongo-regions')
+@Controller('mongo/regions')
 export class RegionsController {
   constructor(private readonly regionsService: RegionsService) {}
 

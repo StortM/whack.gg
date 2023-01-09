@@ -17,7 +17,7 @@ import { AdminGuard } from 'src/sql/auth/admin.guard'
 import { ApiTags } from '@nestjs/swagger'
 
 @ApiTags('SQL Ranks')
-@Controller('ranks')
+@Controller('sql/ranks')
 export class RanksController {
   constructor(private readonly ranksService: RanksService) {}
 

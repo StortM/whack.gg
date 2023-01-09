@@ -17,7 +17,7 @@ import { AdminGuard } from 'src/sql/auth/admin.guard'
 import { ApiTags } from '@nestjs/swagger/dist'
 
 @ApiTags('SQL Tiers')
-@Controller('tiers')
+@Controller('sql/tiers')
 export class TiersController {
   constructor(private readonly tiersService: TiersService) {}
 

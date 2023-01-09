@@ -1,23 +1,23 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
   UseGuards
 } from '@nestjs/common'
-import { PositionsService } from './positions.service'
+import { ApiTags } from '@nestjs/swagger/dist'
+import { AdminGuard } from './../auth/admin.guard'
+import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { CreatePositionDto } from './dto/create-position.dto'
 import { UpdatePositionDto } from './dto/update-position.dto'
+import { PositionsService } from './positions.service'
 import { Position } from './schemas/positions.schema'
-import { JwtAuthGuard } from './../auth/jwt-auth.guard'
-import { AdminGuard } from './../auth/admin.guard'
-import { ApiTags } from '@nestjs/swagger/dist'
 
 @ApiTags('MongoDB Positions')
-@Controller('mongo-positions')
+@Controller('mongo/positions')
 export class PositionsController {
   constructor(private readonly positionsService: PositionsService) {}
 

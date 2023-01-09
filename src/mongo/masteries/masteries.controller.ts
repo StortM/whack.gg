@@ -1,25 +1,25 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  UseGuards,
+  Get,
   HttpException,
-  HttpStatus
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+  UseGuards
 } from '@nestjs/common'
-import { Mastery } from './schemas/masteries.schema'
-import { JwtAuthGuard } from './../auth/jwt-auth.guard'
+import { ApiTags } from '@nestjs/swagger/dist'
 import { AdminGuard } from './../auth/admin.guard'
-import { MasteriesService } from './masteries.service'
+import { JwtAuthGuard } from './../auth/jwt-auth.guard'
 import { CreateMasteryDto } from './dto/create-mastery.dto'
 import { UpdateMasteryDto } from './dto/update-mastery.dto'
-import { ApiTags } from '@nestjs/swagger/dist'
+import { MasteriesService } from './masteries.service'
+import { Mastery } from './schemas/masteries.schema'
 
 @ApiTags('MongoDB Masteries')
-@Controller('mongo-masteries')
+@Controller('mongo/masteries')
 export class MasteriesController {
   constructor(private readonly masteriesService: MasteriesService) {}
 
@@ -28,14 +28,8 @@ export class MasteriesController {
   @Post()
   async create(
     @Body() createMasteryDto: CreateMasteryDto
-  ): Promise<Mastery | undefined | any> {
+  ): Promise<Mastery | undefined> {
     const res = await this.masteriesService.create(createMasteryDto)
-
-    const newMastery = {
-      level: res.level,
-      championPoints: res.championPoints,
-      lastPlayed: res.lastPlayed
-    }
 
     return res
   }

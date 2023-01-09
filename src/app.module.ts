@@ -2,6 +2,7 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
+import { ScheduleModule } from '@nestjs/schedule'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import * as Joi from 'joi'
 import { Neo4jConfig, Neo4jModule } from 'nest-neo4j/dist'
@@ -35,7 +36,6 @@ import { RiotModule } from './sql/riot/riot.module'
 import { SummonerModule as SqlSummonerModule } from './sql/summoners/summoner.module'
 import { TeamsModule as SqlTeamsModule } from './sql/teams/teams.module'
 import { TiersModule as SqlTiersModule } from './sql/tiers/tiers.module'
-import { ScheduleModule } from '@nestjs/schedule'
 
 // Object containing Joi validations for envvars.
 // Env vars will be loaded on app start and any vars not complying with Joi schema will cause error on startup.

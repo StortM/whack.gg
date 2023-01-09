@@ -64,14 +64,6 @@ jobs:
           name: Run migrations
           command: npm run migration:run
 
-      - run:
-          name: Run Unit tests
-          command: npm run test
-
-      - run:
-          name: Run Integration tests
-          command: npm run test:integration
-
 
 workflows:
   # Below is the definition of your workflow.

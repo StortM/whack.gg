@@ -17,7 +17,7 @@ import { AdminGuard } from './../auth/admin.guard'
 import { ApiTags } from '@nestjs/swagger'
 
 @ApiTags('MongoDB Divisions')
-@Controller('mongo-divisions')
+@Controller('mongo/divisions')
 export class DivisionsController {
   constructor(private readonly divisionsService: DivisionsService) {}
 
