@@ -25,7 +25,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'graph-jwt') {
     sub: string
     summonerName: string
   }): Promise<SummonerOmittingPasswordHash | undefined> {
-    const summoner = await this.summonerService.findOne(parseInt(payload.sub))
+    const summoner = await this.summonerService.findOne(payload.sub)
     if (summoner) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { passwordHash, ...rest } = summoner.toJson()

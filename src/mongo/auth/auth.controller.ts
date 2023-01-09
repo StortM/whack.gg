@@ -16,7 +16,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
-  @Post('login')
+  @Post('mongo/login')
   async login(@Request() req: AuthenticatedRequest): Promise<LoginResponse> {
     return this.authService.login({
       ...req.user,

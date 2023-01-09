@@ -25,14 +25,13 @@ import { CreateSummonerDto } from './dto/create-summoner.dto'
 import { UpdateSummonerDto } from './dto/update-summoner.dto'
 
 @ApiTags('MongoDB Summoners')
-@Controller('mongo-summoners')
+@Controller('mongo/summoners')
 export class SummonerController {
   constructor(
     private readonly summonersService: SummonersService,
     private readonly authService: AuthService
   ) {}
 
-  @UseGuards(JwtAuthGuard)
   @Post()
   async create(
     @Body(new ValidationPipe()) createSummonerDto: CreateSummonerDto,

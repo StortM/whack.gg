@@ -25,7 +25,6 @@ export class SummonersService {
     const region = regionName
       ? await this.regionsService.findFromRegionName(regionName)
       : null
-    // if (!region) return null
 
     const hash = await this.cryptService.hash(password)
 

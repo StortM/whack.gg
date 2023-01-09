@@ -40,7 +40,6 @@ export class SummonerService {
   }
 
   async update(
-    id: number,
     updateSummonerDto: UpdateSummonerDto
   ): Promise<SummonerNode | undefined> {
     const summonerNode = await this.findOne(updateSummonerDto.id)
@@ -72,7 +71,7 @@ export class SummonerService {
       })
   }
 
-  async findOne(id: number): Promise<SummonerNode> {
+  async findOne(id: string): Promise<SummonerNode> {
     return await this.neo4jService
       .read('MATCH (s:Summoner {id: $id}) RETURN s', { id })
       .then((res) => {
@@ -93,7 +92,7 @@ export class SummonerService {
       : undefined
   }
 
-  async remove(id: number): Promise<SummonerNode> {
+  async remove(id: string): Promise<SummonerNode> {
     return await this.neo4jService
       .write('MATCH (s:Summoner {id: $id}) DETACH DELETE s RETURN s', { id })
       .then((res) => {

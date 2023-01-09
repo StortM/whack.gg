@@ -50,7 +50,7 @@ export class AuthService {
   async isAdminToken(token: string): Promise<boolean> {
     const decodedToken = this.jwtService.decode(token) as JwtToken
     const summoner = await this.summonerService
-      .findOne(parseInt(decodedToken.sub))
+      .findOne(decodedToken.sub)
       .then((summonerNode) => summonerNode?.toJson())
 
     return summoner?.isAdmin ?? false
