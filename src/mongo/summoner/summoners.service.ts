@@ -4,8 +4,8 @@ import { InjectModel } from '@nestjs/mongoose'
 import { Summoner } from './schemas/summoners.schema'
 import { SummonerOmittingPasswordHash } from './schemas/summoners.schema'
 import { SummonerDocument } from './schemas/summoners.schema'
-import { createSummonerDto } from './dto/create-summoner.dto'
-import { updateSummonerDto } from './dto/update-summoner.dto'
+import { CreateSummonerDto } from './dto/create-summoner.dto'
+import { UpdateSummonerDto } from './dto/update-summoner.dto'
 import { CryptService } from 'src/crypt/crypt.service'
 import { RegionsService } from 'src/mongo/regions/regions.service'
 
@@ -18,7 +18,7 @@ export class SummonersService {
   ) {}
 
   async create(
-    createSummonerDto: createSummonerDto
+    createSummonerDto: CreateSummonerDto
   ): Promise<SummonerOmittingPasswordHash | null> {
     const { password, regionName, summonerName, ...rest } = createSummonerDto
     // check and fetch region
@@ -59,7 +59,7 @@ export class SummonersService {
 
   async update(
     id: string,
-    updateSummonerDto: updateSummonerDto
+    updateSummonerDto: UpdateSummonerDto
   ): Promise<Summoner | null> {
     if (
       updateSummonerDto.mastery &&
