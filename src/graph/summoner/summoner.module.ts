@@ -39,20 +39,17 @@ export class SummonerModule implements OnModuleInit {
   constructor(private readonly neo4jService: Neo4jService) {}
 
   async onModuleInit(): Promise<void> {
-    /*     await this.neo4jService
+    await this.neo4jService
       .write(`CREATE CONSTRAINT ON (s:Summoner) ASSERT s.id IS UNIQUE`)
-      .catch((e) => {
-        console.error(e)
-      }) */
-    /*     await this.neo4jService
-      .write(`CREATE CONSTRAINT ON (s:Summoner) ASSERT u.username IS UNIQUE`)
       .catch((e) => {
         console.error(e)
       })
     await this.neo4jService
-      .write(`CREATE CONSTRAINT ON (s:Summoner) ASSERT u.email IS UNIQUE`)
+      .write(
+        `CREATE CONSTRAINT ON (s:Summoner) ASSERT s.summonerName IS UNIQUE`
+      )
       .catch((e) => {
         console.error(e)
-      }) */
+      })
   }
 }

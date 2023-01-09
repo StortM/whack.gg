@@ -15,7 +15,7 @@ describe('/auth', () => {
   beforeAll(async () => {
     app = await getTestApplication()
     cryptService = app.get(CryptService)
-    endpoint = '/auth/'
+    endpoint = '/sql/auth/'
 
     await useSeeding()
   })

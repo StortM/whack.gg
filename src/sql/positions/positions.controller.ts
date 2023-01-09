@@ -17,7 +17,7 @@ import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { ApiTags } from '@nestjs/swagger/dist'
 
 @ApiTags('SQL Positions')
-@Controller('positions')
+@Controller('sql/positions')
 export class PositionsController {
   constructor(private readonly positionsService: PositionsService) {}
   @UseGuards(AdminGuard)

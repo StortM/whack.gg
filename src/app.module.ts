@@ -2,6 +2,7 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
+import { ScheduleModule } from '@nestjs/schedule'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import * as Joi from 'joi'
 import { Neo4jConfig, Neo4jModule } from 'nest-neo4j/dist'
@@ -67,6 +68,7 @@ const validation = {
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     ConfigModule.forRoot({ ...validation, isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

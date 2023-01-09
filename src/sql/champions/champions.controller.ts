@@ -19,7 +19,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard'
 import { ApiTags } from '@nestjs/swagger/dist'
 
 @ApiTags('SQL Champions')
-@Controller('champions')
+@Controller('sql/champions')
 export class ChampionsController {
   constructor(private readonly championsService: ChampionsService) {}
 

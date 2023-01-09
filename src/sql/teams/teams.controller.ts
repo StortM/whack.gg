@@ -19,7 +19,7 @@ import { JwtAuthGuard } from 'src/sql/auth/jwt-auth.guard'
 import { ApiTags } from '@nestjs/swagger/dist'
 
 @ApiTags('SQL Teams')
-@Controller('teams')
+@Controller('sql/teams')
 export class TeamsController {
   constructor(private readonly teamsService: TeamsService) {}
 

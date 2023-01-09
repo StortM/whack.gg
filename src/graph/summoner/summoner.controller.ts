@@ -30,6 +30,8 @@ export class SummonerController {
   ): Promise<SummonerOmittingPasswordHash> {
     const summoner = await this.summonerService.create(createSummonerDto)
 
+    if (!summoner) throw new NotFoundException('Error creating summmoner')
+
     return summoner.toJson()
   }
 
@@ -45,7 +47,6 @@ export class SummonerController {
     return summoner.toJson()
   }
 
-  // create get endpoint for summoner
   @Get()
   async findAll(): Promise<SummonerOmittingPasswordHash[]> {
     const summoners = await this.summonerService.findAll()

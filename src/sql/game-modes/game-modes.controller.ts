@@ -17,7 +17,7 @@ import { GameMode } from './entities/game-mode.entity'
 import { GameModesService } from './game-modes.service'
 
 @ApiTags('SQL Game Modes')
-@Controller('gameModes')
+@Controller('sql/game-modes')
 export class GameModesController {
   constructor(private readonly gameModesService: GameModesService) {}
 

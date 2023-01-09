@@ -17,7 +17,7 @@ import { AdminGuard } from './../auth/admin.guard'
 import { ApiTags } from '@nestjs/swagger/dist'
 
 @ApiTags('MongoDB Game Modes')
-@Controller('mongo-game-modes')
+@Controller('mongo/game-modes')
 export class GameModesController {
   constructor(private readonly gameModesService: GameModesService) {}
 
