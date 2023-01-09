@@ -14,7 +14,7 @@ import { Mastery } from './entities/mastery.entity'
 import { ApiTags } from '@nestjs/swagger/dist'
 
 @ApiTags('SQL Masteries')
-@Controller('masteries')
+@Controller('sql/masteries')
 export class MasteriesController {
   constructor(private readonly masteriesService: MasteriesService) {}
 

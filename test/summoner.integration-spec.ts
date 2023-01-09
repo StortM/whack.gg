@@ -13,7 +13,7 @@ import * as request from 'supertest'
 import { factory, useSeeding } from 'typeorm-seeding'
 import getTestApplication, { resetDatabase } from './utils/testApplication'
 
-describe('/summoner', () => {
+describe('/sql/summoner', () => {
   let app: INestApplication
   let endpoint: string
   let summonerService: SummonerService

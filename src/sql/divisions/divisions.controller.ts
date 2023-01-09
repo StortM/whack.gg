@@ -17,7 +17,7 @@ import { UpdateDivisionDto } from './dto/update-division.dto'
 import { Division } from './entities/division.entity'
 
 @ApiTags('SQL Divisions')
-@Controller('divisions')
+@Controller('sql/divisions')
 export class DivisionsController {
   constructor(private readonly divisionsService: DivisionsService) {}
 

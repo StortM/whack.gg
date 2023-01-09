@@ -11,7 +11,7 @@ export interface LoginResponse {
 }
 
 @ApiTags('SQL Auth')
-@Controller('auth')
+@Controller('sql/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 

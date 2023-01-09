@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { Cron, CronExpression } from '@nestjs/schedule'
-import { Connection, QueryRunner } from 'typeorm'
+import { Connection } from 'typeorm'
 
 @Injectable()
 export class CronService {

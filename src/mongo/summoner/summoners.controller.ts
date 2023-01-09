@@ -1,30 +1,28 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Headers,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Headers,
+  HttpException,
+  Param,
+  Patch,
+  Post,
   UseGuards,
-  ValidationPipe,
-  Put
+  ValidationPipe
 } from '@nestjs/common'
-import { createSummonerDto } from './dto/create-summoner.dto'
-import { SummonersService } from './summoners.service'
+import { AuthService } from '../auth/auth.service'
 import {
   Summoner,
   SummonerOmittingPasswordHash
 } from './schemas/summoners.schema'
-import { updateSummonerDto } from './dto/update-summoner.dto'
-import { AuthService } from '../auth/auth.service'
-import { HttpException } from '@nestjs/common'
-import { Mastery } from '../masteries/schemas/masteries.schema'
+import { SummonersService } from './summoners.service'
 
-import { JwtAuthGuard } from './../auth/jwt-auth.guard'
-import { AdminGuard } from './../auth/admin.guard'
 import { ApiTags } from '@nestjs/swagger/dist'
+import { AdminGuard } from './../auth/admin.guard'
+import { JwtAuthGuard } from './../auth/jwt-auth.guard'
+import { CreateSummonerDto } from './dto/create-summoner.dto'
+import { UpdateSummonerDto } from './dto/update-summoner.dto'
 
 @ApiTags('MongoDB Summoners')
 @Controller('mongo-summoners')
@@ -37,7 +35,7 @@ export class SummonerController {
   @UseGuards(JwtAuthGuard)
   @Post()
   async create(
-    @Body(new ValidationPipe()) createSummonerDto: createSummonerDto,
+    @Body(new ValidationPipe()) createSummonerDto: CreateSummonerDto,
     @Headers('Authorization') auth: string
   ): Promise<SummonerOmittingPasswordHash | null> {
     const isCreatingAdminUser = createSummonerDto.isAdmin
@@ -77,7 +75,7 @@ export class SummonerController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateRegionDto: updateSummonerDto
+    @Body() updateRegionDto: UpdateSummonerDto
   ): Promise<Summoner | null> {
     return this.summonersService.update(id, updateRegionDto)
   }

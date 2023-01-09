@@ -17,7 +17,7 @@ import { AdminGuard } from './../auth/admin.guard'
 import { ApiTags } from '@nestjs/swagger'
 
 @ApiTags('MongoDB Champions')
-@Controller('mongo-champions')
+@Controller('mongo/champions')
 export class ChampionsController {
   constructor(private readonly championsService: ChampionsService) {}
 

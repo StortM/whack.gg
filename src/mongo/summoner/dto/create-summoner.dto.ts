@@ -9,7 +9,7 @@ import {
 import { Mastery } from 'src/mongo/masteries/schemas/masteries.schema'
 import { Rank } from '../schemas/summoners.schema'
 
-export class createSummonerDto {
+export class CreateSummonerDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
