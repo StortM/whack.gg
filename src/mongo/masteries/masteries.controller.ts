@@ -28,7 +28,7 @@ export class MasteriesController {
   @Post()
   async create(
     @Body() createMasteryDto: CreateMasteryDto
-  ): Promise<Mastery | undefined | any> {
+  ): Promise<Mastery | undefined> {
     const res = await this.masteriesService.create(createMasteryDto)
 
     return res

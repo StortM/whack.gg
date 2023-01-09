@@ -350,6 +350,7 @@ describe('/sql/summoner', () => {
     it('Can GET a summoner by id', async () => {
       // Arrange
       const summoner = await factory(Summoner)({ id: 3 }).create()
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { masteries, participants, passwordHash, ...rest } = summoner
 
       // Act
