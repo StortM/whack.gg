@@ -1,4 +1,4 @@
-# db-mandatory-2
+# Whack.gg
 
 This is a Node.js application using NestJS.
 
